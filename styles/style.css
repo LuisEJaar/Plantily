@@ -1,30 +1,56 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
 /* Common Styles */
+body {
+    height: 100vh;
+}
 
-nav {
+
+/* Nav Bar */
+
+nav, .navExtension {
     display: flex;
     flex-direction: row;
     justify-content: center;
     justify-content: space-evenly;
+    margin: 0 5%;
     width: 90%;
-    margin-left: 5%;
     border: 2px solid black;
     position: fixed;
-    bottom: 0;
     padding: 0.5rem 0;
     border-radius: 0.5rem;
     box-shadow: -5px -5px 30px grey, 5px -5px 30px grey;
 }
 
-nav > img {
+nav {
+    bottom: 0.3rem;
+}
+
+nav > img, nav > a > img {
     height: 3rem;
-    transition-duration: 1s;
+    transition-duration: 0.7s;
     transition-property: background, border-radius;
 }
 
-nav > img:hover {
+nav > img:hover, nav > a > img:hover {
     background: orangered;
     border-radius: 20%;
-    /* transform: translateZ(4px); */
+}
+
+/* Nav Extensions */
+
+.navExtension {
+    bottom: 5rem;
+    display: block;
+    z-index: 3;
+    height: 5rem;
+    background-color: white;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Main Header */
@@ -37,3 +63,29 @@ h1 {
     font-weight: bold;
     user-select: none;
 }
+
+/* Plant List Section */
+
+section, section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+section {
+    height: 70%;
+    margin: 1rem 3rem;
+    justify-content: center;
+}
+
+section > div  {
+    height: 30%;
+    font: small-caps bold 24px/1 sans-serif;
+    justify-content: space-evenly;
+}
+
+section > div > img {
+    height: 5rem;
+}
+

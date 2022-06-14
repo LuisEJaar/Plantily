@@ -23,19 +23,42 @@
    <header>
         <h1>Plantly</h1>
    </header>
-   <section>
-    <!-- Generate dynamically based on plants in db -->
-    <!-- Use nth child for formatting lh / rh img -->
+   <section class="plantSpace">
+        <!-- Generate dynamically based on plants in db -->
+        <!-- Use nth child for formatting lh / rh img -->
+        <div>
+            <p>Look at all this space! <br> Lets get planting!</p>
+            <img src="./assets/nav/add_circle.png" alt="add circle">
+        </div>
+
+        
    </section>
    <!-- Generic Footer -->
    <footer>
+        <article id= "scheduleOverlay" class="navExtension hidden">
+            <!-- Overlay for Schedule -->
+            <p>here I am</p>
+        </article>
+        <article id= "addOverlay" class="navExtension hidden">
+            <!-- Overlay for add -->
+            <p>here I am</p>
+        </article>
+        <article id= "contactOverlay" class="navExtension hidden">
+            <!-- Overlay for contact -->
+            <p>here I am</p>
+        </article>
         <nav>
-            <img src="./assets/nav/mygarden.png" alt="my garden">
-            <img src="./assets/nav/schedule.png" alt="schedule">
-            <img src="./assets/nav/add_circle.png" alt="add circle">
-            <img src="./assets/nav/magistrate.png" alt="education">
-            <img src="./assets/nav/contact.png" alt="contact us">
+            <a href="index.html">
+                <img id="garden" src="./assets/nav/mygarden.png" alt="my garden">
+            </a>
+            <img id="schedule" src="./assets/nav/schedule.png" alt="schedule">
+            <img id="navAdd" src="./assets/nav/add_circle.png" alt="add circle">
+            <a href="edu.html">
+                <img id="edu" src="./assets/nav/magistrate.png" alt="education">
+            </a>
+            <img id= "contact"src="./assets/nav/contact.png" alt="contact us">
         </nav>
    </footer> 
+   <script src="./js/main.js"></script>
 </body>
 </html>
