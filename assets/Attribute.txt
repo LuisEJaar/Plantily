@@ -1,0 +1,14 @@
+Plantly Garden Nav Icon:
+<a href="https://storyset.com/nature">Nature illustrations by Storyset</a>
+
+Plantly Diary Icon:
+<a href="https://storyset.com/home">Home illustrations by Storyset</a>
+
+Calendar:
+<a href="https://www.flaticon.com/free-icons/calendar" title="calendar icons">Calendar icons created by Freepik - Flaticon</a>
+
+Education:
+<a href="https://www.flaticon.com/free-icons/education" title="education icons">Education icons created by LAFS - Flaticon</a>
+
+Contact:
+<a href="https://www.flaticon.com/free-icons/contacts" title="contacts icons">Contacts icons created by Freepik - Flaticon</a>

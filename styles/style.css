@@ -1,0 +1,39 @@
+/* Common Styles */
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    width: 90%;
+    margin-left: 5%;
+    border: 2px solid black;
+    position: fixed;
+    bottom: 0;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    box-shadow: -5px -5px 30px grey, 5px -5px 30px grey;
+}
+
+nav > img {
+    height: 3rem;
+    transition-duration: 1s;
+    transition-property: background, border-radius;
+}
+
+nav > img:hover {
+    background: orangered;
+    border-radius: 20%;
+    /* transform: translateZ(4px); */
+}
+
+/* Main Header */
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    user-select: none;
+}
