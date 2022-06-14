@@ -1,38 +1,24 @@
 //Navigation Bar
 const navBar = {
     pageSetup: ()=> {
-        const scheduleButton = document.querySelector("#schedule")
-        const addButton = document.querySelector("#navAdd")
-        const eduButton = document.querySelector("#edu")
-        const contactButton = document.querySelector("#contact")
+        const navButtons = document.querySelectorAll(".navButton")
         const clickedOut = document.querySelector(".plantSpace")
 
         clickedOut.addEventListener("click",navBar.hideOverlays)
-        scheduleButton.addEventListener("click", navBar.calendar)
-        addButton.addEventListener("click", navBar.add)
-        eduButton.addEventListener("click", navBar.edu)
-        contactButton.addEventListener("click", navBar.contact)
+        for (let navButton of navButtons) {
+            navButton.addEventListener("click", navBar.navButton)
+        }
     },
-    calendar: ()=> {
-        console.log("Clicked calendar")
-        navBar.hideOverlays()
-        const scheduleOverlay = document.querySelector("#scheduleOverlay")
-        scheduleOverlay.classList.remove("hidden")
-    },
-    add: ()=> {
-        console.log("Clicked add")
-        navBar.hideOverlays()
-        const addOverlay = document.querySelector("#addOverlay")
-        addOverlay.classList.remove("hidden")
-    }, 
-    edu: ()=> {
-        console.log("Clicked edu")
-    },  
-    contact: ()=> {
-        console.log("Clicked contact")
-        navBar.hideOverlays()
-        const contactOverlay = document.querySelector("#contactOverlay")
-        contactOverlay.classList.remove("hidden")
+    navButton: (e)=> {
+        let name = e.target.id
+        let current = `#${name}` + "Overlay"
+        const currentElement = document.querySelector(`${current}`)
+        if (!currentElement.classList.contains("hidden")) {
+            navBar.hideOverlays()
+        } else {
+            navBar.hideOverlays()
+            currentElement.classList.remove("hidden")
+        }
     },
     hideOverlays: () => {
         const overlays = document.querySelectorAll(".navExtension")
@@ -46,3 +32,16 @@ const navBar = {
 navBar.pageSetup()
 
 //New Plant
+
+// const newPlant = {
+//     pageSetup: ()=> {
+//         const addPlant = document.querySelector("#addPlant")
+//         addPlant.addEventListener("click", newPlant.plantIt)
+//     }, 
+
+//     plantIt: ()=> {
+//         console.log("we planting")
+//     }
+// }
+
+// newPlant.pageSetup()

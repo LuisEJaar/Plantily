@@ -39,7 +39,7 @@ nav > img:hover, nav > a > img:hover {
     border-radius: 20%;
 }
 
-/* Nav Extensions */
+/* Nav Extensions / overlays */
 
 .navExtension {
     bottom: 5rem;
@@ -85,7 +85,5 @@ section > div  {
     justify-content: space-evenly;
 }
 
-section > div > img {
-    height: 5rem;
-}
+
 
