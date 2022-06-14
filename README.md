@@ -1,2 +1,2 @@
 # Plantly
-Plant Tracker fullstack web project, more to come
+Plant Tracker fullstack web project, it'll grow on ya
