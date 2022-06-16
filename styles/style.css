@@ -7,8 +7,39 @@ body {
     height: 100vh;
 }
 
+/* Main Header */
 
-/* Nav Bar */
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    user-select: none;
+}
+
+/* Plant List Section */
+
+section, section > div, footer  > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+section {
+    height: 70%;
+    margin: 1rem 3rem;
+    justify-content: center;
+}
+
+section > div  {
+    height: 30%;
+    font: small-caps bold 24px/1 sans-serif;
+    justify-content: space-evenly;
+}
+
+/* Nav Bar*/
 
 nav, .navExtension {
     display: flex;
@@ -28,7 +59,7 @@ nav {
     bottom: 0.3rem;
 }
 
-nav > img, nav > a > img {
+nav > img, nav > a > img, footer > article > img{
     height: 3rem;
     transition-duration: 0.7s;
     transition-property: background, border-radius;
@@ -42,10 +73,11 @@ nav > img:hover, nav > a > img:hover {
 /* Nav Extensions / overlays */
 
 .navExtension {
+    display: flex;
+    flex-direction: column;
     bottom: 5rem;
-    display: block;
     z-index: 3;
-    height: 5rem;
+    height: 8.3rem;
     background-color: white;
 }
 
@@ -53,37 +85,25 @@ nav > img:hover, nav > a > img:hover {
     display: none;
 }
 
-/* Main Header */
-
-h1 {
-    font-size: 4rem;
-    text-align: center;
-    padding-top: 2rem;
-    font-family: 'Dancing Script', cursive;
-    font-weight: bold;
-    user-select: none;
+footer > article {
+    flex-direction: row;
 }
 
-/* Plant List Section */
+.extensionimages {
+    height: 4.5rem;
+}
 
-section, section > div {
+.extimgcontainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-section {
-    height: 70%;
-    margin: 1rem 3rem;
+    width: 100%;
+    flex-direction: row;
     justify-content: center;
+    justify-content: space-evenly; 
 }
 
-section > div  {
-    height: 30%;
-    font: small-caps bold 24px/1 sans-serif;
-    justify-content: space-evenly;
-}
+
+
+
 
 
 

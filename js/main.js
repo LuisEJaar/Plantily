@@ -33,15 +33,15 @@ navBar.pageSetup()
 
 //New Plant
 
-// const newPlant = {
-//     pageSetup: ()=> {
-//         const addPlant = document.querySelector("#addPlant")
-//         addPlant.addEventListener("click", newPlant.plantIt)
-//     }, 
+const newPlant = {
+    pageSetup: ()=> {
+        const addPlant = document.querySelector("#addPlant")
+        addPlant.addEventListener("click", newPlant.plantIt)
+    }, 
 
-//     plantIt: ()=> {
-//         console.log("we planting")
-//     }
-// }
+    plantIt: ()=> {
+        console.log("we planting")
+    }
+}
 
 // newPlant.pageSetup()
