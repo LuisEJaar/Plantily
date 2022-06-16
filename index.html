@@ -7,7 +7,6 @@
 
     <!-- My Styles -->
     <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/style.css">
 
     <!-- Sourced Styles -->
@@ -29,6 +28,32 @@
         <div id="plantless">
             <p>Look at all this space! <br> Lets get planting!</p>
         </div>
+        <article id="addPlant">
+            <form action="/plants" method="post">
+                <fieldset>
+                    <legend>Plant Facts</legend>
+                    <input type="date" placeholder="plant_date" name="plant_date">
+                    <input type="text" placeholder="name" name="name">
+                    <input type="text" placeholder="type" name="type">
+                    <input type="number" placeholder="height" name="height">
+                    <input type="image" placeholder="picture" name="picture">
+                </fieldset>
+                <fieldset>
+                    <legend>Sun Exposure</legend>
+                    <input type="radio" id="fullSun" name="sun" value="Full Sun">
+                    <label for="fullSun">Full Sun</label>
+                    <input type="radio" id="Light Shade" name="sun" value="Light Shade">
+                    <label for="Light Shade">Light Shade</label>
+                    <input type="radio" id="Partial Shade" name="sun" value="Partial Shade">
+                    <label for="Partial Shade">Partial Shade</label>
+                    <input type="radio" id="Full Shade" name="sun" value="Full Shade" >
+                    <label for="Full Shade">Full Shade</label>
+                    <input type="radio" id="Dense Shade" name="sun" value="Dense Shade">
+                    <label for="Dense Shade">Dense Shade</label>
+               </fieldset>
+               <button type="submit">Submit</button>
+            </form>
+        </article>
    </section>
    <!-- Generic Footer -->
    <footer>
