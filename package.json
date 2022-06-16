@@ -19,6 +19,7 @@
   "homepage": "https://github.com/LuisEJaar/Plantly#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
     "heroku": "^7.60.2",
     "mongodb": "^4.7.0"
