@@ -5,6 +5,7 @@ const navBar = {
         const clickedOut = document.querySelector(".plantSpace")
 
         clickedOut.addEventListener("click",navBar.hideOverlays)
+        
         for (let navButton of navButtons) {
             navButton.addEventListener("click", navBar.navButton)
         }
@@ -25,7 +26,6 @@ const navBar = {
         for(let overlay of overlays){
             overlay.classList.add("hidden")
         }
-        console.log("hid all overlays")
     }
 }
 
@@ -37,11 +37,19 @@ const newPlant = {
     pageSetup: ()=> {
         const addPlant = document.querySelector("#addPlant")
         addPlant.addEventListener("click", newPlant.plantIt)
+        console.log("listening")
+
+        const overlay = document.querySelector("#addOverlay")
+        overlay.addEventListener("click",newPlant.tattle)
     }, 
 
     plantIt: ()=> {
         console.log("we planting")
+        navBar.hideOverlays()
+    },
+    tattle: (e)=> {
+        console.log(e)
     }
 }
 
-// newPlant.pageSetup()
+newPlant.pageSetup()

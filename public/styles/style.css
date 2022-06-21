@@ -57,15 +57,16 @@ nav, .navExtension {
 
 nav {
     bottom: 0.3rem;
+    background-color: white;
 }
 
-nav > img, nav > a > img, footer > article > img{
+nav > img, nav > a > img, footer > article > img, .extensionimages{
     height: 3rem;
     transition-duration: 0.7s;
     transition-property: background, border-radius;
 }
 
-nav > img:hover, nav > a > img:hover {
+nav > img:hover, nav > a > img:hover, .extensionimages:hover {
     background: orangered;
     border-radius: 20%;
 }
@@ -76,7 +77,7 @@ nav > img:hover, nav > a > img:hover {
     display: flex;
     flex-direction: column;
     bottom: 5rem;
-    z-index: 3;
+    z-index: 1;
     height: 8.3rem;
     background-color: white;
 }
@@ -91,13 +92,13 @@ footer > article {
 
 .extensionimages {
     height: 4.5rem;
+    z-index: 2;
 }
 
 .extimgcontainer {
-    display: flex;
     width: 100%;
+    display: flex;
     flex-direction: row;
-    justify-content: center;
     justify-content: space-evenly; 
 }
 
