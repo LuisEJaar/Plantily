@@ -19,7 +19,6 @@ h1 {
 }
 
 /* Plant List Section */
-
 section, section > div, footer  > article {
     display: flex;
     flex-direction: column;
@@ -92,7 +91,7 @@ footer > article {
 
 .extensionimages {
     height: 4.5rem;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .extimgcontainer {

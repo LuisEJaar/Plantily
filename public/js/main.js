@@ -35,20 +35,18 @@ navBar.pageSetup()
 
 const newPlant = {
     pageSetup: ()=> {
-        const addPlant = document.querySelector("#addPlant")
+        const addPlant = document.querySelector("#addPlantNav")
         addPlant.addEventListener("click", newPlant.plantIt)
-        console.log("listening")
-
-        const overlay = document.querySelector("#addOverlay")
-        overlay.addEventListener("click",newPlant.tattle)
     }, 
 
     plantIt: ()=> {
         console.log("we planting")
         navBar.hideOverlays()
-    },
-    tattle: (e)=> {
-        console.log(e)
+        const plantless = document.querySelector("#plantless")
+        plantless.classList.add("hidden")
+
+        const addPlantForm = document.querySelector("#addPlant")
+        addPlantForm.classList.remove("hidden")
     }
 }
 
