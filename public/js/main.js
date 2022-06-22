@@ -3,12 +3,15 @@ const navBar = {
     pageSetup: ()=> {
         const navButtons = document.querySelectorAll(".navButton")
         const clickedOut = document.querySelector(".plantSpace")
+        const myGarden = document.querySelector("#garden")
 
         clickedOut.addEventListener("click",navBar.hideOverlays)
         
         for (let navButton of navButtons) {
             navButton.addEventListener("click", navBar.navButton)
         }
+
+        myGarden.addEventListener("click", navBar.gardenButton)
     },
     navButton: (e)=> {
         let name = e.target.id
@@ -26,12 +29,17 @@ const navBar = {
         for(let overlay of overlays){
             overlay.classList.add("hidden")
         }
+    },
+    gardenButton: ()=> {
+        const plants = document.querySelector(".plants")
+        plants.classList.toggle("hidden")
+        newPlant.hideAdd()
     }
 }
 
 navBar.pageSetup()
 
-//New Plant
+//New Plant Button
 
 const newPlant = {
     pageSetup: ()=> {
@@ -42,11 +50,16 @@ const newPlant = {
     plantIt: ()=> {
         console.log("we planting")
         navBar.hideOverlays()
-        const plantless = document.querySelector("#plantless")
-        plantless.classList.add("hidden")
 
         const addPlantForm = document.querySelector("#addPlant")
         addPlantForm.classList.remove("hidden")
+
+        const plants = document.querySelector(".plants")
+        plants.classList.add("hidden")
+    },
+    hideAdd: ()=> {
+        const addPlantForm = document.querySelector("#addPlant")
+        addPlantForm.classList.add("hidden")
     }
 }
 

@@ -25,23 +25,58 @@
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
         <!-- Use nth child for formatting lh / rh img -->
-        <div id="plantless">
-            <p>Look at all this space! <br> Lets get planting!</p>
+        <div class="plants"> 
+            <!-- Loop through plants -->
+            <% if(plants.length > 0) {%>
+                <% for(var i = 0; i < plants.length; i++) {%>
+                    <div class="plant">
+                      <img src="./assets/Plant_Display_Top.png" alt="border-top">
+                      <div>
+                        <!-- Outputs from the iterated quote object -->
+                        <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
+                        <br> -->
+                        <span>Name: <%= plants[i].name %></span>
+                        <br>
+                        <span>Birthday: <%= plants[i].plant_date %></span>
+                        <br>
+                        <span>Type: <%= plants[i].type %></span>
+                        <br>
+                        <span>Height: <%= plants[i].height %></span>
+                        <br>
+                        <span>Sun: <%= plants[i].sun_exposure%></span>
+                        <br>
+                        <span>Watering Schedule: <%= plants[i].watering_schedule%></span>
+                      </div>
+                      <img src="./assets/Plant_Display_Bottom.png" alt="border-bottom">
+                    </div>
+                  <% } %>
+            <%} else {%>
+                <div id="plantless">
+                    <br> Lets get planting!</p>
+                </div>
+            <%} %>
         </div>
         <article id="addPlant" class="hidden">
             <form action="/plants" id="addplantForm" method="post">
                 <fieldset>
                     <legend>Plant Facts</legend>
-                    <input type="date" placeholder="plant_date" name="plant_date">
-                    <input type="text" placeholder="name" name="name">
-                    <input type="text" placeholder="type" name="type">
-                    <input type="number" placeholder="height" name="height">
-                    <input type="file" placeholder="picture" name="picture">
+                    <label for="plant_name">Name:</label>
+                    <input type="text" id="plant_name" placeholder="name" name="name">
+                    <br>
+                    <label for="plant_date">Planted on:</label>
+                    <input type="date" id="plant_date" placeholder="plant_date" name="plant_date">
+                    <br>
+                    <label for="plant_type">Plant Type:</label>
+                    <input type="text" id="plant_type" placeholder="type" name="type">
+                    <br>
+                    <label for="plant_height">Plant Height:</label>
+                    <input type="number" id="plant_height" placeholder="height" name="height">
+                    <!-- <input type="file" placeholder="picture" name="picture"> -->
                 </fieldset>
                 <fieldset>
                     <legend>Environment & Watering</legend>
                     <label for="sun">Sun Exposure</label>
-                    <select name="sun exposure" id="sun">
+                    <select name="sun_exposure" id="sun">
                         <option value="Full Sun">Full Sun</option>
                         <option value="Light Shade">Light Shade</option>
                         <option value="Partial Shade">Partial Shade</option>
@@ -49,8 +84,8 @@
                         <option value="Dense Shade">Dense Shade</option>
                     </select>
                 </br>
-                    <label for="watering schedule">Watering Schedule</label>
-                    <select name="watering schedule" id="watering">
+                    <label for="watering_schedule">Watering Schedule</label>
+                    <select name="watering_schedule" id="watering">
                         <option value="Daily">Daily</option>
                         <option value="Bi-Daily">Bi-daily</option>
                         <option value="Weekly">Weekly</option>
@@ -86,9 +121,7 @@
             </div>
         </article>
         <nav>
-            <a href="index.html">
-                <img id="garden" src="./assets/nav/mygarden.png" alt="my garden">
-            </a>
+            <img id="garden" src="./assets/nav/mygarden.png" alt="my garden">
             <img class="navButton" id="schedule" src="./assets/nav/schedule.png" alt="schedule">
             <img class="navButton" id="add" src="./assets/nav/add_circle.png" alt="add circle">
             <a href="edu.html">

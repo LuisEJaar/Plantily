@@ -22,25 +22,24 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 .then(client => {
     console.log('Connected to Database')
     const db = client.db(dbname)
-    const quotesCollection = db.collection(collectionname)
+    const plantsCollection = db.collection(collectionname)
     app.set('view engine', 'ejs')
     app.get('/', (req, res) => {
         db.collection(collectionname).find().toArray()
           .then(results => {
-            console.log(results)
-            res.render('index.ejs', { quotes: results })
+            res.render('index.ejs', { plants: results })
           })
           .catch(error => console.error(error))
     })
     app.post(location, (req, res) => {
-        quotesCollection.insertOne(req.body)
+        plantsCollection.insertOne(req.body)
           .then(result => {
             res.redirect('/')
           })
           .catch(error => console.error(error))
     })
     app.put(location, (req, res) => {
-      quotesCollection.findOneAndUpdate(
+      plantsCollection.findOneAndUpdate(
         { name: 'Yoda' },
         {
           $set: {
@@ -58,7 +57,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       .catch(error => console.error(error))
     })
     app.delete(location, (req, res) => {
-      quotesCollection.deleteOne(
+      plantsCollection.deleteOne(
         { name: req.body.name }
       )
       .then(result => {

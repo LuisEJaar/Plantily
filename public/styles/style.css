@@ -3,11 +3,14 @@
     user-select: none;
 }
 /* Common Styles */
-body {
-    height: 100vh;
-}
 
 /* Main Header */
+header {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%;
+}
 
 h1 {
     font-size: 4rem;
@@ -17,6 +20,13 @@ h1 {
     font-weight: bold;
     user-select: none;
 }
+/* Add Plant Form*/
+
+#addPlant {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
 
 /* Plant List Section */
 section, section > div, footer  > article {
@@ -24,7 +34,8 @@ section, section > div, footer  > article {
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
+}<span><%= plants[i].picture %></span>
+                <br>
 
 section {
     height: 70%;
@@ -91,7 +102,6 @@ footer > article {
 
 .extensionimages {
     height: 4.5rem;
-    /* z-index: 2; */
 }
 
 .extimgcontainer {
@@ -101,7 +111,28 @@ footer > article {
     justify-content: space-evenly; 
 }
 
+/* Plants List */
+.plantSpace {
+    margin-top: 13rem;
+    height: fit-content;
+    padding-bottom: 6rem;
+}
+.plants {
+    width: 100%;
+}
 
+.plant {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    height: auto;
+}
+
+.plant > img {
+    width: 100%;
+}
 
 
 
