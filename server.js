@@ -4,9 +4,10 @@ const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
+const PORT = 3000
 
-app.listen(3000, function() {
-    console.log('listening on 3000')
+app.listen(process.env.PORT || PORT, function() {
+    console.log(`listening on http://localhost:${PORT}`)
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))

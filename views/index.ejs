@@ -24,7 +24,6 @@
    </header>
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
-        <!-- Use nth child for formatting lh / rh img -->
         <div class="plants"> 
             <!-- Loop through plants -->
             <% if(plants.length > 0) {%>
@@ -57,6 +56,7 @@
             <%} %>
         </div>
         <article id="addPlant" class="hidden">
+            <div>Tell us about your plant!</div>
             <form action="/plants" id="addplantForm" method="post">
                 <fieldset>
                     <legend>Plant Facts</legend>
@@ -92,7 +92,7 @@
                         <option value="Bi-Weekly">Bi-Weekly</option>
                     </select>
                </fieldset>
-               <button type="submit">Submit</button>
+               <button type="submit">Add to my garden!</button>
             </form>
         </article>
    </section>

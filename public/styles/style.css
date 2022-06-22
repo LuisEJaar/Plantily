@@ -2,7 +2,6 @@
     box-sizing: border-box;
     user-select: none;
 }
-/* Common Styles */
 
 /* Main Header */
 header {
@@ -20,12 +19,16 @@ h1 {
     font-weight: bold;
     user-select: none;
 }
-/* Add Plant Form*/
 
+/* Adding plant section */
 #addPlant {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+    padding-top: 30%;
+}
+
+#addPlant > div {
+    font-size: 2rem;
+    font-weight: 1000;
+    margin-bottom: 1rem;
 }
 
 /* Plant List Section */
@@ -34,8 +37,7 @@ section, section > div, footer  > article {
     flex-direction: column;
     align-items: center;
     text-align: center;
-}<span><%= plants[i].picture %></span>
-                <br>
+}
 
 section {
     height: 70%;

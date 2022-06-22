@@ -34,6 +34,7 @@ const navBar = {
         const plants = document.querySelector(".plants")
         plants.classList.toggle("hidden")
         newPlant.hideAdd()
+        navBar.hideOverlays()
     }
 }
 
