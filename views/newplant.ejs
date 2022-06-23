@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- My Styles -->
-    <link rel="stylesheet" href="/styles/normalize.css">
-    <link rel="stylesheet" href="/styles/style.css">
-
-    <!-- Sourced Styles -->
-
-    <!-- Header Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    
-    <title>Plantly Home Page</title>
+    <%- include('./head'); %>
 </head>
 <body>
    <header>
@@ -29,22 +14,27 @@
             <form action="/plants" id="addplantForm" method="post">
                 <fieldset>
                     <legend>Plant Facts</legend>
-                    <label for="plant_name">Name:</label>
-                    <input type="text" id="plant_name" placeholder="name" name="name" required>
-                    <br>
-                    <label for="plant_date">Planted on:</label>
-                    <input type="date" id="plant_date" placeholder="plant_date" name="plant_date">
-                    <br>
-                    <label for="plant_type">Plant Type:</label>
-                    <input type="text" id="plant_type" placeholder="type" name="type">
-                    <br>
-                    <label for="plant_height">Plant Height:</label>
-                    <input type="number" id="plant_height" placeholder="height" name="height">
+                    <div>
+                        <label for="plant_name">Name:</label>
+                        <input type="text" id="plant_name" placeholder="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="plant_date">Planted on:</label>
+                        <input type="date" id="plant_date" placeholder="plant_date" name="plant_date">
+                    </div>
+                    <div>
+                        <label for="plant_type">Plant Type:</label>
+                        <input type="text" id="plant_type" placeholder="type" name="type">
+                    </div>
+                    <div>
+                        <label for="plant_height">Plant Height (cm):</label>
+                        <input type="number" id="plant_height" placeholder="height" name="height">
+                    </div>
                     <!-- <input type="file" placeholder="picture" name="picture"> -->
                 </fieldset>
                 <fieldset>
                     <legend>Environment & Watering</legend>
-                    <label for="sun">Sun Exposure</label>
+                    <label for="sun">Sun Exposure:</label>
                     <select name="sun_exposure" id="sun">
                         <option value="">Choose</option>
                         <option value="Full Sun">Full Sun</option>
@@ -54,7 +44,7 @@
                         <option value="Dense Shade">Dense Shade</option>
                     </select>
                 </br>
-                    <label for="watering_schedule">Watering Schedule</label>
+                    <label for="watering_schedule">Watering Schedule:</label>
                     <select name="watering_schedule" id="watering">
                         <option value="">Choose</option>
                         <option value="Daily">Daily</option>
@@ -67,40 +57,10 @@
             </form>
         </article>
    </section>
-   
+
    <!-- Generic Footer -->
    <footer>
-        <article id= "scheduleOverlay" class="navExtension hidden">
-            <!-- Overlay for Schedule -->
-            <p>Update Coming!</p>
-        </article>
-        <article id= "addOverlay" class="navExtension hidden">
-            <!-- Overlay for add -->
-            <p>What would you like to add?</p>
-            <div class="extimgcontainer">
-                <a href="/newplant"><img id="addPlantNav" class="extensionimages" src="./assets/nav/Add Button/plant.png" alt="Plant"></a>
-                <img id="addDiaryNav" class="extensionimages" src="./assets/nav/Add Button/diary.png" alt="Diary">
-                <img id="addEventNav" class="extensionimages" src="./assets/nav/Add Button/event.png" alt="Event">
-            </div>
-        </article>
-        <article id= "contactOverlay" class="navExtension hidden">
-            <!-- Overlay for contact -->
-            <p>We would love to hear from you!</p>
-            <div class="extimgcontainer">
-                <a href="#"><img class="extensionimages" src="./assets/nav/Contact Button/social-media.png" alt="social media"></a>
-                <a href="#"><img class="extensionimages" src="./assets/nav/Contact Button/telephone-call.png" alt="call"></a>
-                <a href="#"><img class="extensionimages" src="./assets/nav/Contact Button/email.png" alt="email"></a>
-            </div>
-        </article>
-        <nav>
-            <a href="/"><img id="garden" src="./assets/nav/mygarden.png" alt="my garden"></a>
-            <img class="navButton" id="schedule" src="./assets/nav/schedule.png" alt="schedule">
-            <img class="navButton" id="add" src="./assets/nav/add_circle.png" alt="add circle">
-            <a href="edu.html">
-                <img id="edu" src="./assets/nav/magistrate.png" alt="education">
-            </a>
-            <img class="navButton" id= "contact"src="./assets/nav/contact.png" alt="contact us">
-        </nav>
+        <%- include('./footer'); %>
    </footer> 
    <script src="/js/main.js"></script>
 </body>

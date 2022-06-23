@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- My Styles -->
-    <link rel="stylesheet" href="/styles/normalize.css">
-    <link rel="stylesheet" href="/styles/style.css">
-
-    <!-- Sourced Styles -->
-
-    <!-- Header Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    
-    <title>Plantly Home Page</title>
+    <%- include('./head'); %>
 </head>
 <body>
    <header>
@@ -57,39 +42,8 @@
         </div>
    </section>
    <!-- Generic Footer -->
-   
    <footer>
-        <article id= "scheduleOverlay" class="navExtension hidden">
-            <!-- Overlay for Schedule -->
-            <p>Update Coming!</p>
-        </article>
-        <article id= "addOverlay" class="navExtension hidden">
-            <!-- Overlay for add -->
-            <p>What would you like to add?</p>
-            <div class="extimgcontainer">
-                <a href="/newplant"><img id="addPlantNav" class="extensionimages" src="./assets/nav/Add Button/plant.png" alt="Plant"></a>
-                <img id="addDiaryNav" class="extensionimages" src="./assets/nav/Add Button/diary.png" alt="Diary">
-                <img id="addEventNav" class="extensionimages" src="./assets/nav/Add Button/event.png" alt="Event">
-            </div>
-        </article>
-        <article id= "contactOverlay" class="navExtension hidden">
-            <!-- Overlay for contact -->
-            <p>We would love to hear from you!</p>
-            <div class="extimgcontainer">
-                <a href="#"><img class="extensionimages" src="./assets/nav/Contact Button/social-media.png" alt="social media"></a>
-                <a href="#"><img class="extensionimages" src="./assets/nav/Contact Button/telephone-call.png" alt="call"></a>
-                <a href="#"><img class="extensionimages" src="./assets/nav/Contact Button/email.png" alt="email"></a>
-            </div>
-        </article>
-        <nav>
-            <a href="/"><img id="garden" src="./assets/nav/mygarden.png" alt="my garden"></a>           
-            <img class="navButton" id="schedule" src="./assets/nav/schedule.png" alt="schedule">
-            <img class="navButton" id="add" src="./assets/nav/add_circle.png" alt="add circle">
-            <a href="edu.html">
-                <img id="edu" src="./assets/nav/magistrate.png" alt="education">
-            </a>
-            <img class="navButton" id= "contact"src="./assets/nav/contact.png" alt="contact us">
-        </nav>
+        <%- include('./footer'); %>
    </footer> 
    <script src="/js/main.js"></script>
 </body>

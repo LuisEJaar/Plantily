@@ -31,6 +31,45 @@ h1 {
     margin-bottom: 1rem;
 }
 
+fieldset {
+    background-color: forestgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font: italic small-caps bold 1rem cursive;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid lime;
+    box-shadow: -5px -5px 30px grey, 5px -5px 30px grey;
+}
+
+fieldset legend {
+    position: relative;
+    top: -10px;
+    font-size: 1.2rem;
+}
+
+fieldset > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div > input {
+    width: 50%;
+}
+
+label {
+    font: italic small-caps bold 1rem cursive;
+}
+
+fieldset input, fieldset select {
+    border-radius: 4px;
+    text-align: center;
+}
+
+
+
 /* Plant List Section */
 section, section > div, footer  > article {
     display: flex;
@@ -133,6 +172,12 @@ footer > article {
 }
 
 .plant > img {
+    width: 100%;
+}
+
+/* progress page */
+
+.progresspic {
     width: 100%;
 }
 

@@ -19,6 +19,8 @@ let dbname = 'plantly-plants-entries'
 let collectionname = 'plants'
 let location = '/plants'
 
+
+
 MongoClient.connect(connectionString, { useUnifiedTopology: true }) 
 .then(client => {
     console.log('Connected to Database')
@@ -38,6 +40,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       db.collection(collectionname).find().toArray()
         .then(results => {
           res.render('newplant.ejs')
+        })
+        .catch(error => console.error(error))
+    })
+    app.get('/progress', (req, res) => {
+      db.collection(collectionname).find().toArray()
+        .then(results => {
+          res.render('progress.ejs')
         })
         .catch(error => console.error(error))
     })

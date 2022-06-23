@@ -33,10 +33,3 @@ const navBar = {
 }
 
 navBar.pageSetup()
-
-//New Plant Button
-
-const newPlant = {
-}
-
-newPlant.pageSetup()
