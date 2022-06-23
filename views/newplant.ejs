@@ -24,7 +24,7 @@
    </header>
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
-        <article id="addPlant" class="hidden">
+        <article id="addPlant">
             <div>Tell us about your plant!</div>
             <form action="/plants" id="addplantForm" method="post">
                 <fieldset>
@@ -67,6 +67,7 @@
             </form>
         </article>
    </section>
+   
    <!-- Generic Footer -->
    <footer>
         <article id= "scheduleOverlay" class="navExtension hidden">
@@ -77,7 +78,7 @@
             <!-- Overlay for add -->
             <p>What would you like to add?</p>
             <div class="extimgcontainer">
-                <img id="addPlantNav" class="extensionimages" src="./assets/nav/Add Button/plant.png" alt="Plant">
+                <a href="/newplant"><img id="addPlantNav" class="extensionimages" src="./assets/nav/Add Button/plant.png" alt="Plant"></a>
                 <img id="addDiaryNav" class="extensionimages" src="./assets/nav/Add Button/diary.png" alt="Diary">
                 <img id="addEventNav" class="extensionimages" src="./assets/nav/Add Button/event.png" alt="Event">
             </div>
@@ -92,7 +93,7 @@
             </div>
         </article>
         <nav>
-            <img id="garden" src="./assets/nav/mygarden.png" alt="my garden">
+            <a href="/"><img id="garden" src="./assets/nav/mygarden.png" alt="my garden"></a>
             <img class="navButton" id="schedule" src="./assets/nav/schedule.png" alt="schedule">
             <img class="navButton" id="add" src="./assets/nav/add_circle.png" alt="add circle">
             <a href="edu.html">

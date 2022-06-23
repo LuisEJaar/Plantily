@@ -29,12 +29,6 @@ const navBar = {
         for(let overlay of overlays){
             overlay.classList.add("hidden")
         }
-    },
-    gardenButton: ()=> {
-        const plants = document.querySelector(".plants")
-        plants.classList.toggle("hidden")
-        newPlant.hideAdd()
-        navBar.hideOverlays()
     }
 }
 
@@ -43,25 +37,6 @@ navBar.pageSetup()
 //New Plant Button
 
 const newPlant = {
-    pageSetup: ()=> {
-        const addPlant = document.querySelector("#addPlantNav")
-        addPlant.addEventListener("click", newPlant.plantIt)
-    }, 
-
-    plantIt: ()=> {
-        console.log("we planting")
-        navBar.hideOverlays()
-
-        const addPlantForm = document.querySelector("#addPlant")
-        addPlantForm.classList.remove("hidden")
-
-        const plants = document.querySelector(".plants")
-        plants.classList.add("hidden")
-    },
-    hideAdd: ()=> {
-        const addPlantForm = document.querySelector("#addPlant")
-        addPlantForm.classList.add("hidden")
-    }
 }
 
 newPlant.pageSetup()

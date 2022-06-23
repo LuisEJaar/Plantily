@@ -4,18 +4,6 @@ const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
-
-const flash = require('connect-flash')
-const session = require('express-session');
-
-app.use(session({
-  secret:'flashblog',
-  saveUninitialized: true,
-  resave: true
-}))
-
-app.use(flash());
-
 const PORT = 3000
 
 app.listen(process.env.PORT || PORT, function() {
@@ -45,6 +33,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             plantsArray = results
           })
           .catch(error => console.error(error))
+    })
+    app.get('/newplant', (req, res) => {
+      db.collection(collectionname).find().toArray()
+        .then(results => {
+          res.render('newplant.ejs')
+        })
+        .catch(error => console.error(error))
     })
     app.post(location, (req, res) => {
         let isUnique = []
