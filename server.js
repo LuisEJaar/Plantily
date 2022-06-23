@@ -4,6 +4,18 @@ const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
+
+const flash = require('connect-flash')
+const session = require('express-session');
+
+app.use(session({
+  secret:'flashblog',
+  saveUninitialized: true,
+  resave: true
+}))
+
+app.use(flash());
+
 const PORT = 3000
 
 app.listen(process.env.PORT || PORT, function() {
@@ -24,20 +36,35 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     console.log('Connected to Database')
     const db = client.db(dbname)
     const plantsCollection = db.collection(collectionname)
+    let plantsArray
     app.set('view engine', 'ejs')
     app.get('/', (req, res) => {
         db.collection(collectionname).find().toArray()
           .then(results => {
             res.render('index.ejs', { plants: results })
+            plantsArray = results
           })
           .catch(error => console.error(error))
     })
     app.post(location, (req, res) => {
-        plantsCollection.insertOne(req.body)
+        let isUnique = []
+        plantsArray.map((object) => {
+          isUnique.push(!(req.body.name === object.name))
+        })
+        if(isUnique.indexOf(false) === -1) {
+          plantsCollection.insertOne(req.body)
           .then(result => {
             res.redirect('/')
           })
           .catch(error => console.error(error))
+        } else {
+            res.redirect('/')
+        }
+        console.log(isUnique.length)
+
+
+
+
     })
     app.put(location, (req, res) => {
       plantsCollection.findOneAndUpdate(

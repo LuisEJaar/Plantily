@@ -24,37 +24,6 @@
    </header>
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
-        <div class="plants"> 
-            <!-- Loop through plants -->
-            <% if(plants.length > 0) {%>
-                <% for(var i = 0; i < plants.length; i++) {%>
-                    <div class="plant">
-                      <img src="./assets/Plant_Display_Top.png" alt="border-top">
-                      <div>
-                        <!-- Outputs from the iterated quote object -->
-                        <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
-                        <br> -->
-                        <span>Name: <%= plants[i].name %></span>
-                        <br>
-                        <span>Birthday: <%= plants[i].plant_date %></span>
-                        <br>
-                        <span>Type: <%= plants[i].type %></span>
-                        <br>
-                        <span>Height: <%= plants[i].height %></span>
-                        <br>
-                        <span>Sun: <%= plants[i].sun_exposure%></span>
-                        <br>
-                        <span>Watering Schedule: <%= plants[i].watering_schedule%></span>
-                      </div>
-                      <img src="./assets/Plant_Display_Bottom.png" alt="border-bottom">
-                    </div>
-                  <% } %>
-            <%} else {%>
-                <div id="plantless">
-                    <br> Lets get planting!</p>
-                </div>
-            <%} %>
-        </div>
         <article id="addPlant" class="hidden">
             <div>Tell us about your plant!</div>
             <form action="/plants" id="addplantForm" method="post">
