@@ -14,8 +14,9 @@
             <% if(plants.length > 0) {%>
                 <% for(var i = 0; i < plants.length; i++) {%>
                     <div class="plant">
-                      <img src="./assets/Plant_Display_Top.png" alt="border-top">
-                      <div>
+                      <div class="plantbox">
+                        <img src="./assets/Plant_Display_Top.png" alt="border-top">
+                        <div>
                         <!-- Outputs from the iterated quote object -->
                         <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
                         <br> -->
@@ -29,9 +30,14 @@
                         <br>
                         <span>Sun: <%= plants[i].sun_exposure%></span>
                         <br>
-                        <span>Watering Schedule: <%= plants[i].watering_schedule%></span>
+                        <span>Watering: <%= plants[i].watering_schedule%></span>
+                        </div>
+                        <img src="./assets/Plant_Display_Bottom.png" alt="border-bottom">
+                        <div class="editdelbox">
+                          <img class="editdel editButton"  src="./assets/index/edit.png" alt="edit">
+                          <img class="editdel deleteButton" id="<%= plants[i].name %>" src="./assets/index/delete.png" alt="delete">
+                        </div>
                       </div>
-                      <img src="./assets/Plant_Display_Bottom.png" alt="border-bottom">
                     </div>
                   <% } %>
             <%} else {%>

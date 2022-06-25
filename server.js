@@ -19,7 +19,22 @@ let dbname = 'plantly-plants-entries'
 let collectionname = 'plants'
 let location = '/plants'
 
+// const page = url.parse(req.url).pathname;
 
+// const pages = {
+//   '/newplant': 'newplant.ejs',
+//   '/progress': 'progress.ejs'
+// }
+
+// const readWrite = (name, file)=> {
+//   app.get(name, (req, res) => {
+//     db.collection(collectionname).find().toArray()
+//       .then(results => {
+//         res.render(file)
+//       })
+//       .catch(error => console.error(error))
+//   })
+// } 
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true }) 
 .then(client => {
@@ -36,6 +51,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           })
           .catch(error => console.error(error))
     })
+    // switch (true) {
+    //   case (page in pages):
+    //     readWrite(pages[page][0], pages[page][1])
+    //     break
+    // }
     app.get('/newplant', (req, res) => {
       db.collection(collectionname).find().toArray()
         .then(results => {
@@ -65,10 +85,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             res.redirect('/')
         }
         console.log(isUnique.length)
-
-
-
-
     })
     app.put(location, (req, res) => {
       plantsCollection.findOneAndUpdate(

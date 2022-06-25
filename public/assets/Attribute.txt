@@ -15,3 +15,9 @@ Contact:
 
 Progress Page:
 <a href="https://storyset.com/work">Work illustrations by Storyset</a>
+
+Edit on index page:
+<a href="https://www.flaticon.com/free-icons/edit" title="edit icons">Edit icons created by Freepik - Flaticon</a>
+
+Delete on Index Page:
+<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a>

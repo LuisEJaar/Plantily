@@ -33,3 +33,42 @@ const navBar = {
 }
 
 navBar.pageSetup()
+
+const myGarden = {
+    pageSetup: () => {
+        const deleteButtons = document.querySelectorAll(".deleteButton")
+        const editButtons = document.querySelectorAll(".editButton")
+
+        for(button of deleteButtons) {
+            button.addEventListener("click", myGarden.deleteFunction)
+        }
+
+        for(button of editButtons){
+            button.addEventListener("click", myGarden.editFunction)
+        }
+    }, 
+
+    deleteFunction: async (e)=> {
+        const plantName = e.target.id
+        try {
+            const response = await fetch('plants', {
+                method: 'delete',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    'name': plantName
+                })
+            })
+            const data = await response.json()
+            console.log(data)
+            location.reload()
+        } catch(err) {
+            console.log(err)
+        }
+    }, 
+
+    editFunction: ()=> {
+        console.log("Clicked Edit")
+    }
+}
+
+myGarden.pageSetup()

@@ -9,6 +9,7 @@ header {
     top: 0;
     background-color: white;
     width: 100%;
+    z-index: 1;
 }
 
 h1 {
@@ -47,6 +48,9 @@ fieldset legend {
     position: relative;
     top: -10px;
     font-size: 1.2rem;
+    border: 2px solid lime;
+    background-color: white;
+    padding: 0.2rem .8rem;
 }
 
 fieldset > div {
@@ -68,7 +72,18 @@ fieldset input, fieldset select {
     text-align: center;
 }
 
+button {
+    background-color: black;
+    font: small-caps bold 24px sans-serif;
+    color: white;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 30px grey;
+}
 
+button:active {
+    border: 5px solid orange;
+}
 
 /* Plant List Section */
 section, section > div, footer  > article {
@@ -88,6 +103,22 @@ section > div  {
     height: 30%;
     font: small-caps bold 24px/1 sans-serif;
     justify-content: space-evenly;
+}
+
+.editdel {
+    height: 2rem;
+    transition-duration: 0s;
+    transition-property: background, border-radius;
+    margin-bottom: 3rem;
+}
+
+.editdelbox {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 30%;
+    left: 90%;
+    bottom: 13rem; 
 }
 
 /* Nav Bar*/
@@ -111,13 +142,13 @@ nav {
     background-color: white;
 }
 
-nav > img, nav > a > img, footer > article > img, .extensionimages{
+nav > img, nav > a > img, footer > article > img, .extensionimages {
     height: 3rem;
     transition-duration: 0.7s;
     transition-property: background, border-radius;
 }
 
-nav > img:hover, nav > a > img:hover, .extensionimages:hover {
+nav > img:hover, nav > a > img:hover, .extensionimages:hover, .editdel:active {
     background: orangered;
     border-radius: 20%;
 }
@@ -158,11 +189,17 @@ footer > article {
     height: fit-content;
     padding-bottom: 6rem;
 }
-.plants {
+
+.plants .plantbox{
     width: 100%;
 }
 
 .plant {
+    z-index: 0;
+    position: relative;
+}
+
+.plantbox {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -171,7 +208,7 @@ footer > article {
     height: auto;
 }
 
-.plant > img {
+.plantbox img {
     width: 100%;
 }
 
