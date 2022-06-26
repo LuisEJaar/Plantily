@@ -19,23 +19,6 @@ let dbname = 'plantly-plants-entries'
 let collectionname = 'plants'
 let location = '/plants'
 
-// const page = url.parse(req.url).pathname;
-
-// const pages = {
-//   '/newplant': 'newplant.ejs',
-//   '/progress': 'progress.ejs'
-// }
-
-// const readWrite = (name, file)=> {
-//   app.get(name, (req, res) => {
-//     db.collection(collectionname).find().toArray()
-//       .then(results => {
-//         res.render(file)
-//       })
-//       .catch(error => console.error(error))
-//   })
-// } 
-
 MongoClient.connect(connectionString, { useUnifiedTopology: true }) 
 .then(client => {
     console.log('Connected to Database')
@@ -51,11 +34,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           })
           .catch(error => console.error(error))
     })
-    // switch (true) {
-    //   case (page in pages):
-    //     readWrite(pages[page][0], pages[page][1])
-    //     break
-    // }
     app.get('/newplant', (req, res) => {
       db.collection(collectionname).find().toArray()
         .then(results => {
@@ -73,7 +51,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.get('/editplant', (req, res) => {
       db.collection(collectionname).find().toArray()
         .then(results => {
-          res.render('editplant.ejs')
+          res.render('editplant.ejs', { plants: results })
         })
         .catch(error => console.error(error))
     })
@@ -94,12 +72,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         console.log(isUnique.length)
     })
     app.put(location, (req, res) => {
-      plantsCollection.findOneAndUpdate(
-        { name: 'Yoda' },
+      plantsCollection.updateOne({ 
+          name: req.body.name,  
+          plant_date: req.body.plant_date,
+          type: req.body.type,
+          height: req.body.height,
+          sun_exposure: req.body.sun_exposure,
+          watering_schedule: req.body.watering_schedule
+        },
         {
           $set: {
-            name: req.body.name,
-            quote: req.body.quote
+            name: req.body.name,  
+            plant_date: req.body.plant_date,
+            type: req.body.type,
+            height: req.body.height,
+            sun_exposure: req.body.sun_exposure,
+            watering_schedule: req.body.watering_schedule
           }
         },
         {
@@ -116,9 +104,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         { name: req.body.name }
       )
       .then(result => {
-        if (result.deletedCount === 0) {
-          return res.json('No plant to delete')
-        }
         res.json(`Deleted`)
       })
       .catch(error => console.error(error))

@@ -59,15 +59,40 @@ const myGarden = {
                 })
             })
             const data = await response.json()
-            console.log(data)
             location.reload()
         } catch(err) {
             console.log(err)
         }
     }, 
 
-    editFunction: ()=> {
+    editFunction: async (e)=> {
         console.log("Clicked Edit")
+        const plantBox = e.target.parentNode.parentNode.parentNode.children[1]
+        const name = plantBox.children[1].innerHTML
+        const plant_date = plantBox.children[4].innerHTML
+        const type = plantBox.children[7].innerHTML
+        const height = plantBox.children[10].innerHTML
+        const sun_exposure = plantBox.children[13].innerHTML
+        const watering_schedule = plantBox.children[16].innerHTML
+
+        try {
+            const response = await fetch('plants', {
+                method: 'put',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "name": name,  
+                    "plant_date": plant_date,
+                    "type": type,
+                    "height": height,
+                    "sun_exposure": sun_exposure,
+                    "watering_schedule": watering_schedule
+                })
+            })
+            const data = await response.json()
+            location.reload()
+        } catch(err) {
+            console.log(err)
+        }
     }
 }
 
