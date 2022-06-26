@@ -70,6 +70,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         .catch(error => console.error(error))
     })
+    app.get('/editplant', (req, res) => {
+      db.collection(collectionname).find().toArray()
+        .then(results => {
+          res.render('editplant.ejs')
+        })
+        .catch(error => console.error(error))
+    })
     app.post(location, (req, res) => {
         let isUnique = []
         plantsArray.map((object) => {

@@ -22,11 +22,11 @@ h1 {
 }
 
 /* Adding plant section */
-#addPlant {
+#addPlant, #editPlant {
     padding-top: 15%;
 }
 
-#addPlant > div {
+#addPlant > div, #editPlant > div {
     font-size: 2rem;
     font-weight: 1000;
     margin-bottom: 1rem;
