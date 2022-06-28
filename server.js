@@ -52,15 +52,25 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     // Edit Plant Page Population
     app.get('/editplant', (req, res) => {
-      db.collection(collectionname).find({_id: mongodb.OjectId(req.body._id)}).toArray()
+      db.collection(collectionname).find().toArray()
         .then(results => {
-          res.render('editplant.ejs', { plants: results })
+          res.render('editplant.ejs', { plants: results})
         })
         .catch(error => console.error(error))
     })
 
+    // Edit Plant Page Population
+    // app.get('/editplant', (req, res) => {
+    //   const mongoId = req.params.mongoid.toLowerCase() 
+    //   db.collection(collectionname).find().toArray()
+    //     .then(results => {
+    //       res.render('editplant.ejs', {id: mongoId})
+    //     })
+    //     .catch(error => console.error(error))
+    // })
+
     // New plant 
-    app.post(location, (req, res) => {
+    app.post('/newplant', (req, res) => {
         let isUnique = []
         plantsArray.map((object) => {
           isUnique.push(!(req.body.name === object.name))
@@ -76,7 +86,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         }
         console.log(isUnique.length)
     })
-    app.put(location, (req, res) => {
+
+
+    app.put("/editplant", (req, res) => {
       plantsCollection.updateOne({ 
           id: req.body._id
         },
@@ -100,7 +112,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       .catch(error => console.error(error))
     })
 
-    app.delete(location, (req, res) => {
+    app.delete("/deleteplant", (req, res) => {
       console.log(req.body.id)
       plantsCollection.deleteOne(
         { _id: new mongodb.ObjectId(req.body.id)}   

@@ -50,9 +50,8 @@ const myGarden = {
 
     deleteFunction: async (e)=> {
         const plantId = e.target.parentNode.children[0].innerHTML
-        console.log(plantId)
         try {
-            const response = await fetch('plants', {
+            const response = await fetch("/deleteplant", {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -70,35 +69,12 @@ const myGarden = {
 
     editFunction: async (e)=> {
         const plantId = e.target.parentNode.parentNode.children[0].innerHTML
-        
-        try {
-            const response = await fetch('plants', {
-                method: 'get',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    "_id": plantId,  
-                })
-            })
-            const data = await response.json()
-            location.reload()
-        } catch(err) {
-            console.log(err)
-        }
-
-        // try {
-        //     const response = await fetch('plants', {
-        //         method: 'put',
-        //         headers: {'Content-Type': 'application/json'},
-        //         body: JSON.stringify({
-        //             "_id": plantId,  
-        //         })
-        //     })
-        //     const data = await response.json()
-        //     location.reload()
-        // } catch(err) {
-        //     console.log(err)
-        // }
     }
 }
 
 myGarden.pageSetup()
+
+const editPlantPage = {
+
+
+}
