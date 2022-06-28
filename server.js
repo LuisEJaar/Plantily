@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
+const mongodb = require('mongodb');
 
 const PORT = 3000
 
@@ -48,13 +49,17 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         .catch(error => console.error(error))
     })
+
+    // Edit Plant Page Population
     app.get('/editplant', (req, res) => {
-      db.collection(collectionname).find().toArray()
+      db.collection(collectionname).find({_id: mongodb.OjectId(req.body._id)}).toArray()
         .then(results => {
           res.render('editplant.ejs', { plants: results })
         })
         .catch(error => console.error(error))
     })
+
+    // New plant 
     app.post(location, (req, res) => {
         let isUnique = []
         plantsArray.map((object) => {
@@ -73,12 +78,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
     app.put(location, (req, res) => {
       plantsCollection.updateOne({ 
-          name: req.body.name,  
-          plant_date: req.body.plant_date,
-          type: req.body.type,
-          height: req.body.height,
-          sun_exposure: req.body.sun_exposure,
-          watering_schedule: req.body.watering_schedule
+          id: req.body._id
         },
         {
           $set: {
@@ -99,9 +99,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
        })
       .catch(error => console.error(error))
     })
+
     app.delete(location, (req, res) => {
+      console.log(req.body.id)
       plantsCollection.deleteOne(
-        { name: req.body.name }
+        { _id: new mongodb.ObjectId(req.body.id)}   
       )
       .then(result => {
         res.json(`Deleted`)
