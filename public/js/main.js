@@ -85,7 +85,6 @@ const myGarden = {
             console.log(err)
         }
 
-
         // try {
         //     const response = await fetch('plants', {
         //         method: 'put',
