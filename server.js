@@ -51,23 +51,15 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
 
     // Edit Plant Page Population
-    app.get('/editplant', (req, res) => {
-      db.collection(collectionname).find().toArray()
+    app.get('/editplant/:id', (req, res) => {
+      const id = req.params.id.toLowerCase()
+      db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
         .then(results => {
-          res.render('editplant.ejs', { plants: results})
+          console.log({plants: results})
+          res.render('editplant.ejs', {plants: results})
         })
         .catch(error => console.error(error))
     })
-
-    // Edit Plant Page Population
-    // app.get('/editplant', (req, res) => {
-    //   const mongoId = req.params.mongoid.toLowerCase() 
-    //   db.collection(collectionname).find().toArray()
-    //     .then(results => {
-    //       res.render('editplant.ejs', {id: mongoId})
-    //     })
-    //     .catch(error => console.error(error))
-    // })
 
     // New plant 
     app.post('/newplant', (req, res) => {

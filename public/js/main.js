@@ -64,11 +64,18 @@ const myGarden = {
         } catch(err) {
             console.log(err)
         }
-        
     }, 
 
     editFunction: async (e)=> {
-        const plantId = e.target.parentNode.parentNode.children[0].innerHTML
+        const plantId = e.target.parentNode.children[0].innerHTML
+        console.log(plantId)
+        try {
+            const response = await fetch(`/editplant/${plantId}`, {
+                method: 'get'
+            }) 
+        } catch(err) {
+            console.log(err)
+        }
     }
 }
 
