@@ -62,6 +62,10 @@
    <footer>
         <%- include('./footer'); %>
    </footer> 
+   <script>
+        document.getElementById('watering').value = "<%= plants[0].watering_schedule %>"
+        document.getElementById('sun').value = "<%= plants[0].sun_exposure %>"
+   </script>
    <script src="/js/main.js"></script>
 </body>
 </html>

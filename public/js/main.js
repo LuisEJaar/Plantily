@@ -60,7 +60,6 @@ const myGarden = {
             })
             const data = await response.json()
             location.reload()
-            
         } catch(err) {
             console.log(err)
         }
@@ -76,12 +75,13 @@ const myGarden = {
         } catch(err) {
             console.log(err)
         }
+        window.open(`/editplant/${plantId}`)
     }
 }
 
 myGarden.pageSetup()
 
 const editPlantPage = {
-
+   
 
 }
