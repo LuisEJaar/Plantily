@@ -101,7 +101,6 @@ const editPlantPage = {
                     "watering_schedule": document.getElementById("watering").value
                 })
             })
-            const data = await response.json()
             location.assign("/")
         } catch(err) {
             console.log(err)
