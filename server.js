@@ -48,16 +48,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           })
           .catch(error => console.error(error))
     })
-    // Edit Plant Page Population
-    app.get('/editplant/:id', (req, res) => {
-      const id = req.params.id.toLowerCase()
-      db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
-        .then(results => {
-          console.log({plants: results})
-          res.render('editplant.ejs', {plants: results})
-        })
-        .catch(error => console.error(error))
-    })
+    
     // New plant 
     app.post('/newplant', (req, res) => {
         let isUnique = []
@@ -76,6 +67,18 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         console.log(isUnique.length)
     })
 
+  // Edit Plant Page Population
+    app.get('/editplant/:id', (req, res) => {
+      const id = req.params.id.toLowerCase()
+      db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
+        .then(results => {
+          console.log({plants: results})
+          res.render('editplant.ejs', {plants: results})
+        })
+        .catch(error => console.error(error))
+    })
+
+    // Edit Plant Page Functionality
     app.put("/editplant", (req, res) => {
       plantsCollection.updateOne( 
           { _id: new mongodb.ObjectId(req.body.id)},
@@ -99,9 +102,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       .catch(error => console.error(error))
     })
 
-    app.put("/editplant", (req, res) => {
+    // Diary Page Functionality
+    app.put("/addToDiary", (req, res) => {
+      console.log("Found")
       plantsCollection.updateOne( 
-          { _id: new mongodb.ObjectId(req.body.id)},
+        { _id: new mongodb.ObjectId(req.body.id)},
         {
           $push: { 
             diary: {
@@ -120,6 +125,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       .catch(error => console.error(error))
     })
 
+    //deletes a plant from the garden page
     app.delete("/deleteplant", (req, res) => {
       plantsCollection.deleteOne(
         { _id: new mongodb.ObjectId(req.body.id)}   
