@@ -44,7 +44,7 @@ const myGarden = {
         }
 
         for(button of editButtons){
-            button.addEventListener("click", myGarden.editFunction)
+            button.addEventListener("click", myGarden.editButton)
         }
     }, 
 
@@ -60,21 +60,53 @@ const myGarden = {
             })
             const data = await response.json()
             location.reload()
-            
         } catch(err) {
             console.log(err)
         }
-        
     }, 
 
-    editFunction: async (e)=> {
-        const plantId = e.target.parentNode.parentNode.children[0].innerHTML
+    editButton: async (e)=> {
+        const plantId = e.target.parentNode.children[0].innerHTML
+        console.log(plantId)
+        try {
+            const response = await fetch(`/editplant/${plantId}`, {
+                method: 'get'
+            }) 
+        } catch(err) {
+            console.log(err)
+        }
     }
 }
 
 myGarden.pageSetup()
 
 const editPlantPage = {
+    pageSetup: ()=> {
+        const submitButton = document.getElementById("editSubmit")
+        submitButton.addEventListener("click", editPlantPage.editFunction)
+    },
 
-
+    editFunction: async ()=> {
+        try {
+            const response = await fetch("/editplant", {
+                method: 'put',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    'id': document.getElementById("_id").value,
+                    "name": document.getElementById("plant_name").value,  
+                    "plant_date": document.getElementById("plant_date").value,
+                    "type": document.getElementById("plant_type").value,
+                    "height": document.getElementById("plant_height").value,
+                    "sun_exposure": document.getElementById("sun").value,
+                    "watering_schedule": document.getElementById("watering").value
+                })
+            })
+            const data = await response.json()
+            location.assign("/")
+        } catch(err) {
+            console.log(err)
+        }
+    },
 }
+
+editPlantPage.pageSetup()

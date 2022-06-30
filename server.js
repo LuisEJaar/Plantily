@@ -18,7 +18,6 @@ const MongoClient = require('mongodb').MongoClient
 let connectionString = "mongodb+srv://luisjaar:mPoDy1DUi6nX54G3@cluster0.se0vt.mongodb.net/?retryWrites=true&w=majority"
 let dbname = 'plantly-plants-entries'
 let collectionname = 'plants'
-let location = '/plants'
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true }) 
 .then(client => {
@@ -36,38 +35,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           .catch(error => console.error(error))
     })
     app.get('/newplant', (req, res) => {
-      db.collection(collectionname).find().toArray()
-        .then(results => {
-          res.render('newplant.ejs')
-        })
-        .catch(error => console.error(error))
+      res.render( __dirname +'/views/newplant.ejs')
     })
     app.get('/progress', (req, res) => {
-      db.collection(collectionname).find().toArray()
-        .then(results => {
-          res.render('progress.ejs')
-        })
-        .catch(error => console.error(error))
+      res.render( __dirname +'/views/progress.ejs')
     })
 
     // Edit Plant Page Population
-    app.get('/editplant', (req, res) => {
-      db.collection(collectionname).find().toArray()
+    app.get('/editplant/:id', (req, res) => {
+      const id = req.params.id.toLowerCase()
+      db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
         .then(results => {
-          res.render('editplant.ejs', { plants: results})
+          console.log({plants: results})
+          res.render('editplant.ejs', {plants: results})
         })
         .catch(error => console.error(error))
     })
-
-    // Edit Plant Page Population
-    // app.get('/editplant', (req, res) => {
-    //   const mongoId = req.params.mongoid.toLowerCase() 
-    //   db.collection(collectionname).find().toArray()
-    //     .then(results => {
-    //       res.render('editplant.ejs', {id: mongoId})
-    //     })
-    //     .catch(error => console.error(error))
-    // })
 
     // New plant 
     app.post('/newplant', (req, res) => {
@@ -87,11 +70,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         console.log(isUnique.length)
     })
 
-
     app.put("/editplant", (req, res) => {
-      plantsCollection.updateOne({ 
-          id: req.body._id
-        },
+      plantsCollection.updateOne( 
+          { _id: new mongodb.ObjectId(req.body.id)},
         {
           $set: {
             name: req.body.name,  
@@ -107,13 +88,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         }
       )
       .then(result => {
-        console.log(result)
-       })
+        res.redirect('/')
+      })
       .catch(error => console.error(error))
     })
 
     app.delete("/deleteplant", (req, res) => {
-      console.log(req.body.id)
       plantsCollection.deleteOne(
         { _id: new mongodb.ObjectId(req.body.id)}   
       )

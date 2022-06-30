@@ -11,9 +11,10 @@
         <!-- Generate dynamically based on plants in db -->
         <article id="editPlant">
             <div>Oops, what needs changing?</div>
-            <form action="/editplant" id="editplantForm" method="put">
+            <form  id="editplantForm">
                 <fieldset>
                     <legend>Plant Facts</legend>
+                        <input type="hidden" id="_id" value="<%= plants[0]._id %>">
                     <div>
                         <label for="plant_name">Name:</label>
                         <input type="text" id="plant_name" value="<%= plants[0].name %>" name="name" required>
@@ -35,7 +36,7 @@
                 <fieldset>
                     <legend>Environment & Watering</legend>
                     <label for="sun">Sun Exposure:</label>
-                    <select name="sun_exposure" value="<%= plants[0].sun_exposure %>" id="sun">
+                    <select name="sun_exposure" id="sun">
                         <option value="">Choose</option>
                         <option value="Full Sun">Full Sun</option>
                         <option value="Light Shade">Light Shade</option>
@@ -45,7 +46,7 @@
                     </select>
                 </br>
                     <label for="watering_schedule">Watering Schedule:</label>
-                    <select name="watering_schedule" value="<%= plants[0].watering_schedule %>" id="watering">
+                    <select name="watering_schedule" id="watering">
                         <option value="">Choose</option>
                         <option value="Daily">Daily</option>
                         <option value="Bi-Daily">Bi-daily</option>
@@ -53,15 +54,20 @@
                         <option value="Bi-Weekly">Bi-Weekly</option>
                     </select>
                </fieldset>
-               <button type="submit">Time for change!</button>
+               
             </form>
+            <button id="editSubmit">Time for change!</button>
         </article>
    </section>
 
    <!-- Generic Footer -->
    <footer>
-        <%- include('./footer'); %>
+        <%- include('./footer') %>
    </footer> 
+   <script>
+        document.getElementById('watering').value = "<%= plants[0].watering_schedule %>"
+        document.getElementById('sun').value = "<%= plants[0].sun_exposure %>"
+   </script>
    <script src="/js/main.js"></script>
 </body>
 </html>
