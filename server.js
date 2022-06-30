@@ -40,7 +40,14 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.get('/progress', (req, res) => {
       res.render( __dirname +'/views/progress.ejs')
     })
-
+    app.get('/newdiary', (req, res) => {
+      db.collection(collectionname).find().toArray()
+          .then(results => {
+            res.render('newdiary.ejs', { plants: results })
+            plantsArray = results
+          })
+          .catch(error => console.error(error))
+    })
     // Edit Plant Page Population
     app.get('/editplant/:id', (req, res) => {
       const id = req.params.id.toLowerCase()
@@ -51,7 +58,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         .catch(error => console.error(error))
     })
-
     // New plant 
     app.post('/newplant', (req, res) => {
         let isUnique = []
@@ -81,6 +87,27 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             height: req.body.height,
             sun_exposure: req.body.sun_exposure,
             watering_schedule: req.body.watering_schedule
+          }
+        },
+        {
+          upsert: true
+        }
+      )
+      .then(result => {
+        res.redirect('/')
+      })
+      .catch(error => console.error(error))
+    })
+
+    app.put("/editplant", (req, res) => {
+      plantsCollection.updateOne( 
+          { _id: new mongodb.ObjectId(req.body.id)},
+        {
+          $push: { 
+            diary: {
+              height: req.body.plant_height,
+              notes: req.body.plant_notes
+            }  
           }
         },
         {
