@@ -36,18 +36,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           .catch(error => console.error(error))
     })
     app.get('/newplant', (req, res) => {
-      db.collection(collectionname).find().toArray()
-        .then(results => {
-          res.render('newplant.ejs')
-        })
-        .catch(error => console.error(error))
+      res.render( __dirname +'/views/newplant.ejs')
     })
     app.get('/progress', (req, res) => {
-      db.collection(collectionname).find().toArray()
-        .then(results => {
-          res.render('progress.ejs')
-        })
-        .catch(error => console.error(error))
+      res.render( __dirname +'/views/progress.ejs')
     })
 
     // Edit Plant Page Population

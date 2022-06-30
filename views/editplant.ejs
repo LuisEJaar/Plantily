@@ -35,7 +35,7 @@
                 <fieldset>
                     <legend>Environment & Watering</legend>
                     <label for="sun">Sun Exposure:</label>
-                    <select name="sun_exposure" value="<%= plants[0].sun_exposure %>" id="sun">
+                    <select name="sun_exposure" id="sun">
                         <option value="">Choose</option>
                         <option value="Full Sun">Full Sun</option>
                         <option value="Light Shade">Light Shade</option>
@@ -45,7 +45,7 @@
                     </select>
                 </br>
                     <label for="watering_schedule">Watering Schedule:</label>
-                    <select name="watering_schedule" value="<%= plants[0].watering_schedule %>" id="watering">
+                    <select name="watering_schedule" id="watering">
                         <option value="">Choose</option>
                         <option value="Daily">Daily</option>
                         <option value="Bi-Daily">Bi-daily</option>
@@ -60,7 +60,7 @@
 
    <!-- Generic Footer -->
    <footer>
-        <%- include('./footer'); %>
+        <%- include('./footer') %>
    </footer> 
    <script>
         document.getElementById('watering').value = "<%= plants[0].watering_schedule %>"
