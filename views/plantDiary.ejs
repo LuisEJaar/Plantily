@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./head'); %>
+</head>
+<body>
+   <header>
+        <h1>Plantly</h1>
+   </header>
+   <section class="plantSpace">
+        <!-- Generate dynamically based on plants in db -->
+        <div class="plants"> 
+            <!-- Loop through plants -->
+            <% for(var i = 0; i < plants.diary.length; i++) {%>
+              <div class="plant">
+                <div class="plantbox">
+                  <img src="./assets/Plant_Display_Top.png" alt="border-top">
+                  <div>
+                  <!-- Outputs from the iterated quote object -->
+                  <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
+                  <br> -->
+                  <span>Height: </span><span><%= plants[i].height %></span>
+                  <br>
+                  <span>Note: </span><span><%= plants[i].diary.notes%></span>
+                  </div>
+                  <img src="./assets/Plant_Display_Bottom.png" alt="border-bottom">
+                  <div class="editdelbox">
+                    <span class="hidden"><%= plants[i]._id %></span>
+                    <a href="/editplant/<%= plants[i]._id%>"><img class="editdel editButton"  src="./assets/index/edit.png" alt="edit"></a>
+                    <img class="editdel diaryButton" src="/public/assets/index/diary.png" alt="read diary">
+                    <img class="editdel deleteButton" src="./assets/index/delete.png" alt="delete">
+                  </div>
+                </div>
+              </div>
+            <% } %>
+        </div>
+   </section>
+   <!-- Generic Footer -->
+   <footer>
+        <%- include('./footer'); %>
+   </footer> 
+   <script src="/js/main.js"></script>
+</body>
+</html>

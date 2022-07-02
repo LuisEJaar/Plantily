@@ -102,7 +102,18 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       .catch(error => console.error(error))
     })
 
-    // Diary Page Functionality
+    // Diary Plant Page Population
+    app.get('/plantDiary/:id', (req, res) => {
+      const id = req.params.id.toLowerCase()
+      db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
+        .then(results => {
+          console.log({plants: results})
+          res.render('plantDiary.ejs', {plants: results})
+        })
+        .catch(error => console.error(error))
+    })
+
+    // Add to Diary Page Functionality
     app.put("/addToDiary", (req, res) => {
       console.log("Found")
       plantsCollection.updateOne( 

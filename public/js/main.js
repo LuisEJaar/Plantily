@@ -65,16 +65,17 @@ const myGarden = {
         }
     },
 
-    editButton: async (e)=> {
-        const plantId = e.target.parentNode.children[0].innerHTML
-        console.log(plantId)
-        try {
-            const response = await fetch(`/diaryplant/${plantId}`, {
-                method: 'get'
-            }) 
-        } catch(err) {
-            console.log(err)
-        }
+    diaryButton: ()=> {
+        console.log("Clicked")
+        // const plantId = e.target.parentNode.children[0].innerHTML
+        // console.log(plantId)
+        // try {
+        //     const response = await fetch(`/plantDiary/${plantId}`, {
+        //         method: 'get'
+        //     }) 
+        // } catch(err) {
+        //     console.log(err)
+        // }
     },
 
     deleteButton: async (e)=> {

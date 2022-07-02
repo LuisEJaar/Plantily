@@ -106,18 +106,19 @@ section > div  {
 }
 
 .editdel {
-    height: 2rem;
+    height: 2.3rem;
     transition-duration: 0s;
     transition-property: background, border-radius;
-    margin-bottom: 3rem;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
 }
 
 .editdelbox {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 30%;
-    left: 90%;
+    top: 27%;
+    left: 87%;
     bottom: 13rem; 
 }
 
