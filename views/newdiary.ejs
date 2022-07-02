@@ -9,7 +9,7 @@
    </header>
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
-        <article id="addPlant">
+        <article id="addDiary">
             <% if(plants.length > 0) {%>
                 <div>Dear Diary, today:</div>
                 <form id="addplantForm">
@@ -22,6 +22,10 @@
                                     <option value="<%= plants[i]._id %>"><%= plants[i].name %></option>
                                   <% } %>
                             </select>
+                        </div>
+                        <div>
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" placeholder="date" name="date" required>
                         </div>
                         <div>
                             <label for="plant_height">Height (cm):</label>

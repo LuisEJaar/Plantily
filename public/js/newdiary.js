@@ -15,6 +15,7 @@ const editPlantPage = {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     'id': document.getElementById("plant_name").value,
+                    "date": document.getElementById("date").value,
                     "plant_height": document.getElementById("plant_height").value,  
                     "plant_notes": document.getElementById("plant_notes").value
                 })

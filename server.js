@@ -103,12 +103,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
 
     // Diary Plant Page Population
-    app.get('/plantDiary/:id', (req, res) => {
+    app.get('/plantdiary/:id', (req, res) => {
       const id = req.params.id.toLowerCase()
       db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
         .then(results => {
           console.log({plants: results})
-          res.render('plantDiary.ejs', {plants: results})
+          res.render('plantdiary.ejs', {plants: results})
         })
         .catch(error => console.error(error))
     })
@@ -121,6 +121,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         {
           $push: { 
             diary: {
+              date: req.body.date,
               height: req.body.plant_height,
               notes: req.body.plant_notes
             }  
