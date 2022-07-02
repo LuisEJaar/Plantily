@@ -9,10 +9,10 @@
    </header>
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
-        <article id="addPlant">
+        <article id="addDiary">
             <% if(plants.length > 0) {%>
                 <div>Dear Diary, today:</div>
-                <form action="/newplant" id="addplantForm" method="post">
+                <form id="addplantForm">
                     <fieldset>
                         <legend>Plant Facts</legend>
                         <div>
@@ -22,6 +22,10 @@
                                     <option value="<%= plants[i]._id %>"><%= plants[i].name %></option>
                                   <% } %>
                             </select>
+                        </div>
+                        <div>
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" placeholder="date" name="date" required>
                         </div>
                         <div>
                             <label for="plant_height">Height (cm):</label>
@@ -35,8 +39,8 @@
                             <textarea name="notes" id="plant_notes" cols="30" rows="10"></textarea>
                         </div>
                     </fieldset>
-                <button id="add_to_diary">Add to my garden!</button>
                 </form>
+                <button id="addToDiary">Add to my garden!</button>
             <%} else {%>
                 <div id="plantless">
                     <br> Hmm.. looks like you need to add some plants first</p>
@@ -49,5 +53,6 @@
         <%- include('./footer'); %>
    </footer> 
    <script src="/js/main.js"></script>
+   <script src="/js/newdiary.js"></script>
 </body>
 </html>

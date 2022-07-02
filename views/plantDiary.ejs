@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./head'); %>
+</head>
+<body>
+   <header>
+        <h1>Plantly</h1>
+   </header>
+   <section class="plantSpace">
+        <!-- Generate dynamically based on plants in db -->
+        <div class="plants"> 
+            <!-- Loop through plants -->
+            <% if(plants[0].diary) {%>
+              <% for(var i = 0; i < plants[0].diary.length; i++) {%>
+                  <div class="plant">
+                    <div class="plantbox">
+                      <img src="/assets/Plant_Display_Top.png" alt="border-top">
+                      <div>
+                      <!-- Outputs from the iterated quote object -->
+                      <span>Date: </span><span><%= plants[0].diary[i].date %></span>
+                      <br>
+                      <span>Height: </span><span><%= plants[0].diary[i].height %></span>
+                      <br>
+                      <span>Notes: </span><span><%= plants[0].diary[i].notes %></span>
+                      <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
+                    </div>
+                  </div>
+                <% } %>
+          <%} else {%>
+              <div id="plantless">
+                  <br> Try adding some diary entries!</p>
+              </div>
+          <%} %>
+        </div>
+   </section>
+   <!-- Generic Footer -->
+   <footer>
+        <%- include('./footer'); %>
+   </footer> 
+   <script src="/js/main.js"></script>
+</body>
+</html>

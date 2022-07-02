@@ -36,19 +36,49 @@ navBar.pageSetup()
 
 const myGarden = {
     pageSetup: () => {
-        const deleteButtons = document.querySelectorAll(".deleteButton")
         const editButtons = document.querySelectorAll(".editButton")
-
-        for(button of deleteButtons) {
-            button.addEventListener("click", myGarden.deleteFunction)
-        }
+        const diaryButtons = document.querySelectorAll(".diaryButton")
+        const deleteButtons = document.querySelectorAll(".deleteButton")
 
         for(button of editButtons){
             button.addEventListener("click", myGarden.editButton)
         }
+
+        for(button of diaryButtons) {
+            button.addEventListener("click", myGarden.diaryButton)
+        }
+
+        for(button of deleteButtons) {
+            button.addEventListener("click", myGarden.deleteButton)
+        }
     }, 
 
-    deleteFunction: async (e)=> {
+    editButton: async (e)=> {
+        const plantId = e.target.parentNode.children[0].innerHTML
+        console.log(plantId)
+        try {
+            const response = await fetch(`/editplant/${plantId}`, {
+                method: 'get'
+            }) 
+        } catch(err) {
+            console.log(err)
+        }
+    },
+
+    diaryButton: async (e)=> {
+        console.log("Clicked")
+        const plantId = e.target.parentNode.children[0].innerHTML
+        console.log(plantId)
+        try {
+            const response = await fetch(`/plantdiary/${plantId}`, {
+                method: 'get'
+            }) 
+        } catch(err) {
+            console.log(err)
+        }
+    },
+
+    deleteButton: async (e)=> {
         const plantId = e.target.parentNode.children[0].innerHTML
         try {
             const response = await fetch("/deleteplant", {
@@ -60,18 +90,6 @@ const myGarden = {
             })
             const data = await response.json()
             location.reload()
-        } catch(err) {
-            console.log(err)
-        }
-    }, 
-
-    editButton: async (e)=> {
-        const plantId = e.target.parentNode.children[0].innerHTML
-        console.log(plantId)
-        try {
-            const response = await fetch(`/editplant/${plantId}`, {
-                method: 'get'
-            }) 
         } catch(err) {
             console.log(err)
         }
