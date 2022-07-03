@@ -18,12 +18,17 @@ Currently only run on local machine.
 - [x] Build out Initial Page
 - [x] Build out multiple pages and progress page
 - [x] Incorporate ejs partials
-- [ ] Build out server functionality
+- [x] Build initial server functionality
     - [x] Post
     - [x] Delete
-    - [ ] Put
+    - [x] Put
 - [ ] Build Events Page
-- [ ] Build Diary Page
+- [x] Build Diary Workflow
+    - [x] Diary buttons for each plant
+    - [x] Diary Page Load
+    - [ ] Diary Page Functionality
+        - [ ] Edit Diary Entries
+        - [ ] Delete Diary Entries
 - [ ] Build EDU Page
 - [ ] Build Contact Functions
 - [ ] Build Calendar Function
@@ -36,4 +41,5 @@ Currently only run on local machine.
 - Practice with Node.js / Express
 - Practice CSS/HTML/JS
 - Repetition of Heroku Hosting Process
+- Creating CRUD reqeusts using Vanilla JS
 
