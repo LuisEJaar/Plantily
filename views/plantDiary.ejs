@@ -11,6 +11,7 @@
         <!-- Generate dynamically based on plants in db -->
         <div class="plants"> 
             <!-- Loop through plants -->
+            <div><%= plants[0].name %>'s Diary</div>
             <% if(plants[0].diary) {%>
               <% for(var i = 0; i < plants[0].diary.length; i++) {%>
                   <div class="plant">
@@ -27,7 +28,8 @@
                     </div>
                   </div>
                 <% } %>
-          <%} else {%>
+          <%} else {%> 
+            
               <div id="plantless">
                   <br> Try adding some diary entries!</p>
               </div>
