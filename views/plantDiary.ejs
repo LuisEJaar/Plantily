@@ -24,8 +24,18 @@
                       <span>Height: </span><span><%= plants[0].diary[i].height %></span>
                       <br>
                       <span>Notes: </span><span><%= plants[0].diary[i].notes %></span>
+                      <div class="diaryeditdel">
+                        <div>
+                          <a href="/editplant/<%= i %>"><img class="editdel editButton"  src="/assets/index/edit.png" alt="edit"></a>
+                        </div>
+                        <div>
+                          <img class="editdel deleteButton" src="/assets/index/delete.png" alt="delete">
+                        </div>
+                        <span class="hidden"><%= i %></span>
+                      </div>
                       <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
                     </div>
+                    
                   </div>
                 <% } %>
           <%} else {%> 

@@ -79,20 +79,22 @@ const myGarden = {
     },
 
     deleteButton: async (e)=> {
-        const plantId = e.target.parentNode.children[0].innerHTML
-        try {
-            const response = await fetch("/deleteplant", {
-                method: 'delete',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    'id': plantId
+        if (confirm("Are you sure?") == true){
+            const plantId = e.target.parentNode.children[0].innerHTML
+            try {
+                const response = await fetch("/deleteplant", {
+                    method: 'delete',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        'id': plantId
+                    })
                 })
-            })
-            const data = await response.json()
-            location.reload()
-        } catch(err) {
-            console.log(err)
-        }
+                const data = await response.json()
+                location.reload()
+            } catch(err) {
+                console.log(err)
+            }
+        } 
     }
 }
 

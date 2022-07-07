@@ -32,13 +32,13 @@
                         <br>
                         <span>Watering: </span><span><%= plants[i].watering_schedule%></span>
                         </div>
-                        <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
                         <div class="editdelbox">
                           <span class="hidden"><%= plants[i]._id %></span>
-                          <a href="/editplant/<%= plants[i]._id%>"><img class="editdel editButton"  src="./assets/index/edit.png" alt="edit"></a>
+                          <a href="/editplant/<%= plants[i]._id%>"><img class="editdel editButton"  src="/assets/index/edit.png" alt="edit"></a>
                           <a href="/plantdiary/<%= plants[i]._id%>"><img class="editdel diaryButton" src="/assets/index/diary.png" alt="read diary"></a>
                           <img class="editdel deleteButton" src="/assets/index/delete.png" alt="delete">
                         </div>
+                        <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
                       </div>
                     </div>
                   <% } %>

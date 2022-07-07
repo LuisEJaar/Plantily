@@ -229,6 +229,19 @@ footer > article {
     margin-top: 50%;
 }
 
+/* Diary display page */
+
+.diaryeditdel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.diaryeditdel .editdel {
+    height: 3rem;
+    margin-top: 1rem;
+}
 
 
 
