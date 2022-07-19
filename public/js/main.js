@@ -6,12 +6,27 @@ const navBar = {
         const myGarden = document.querySelector("#garden")
 
         clickedOut.addEventListener("click",navBar.hideOverlays)
+        clickedOut.addEventListener("keypress", function(event) {
+            if(event.key === "Enter") {
+                navBar.hideOverlays
+            }
+        })
         
         for (let navButton of navButtons) {
             navButton.addEventListener("click", navBar.navButton)
+            navButton.addEventListener("keypress", function(event) {
+                if(event.key === "Enter") {
+                    navBar.navButton
+                }
+            })
         }
 
         myGarden.addEventListener("click", navBar.gardenButton)
+        myGarden.addEventListener("keypress", function(event) {
+            if(event.key === "Enter") {
+                navBar.gardenButton
+            }
+        })
     },
     navButton: (e)=> {
         let name = e.target.id
