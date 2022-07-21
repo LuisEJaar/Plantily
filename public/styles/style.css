@@ -113,17 +113,24 @@ section > div  {
 }
 
 .editdelbox {
+    height: 10rem;
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 27%;
     left: 87%;
     bottom: 13rem; 
+    justify-content: space-between;
+}
+
+.editdelbox img {
+    margin: 0;
+    padding: 0;
 }
 
 /* Nav Bar*/
 
-nav, .navExtension {
+nav, .navExtension {        
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -148,7 +155,7 @@ nav > img, nav > a > img, footer > article > img, .extensionimages {
     transition-property: background, border-radius;
 }
 
-nav > img:hover, nav > a > img:hover, .extensionimages:hover, .editdel:active {
+img:focus, img:hover, a:focus, a:hover {
     background: orangered;
     border-radius: 20%;
 }

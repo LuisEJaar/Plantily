@@ -2,10 +2,10 @@ const editPlantPage = {
     pageSetup: ()=> {
         const submitButton = document.getElementById("addToDiary")
         submitButton.addEventListener("click", editPlantPage.addToDiaryFunction)
+        document.getElementById("date").valueAsDate = new Date()
     },
 
     addToDiaryFunction: async ()=> {
-        console.log("here")
         console.log(document.getElementById("plant_name").value)
         console.log(document.getElementById("plant_height").value)
         console.log(document.getElementById("plant_notes").value)
