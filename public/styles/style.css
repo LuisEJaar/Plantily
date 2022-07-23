@@ -211,8 +211,8 @@ footer > article {
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem 0.5rem;
-    width: 100%;
-    height: auto;
+    max-width: 500px;
+    min-width: 300px;
 }
 
 .plantbox img {

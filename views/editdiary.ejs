@@ -10,22 +10,18 @@
    <section class="plantSpace">
         <!-- Generate dynamically based on plants in db -->
         <article id="addDiary">
-            <% if(plants.length > 0) {%>
-                <div>Dear Diary, today:</div>
+                <div>Scratch that diary:</div>
                 <form id="addplantForm">
                     <fieldset>
                         <legend>Plant Facts</legend>
                         <div>
                             <label for="plant_name">Name:</label>
-                            <select name="name" id="plant_name" required placeholder="name">
-                                <% for(var i = 0; i < plants.length; i++) {%>
-                                    <option class="<%= plants[i].name %>" value="<%= plants[i]._id %>"><%= plants[i].name %></option>
-                                  <% } %>
-                            </select>
+                            <span></span>
+                            <span></span>
                         </div>
                         <div>
                             <label for="date">Date:</label>
-                            <input type="date" id="date" placeholder="date" name="date" required>
+                            <input type="date" id="date" placeholder="date" name="date" required value="">
                         </div>
                         <div>
                             <label for="plant_height">Height (cm):</label>
@@ -36,16 +32,11 @@
                     <fieldset id="plantnotes">
                         <legend><label for="plant_notes">General notes:</label></legend>
                         <div>
-                            <textarea name="notes" id="plant_notes" cols="30" rows="10"></textarea>
+                            <textarea value="" name="notes" id="plant_notes" cols="30" rows="10"></textarea>
                         </div>
                     </fieldset>
                 </form>
-                <button id="addToDiary">Add to diary!</button>
-            <%} else {%>
-                <div id="plantless">
-                    <br> Hmm.. looks like you need to add some plants first</p>
-                </div>
-            <%} %>
+                <button id="addToDiary">Edit Diary Entry</button>
         </article>
    </section>
    <!-- Generic Footer -->

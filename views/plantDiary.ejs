@@ -26,10 +26,10 @@
                       <span>Notes: </span><span><%= plants[0].diary[i].notes %></span>
                       <div class="diaryeditdel">
                         <div tabindex="0">
-                          <a href="/editplant/<%= i %>"><img class="editdel editButton"  src="/assets/index/edit.png" alt="edit"></a>
+                          <a href="/editdiary/<%= plants[0]._id %>/<%= i %>"><img class="editdel editDiary"  src="/assets/index/edit.png" alt="edit"></a>
                         </div>
                         <div tabindex="0">
-                          <img class="editdel deleteButton" src="/assets/index/delete.png" alt="delete">
+                          <img class="editdel deleteDiary" src="/assets/index/delete.png" alt="delete">
                         </div>
                         <span class="hidden"><%= i %></span>
                       </div>
@@ -39,7 +39,6 @@
                   </div>
                 <% } %>
           <%} else {%> 
-            
               <div id="plantless">
                   <br> Try adding some diary entries!</p>
               </div>
@@ -51,5 +50,6 @@
         <%- include('./footer'); %>
    </footer> 
    <script src="/js/main.js"></script>
+   <script src="/js/diary.js"></script>
 </body>
 </html>

@@ -70,7 +70,6 @@ const myGarden = {
 
     editButton: async (e)=> {
         const plantId = e.target.parentNode.children[0].innerHTML
-        console.log(plantId)
         try {
             const response = await fetch(`/editplant/${plantId}`, {
                 method: 'get'
