@@ -15,24 +15,19 @@
                     <fieldset>
                         <legend>Plant Facts</legend>
                         <div>
-                            <label for="plant_name">Name:</label>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div>
                             <label for="date">Date:</label>
-                            <input type="date" id="date" placeholder="date" name="date" required value="">
+                            <input type="date" id="date" placeholder="date" name="date" required value="<%= diary.date %>">
                         </div>
                         <div>
                             <label for="plant_height">Height (cm):</label>
-                            <input type="number" id="plant_height" placeholder="height" name="height" min="0">
+                            <input type="number" id="plant_height" value="<%= diary.height %>" placeholder="height" name="height" min="0">
                         </div>
                         <!-- <input type="file" placeholder="picture" name="picture"> -->
                     </fieldset>
                     <fieldset id="plantnotes">
                         <legend><label for="plant_notes">General notes:</label></legend>
                         <div>
-                            <textarea value="" name="notes" id="plant_notes" cols="30" rows="10"></textarea>
+                            <textarea name="notes" id="plant_notes" cols="30" rows="10"><%= diary.notes %></textarea>
                         </div>
                     </fieldset>
                 </form>
@@ -44,6 +39,6 @@
         <%- include('./footer'); %>
    </footer> 
    <script src="/js/main.js"></script>
-   <script src="/js/newdiary.js"></script>
+   <script src="/js/editdiary.js"></script>
 </body>
 </html>

@@ -116,13 +116,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     // Add to Diary Page Functionality
     app.put("/addToDiary", (req, res) => {
       const id = req.body.id.toLowerCase()
-      const plant = db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
       plantsCollection.updateOne( 
         { _id: new mongodb.ObjectId(req.body.id)},
         {
           $push: { 
             diary: {
-              name: ,
               date: req.body.date,
               height: req.body.plant_height,
               notes: req.body.plant_notes
@@ -145,7 +143,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       const entry = req.params.entry.toLowerCase()
       db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
         .then(results => {
-          res.render('editdiary.ejs', {plants: results[0].diary[entry]})
+          console.log(results[0].diary[entry])
+          res.render('editdiary.ejs', {diary: results[0].diary[entry]})
         })
         .catch(error => console.error(error))
     })
