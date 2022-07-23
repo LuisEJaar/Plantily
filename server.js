@@ -144,9 +144,31 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
         .then(results => {
           console.log(results[0].diary[entry])
+          console.log(results[0].diary[entry])
           res.render('editdiary.ejs', {diary: results[0].diary[entry]})
         })
         .catch(error => console.error(error))
+    })
+
+    //Edit diary page functionality
+    app.put("/editdiary", (req, res) => {
+      plantsCollection.updateOne( 
+        { _id: new mongodb.ObjectId(req.body.id), diary:0},
+        {
+          $set: { 
+            date: req.body.date,
+            height: req.body.height,
+            notes: req.body.notes
+          }
+        },
+        {
+          upsert: true
+        }
+      )
+      .then(result => {
+        res.redirect('/')
+      })
+      .catch(error => console.error(error))
     })
 
     //deletes a plant from the garden page
