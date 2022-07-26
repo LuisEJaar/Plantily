@@ -29,6 +29,5 @@ app.listen(process.env.PORT || 3000, function() {
   console.log(`listening on http://localhost:${3000}`)
 })
 
-// let connectionString = "mongodb+srv://luisjaar:mPoDy1DUi6nX54G3@cluster0.se0vt.mongodb.net/?retryWrites=true&w=majority"
 // let dbname = 'plantly-plants-entries'
 // let collectionname = 'plants'
