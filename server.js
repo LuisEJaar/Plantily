@@ -4,11 +4,15 @@ const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
 const mongodb = require('mongodb');
+const expressLayouts = require('express-ejs-layouts')
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('layout','layouts/layout')
+app.use(expressLayouts)
+app.use(express.static('public'))
 
-const PORT = 3000
-
-app.listen(process.env.PORT || PORT, function() {
-    console.log(`listening on http://localhost:${PORT}`)
+app.listen(process.env.PORT || 3000, function() {
+    console.log(`listening on http://localhost:${3000}`)
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -19,21 +23,17 @@ let connectionString = "mongodb+srv://luisjaar:mPoDy1DUi6nX54G3@cluster0.se0vt.m
 let dbname = 'plantly-plants-entries'
 let collectionname = 'plants'
 
+const indexRouter = require('./routes/index')
+
 MongoClient.connect(connectionString, { useUnifiedTopology: true }) 
 .then(client => {
     console.log('Connected to Database')
     const db = client.db(dbname)
     const plantsCollection = db.collection(collectionname)
     let plantsArray
-    app.set('view engine', 'ejs')
-    app.get('/', (req, res) => {
-        db.collection(collectionname).find().toArray()
-          .then(results => {
-            res.render('index.ejs', { plants: results })
-            plantsArray = results
-          })
-          .catch(error => console.error(error))
-    })
+
+    app.use('/', indexRouter)
+
     app.get('/newplant', (req, res) => {
       res.render( __dirname +'/views/newplant.ejs')
     })
@@ -144,8 +144,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       db.collection(collectionname).find({ _id: new mongodb.ObjectId(id)}).toArray()
         .then(results => {
           console.log(results[0].diary[entry])
-          console.log(results[0].diary[entry])
-          res.render('editdiary.ejs', {diary: results[0].diary[entry]})
+          res.render('editdiary.ejs', {diary: results[0].diary[entry], entry: entry, id: id})
         })
         .catch(error => console.error(error))
     })
@@ -153,12 +152,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     //Edit diary page functionality
     app.put("/editdiary", (req, res) => {
       plantsCollection.updateOne( 
-        { _id: new mongodb.ObjectId(req.body.id), diary:0},
+        { _id: req.body.id},
         {
           $set: { 
-            date: req.body.date,
-            height: req.body.height,
-            notes: req.body.notes
+            [diary[0].date]: req.body.date,
+            [diary[0].height]: req.body.height,
+            [diary[0].notes]: req.body.notes
           }
         },
         {

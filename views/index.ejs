@@ -1,58 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('./head'); %>
-</head>
-<body>
-   <header>
-        <h1>Plantly</h1>
-   </header>
-   <section class="plantSpace">
-        <!-- Generate dynamically based on plants in db -->
-        <div class="plants"> 
-            <!-- Loop through plants -->
-            <% if(plants.length > 0) {%>
-                <% for(var i = 0; i < plants.length; i++) {%>
-                    <div class="plant">
-                      <div class="plantbox">
-                        <img src="./assets/Plant_Display_Top.png" alt="border-top">
-                        <div>
-                        <!-- Outputs from the iterated quote object -->
-                        <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
-                        <br> -->
-                        <span>Name: </span><span><%= plants[i].name %></span>
-                        <br>
-                        <span>Birthday: </span><span><%= plants[i].plant_date %></span>
-                        <br>
-                        <span>Type: </span><span><%= plants[i].type %></span>
-                        <br>
-                        <span>Height: </span><span><%= plants[i].height %></span>
-                        <br>
-                        <span>Sun: </span><span><%= plants[i].sun_exposure%></span>
-                        <br>
-                        <span>Watering: </span><span><%= plants[i].watering_schedule%></span>
-                        </div>
-                        <div class="editdelbox">
-                          <span class="hidden"><%= plants[i]._id %></span>
-                          <a href="/editplant/<%= plants[i]._id%>"><img class="editdel editButton"  src="/assets/index/edit.png" alt="edit"></a>
-                          <a href="/plantdiary/<%= plants[i]._id%>"><img class="editdel diaryButton" src="/assets/index/diary.png" alt="read diary"></a>
-                          <img tabindex="0" class="editdel deleteButton" src="/assets/index/delete.png" alt="delete">
-                        </div>
-                        <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
-                      </div>
+<section class="plantSpace">
+    <!-- Generate dynamically based on plants in db -->
+    <div class="plants"> 
+        <!-- Loop through plants -->
+        <% if(plants.length > 0) {%>
+            <% for(var i = 0; i < plants.length; i++) {%>
+                <div class="plant">
+                  <div class="plantbox">
+                    <img src="./assets/Plant_Display_Top.png" alt="border-top">
+                    <div>
+                    <!-- Outputs from the iterated quote object -->
+                    <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
+                    <br> -->
+                    <span>Name: </span><span><%= plants[i].name %></span>
+                    <br>
+                    <span>Birthday: </span><span><%= plants[i].plant_date %></span>
+                    <br>
+                    <span>Type: </span><span><%= plants[i].type %></span>
+                    <br>
+                    <span>Height: </span><span><%= plants[i].height %></span>
+                    <br>
+                    <span>Sun: </span><span><%= plants[i].sun_exposure%></span>
+                    <br>
+                    <span>Watering: </span><span><%= plants[i].watering_schedule%></span>
                     </div>
-                  <% } %>
-            <%} else {%>
-                <div id="plantless">
-                    <br> Lets get planting!</p>
+                    <div class="editdelbox">
+                      <span class="hidden"><%= plants[i]._id %></span>
+                      <a href="/editplant/<%= plants[i]._id%>"><img class="editdel editButton"  src="/assets/index/edit.png" alt="edit"></a>
+                      <a href="/plantdiary/<%= plants[i]._id%>"><img class="editdel diaryButton" src="/assets/index/diary.png" alt="read diary"></a>
+                      <img tabindex="0" class="editdel deleteButton" src="/assets/index/delete.png" alt="delete">
+                    </div>
+                    <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
+                  </div>
                 </div>
-            <%} %>
-        </div>
-   </section>
-   <!-- Generic Footer -->
-   <footer>
-        <%- include('./footer'); %>
-   </footer> 
-   <script src="/js/main.js"></script>
-</body>
-</html>
+              <% } %>
+        <%} else {%>
+            <div id="plantless">
+                <br> Lets get planting!</p>
+            </div>
+        <%} %>
+    </div>
+</section>
+<script src="/js/main.js" defer></script>

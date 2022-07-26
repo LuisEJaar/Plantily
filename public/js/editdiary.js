@@ -5,6 +5,7 @@ const editDiaryPage = {
     },
 
     editFunction: async ()=> {
+        console.log("clicked")
         try {
             const response = await fetch("/editdiary", {
                 method: 'put',
@@ -12,9 +13,9 @@ const editDiaryPage = {
                 body: JSON.stringify({
                     'id': document.getElementById("_id").value,
                     "height": document.getElementById("plant_height").value,
-                    "date": document.getElementById("plant_date").value,
-                    "notes": document.getElementById("plant_notes").value,
-                    "note": document.getElementById("note").value
+                    "date": document.getElementById("date").value,
+                    "notes": document.getElementById("plant_notes").innerText,
+                    "entry": document.getElementById("entry").value
                 })
             })
             location.assign("/")
@@ -24,4 +25,4 @@ const editDiaryPage = {
     },
 }
 
-editPlantPage.pageSetup()
+editDiaryPage.pageSetup()
