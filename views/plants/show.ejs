@@ -1,0 +1,10 @@
+<h2><%= plant.title %></h2>
+<img width="100" height="150" src="<%= plant.coverImagePath %>" alt="plant cover">
+<div>Area: <%= plant.area.name %></div>
+<div>Publish Date: <%= plant.publishDate.toDateString() %></div>
+<div>Page Count: <%= plant.pageCount %></div>
+<div>Description: <%= plant.description %></div>
+
+<a href="/plants/<%= plant.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/plants/${plant.id}` })%>
+<a href="/areas/<%= plant.area.id %>">View Area</a>

@@ -1,14 +1,15 @@
 const express = require('express')
 const router = express.Router()
+const Plant = require('../models/plant')
 
-router.get('/', (req, res) => {
-  res.render('index')
-    // db.collection(collectionname).find().toArray()
-    //   .then(results => {
-    //     res.render('index.ejs', { plants: results })
-    //     plantsArray = results
-    //   })
-    //   .catch(error => console.error(error))
+router.get('/', async (req,res) => {
+    let plants = {}
+    try {
+        plants = await Plant.find().sort({createAt: 'desc'}).limit(10).exec()
+    } catch {
+        plants = []
+    }
+    res.render('index', {plants: plants})
 })
 
 module.exports = router

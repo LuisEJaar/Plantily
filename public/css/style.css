@@ -1,0 +1,24 @@
+body::before{
+  display: block;
+  content: "";
+  height: 90px;
+}
+
+@media (max-width: 768px) {
+    .navbar-center {
+      text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .map {
+    height: 100%;
+    border-radius: 10px;
+  }
+}
