@@ -7,14 +7,14 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 //Show all plants Route
 router.get('/', async (req,res) => {
     let query = Plant.find()
-    if(req.query.title != null && req.query.title != ''){
-        query = query.regex('title', new RegExp(req.query.title, 'i'))
+    if(req.query.plantName != null && req.query.plantName != ''){
+        query = query.regex('plantName', new RegExp(req.query.plantName, 'i'))
     }
     if(req.query.publishedBefore != null && req.query.publishedBefore != ''){
-        query = query.lte('publishDate', req.query.publishedBefore)
+        query = query.lte('plantedDate', req.query.publishedBefore)
     }
     if(req.query.publishedAfter != null && req.query.publishedAfter != ''){
-        query = query.gte('publishDate', req.query.publishedAfter)
+        query = query.gte('plantedDate', req.query.publishedAfter)
     }
     try {
         const plants = await query.exec()
@@ -35,10 +35,10 @@ router.get('/new', async (req,res) => {
 //Create New plant route
 router.post('/', async (req,res) => {
     const plant = new Plant ({
-        title: req.body.title,
+        plantName: req.body.plantName,
         area: req.body.area,
-        publishDate: new Date(req.body.publishDate), 
-        pageCount: req.body.pageCount,
+        plantedDate: new Date(req.body.plantedDate), 
+        height: req.body.height,
         description: req.body.description
     })
     saveCover(plant, req.body.cover)
@@ -77,10 +77,10 @@ router.get('/:id/edit', async (req,res) => {
     let plant
     try{
         plant = Plant.findById(req.params.id)
-        plant.title = req.body.title
+        plant.plantName = req.body.plantName
         plant.area = req.body.area
-        plant.publishDate = req.body.publishDate
-        plant.pageCount = req.body.pageCount
+        plant.plantedDate = req.body.plantedDate
+        plant.height = req.body.height
         plant.description = req.body.description
         if(req.body.cover != null && req.body.cover !== ""){
             saveCover(plant, req.body.cover)

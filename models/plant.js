@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
 const plantSchema = new mongoose.Schema({
-    title: {
+    plantName: {
         type: String,
         required: true
     }, 
     description: {
         type: String,
     }, 
-    publishDate: {
+    plantedDate: {
         type: Date,
         required: true
     }, 
-    pageCount: {
+    height: {
         type: Number,
         required: true
     }, 

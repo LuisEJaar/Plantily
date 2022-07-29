@@ -1,13 +1,15 @@
-<h2><%= area.name %></h2>
-<a href="/areas/<%= area.id%>/edit">edit</a>
-<%- include('../partials/deleteform', 
-    {url: `areas/${area.id}`}
-)%>
-<% if(plantsByArea.length > 0) { %>
-    <h2>Plants By Area</h2>
-    <% plantsByArea.forEach(plant => {%>
-        <a href="/plants/<%= plant.id%>">
-            <img src="<%= plant.coverImagePath %>" height="150" width="100" alt="cover">
-        </a>
-    <% }) %>
-<% } %> 
+<div class="container">
+    <h2><%= area.name %></h2>
+    <a href="/areas/<%= area.id%>/edit">edit</a>
+    <%- include('../partials/deleteform', 
+        {url: `areas/${area.id}`}
+    )%>
+    <% if(plantsByArea.length > 0) { %>
+        <h2>Plants By Area</h2>
+        <% plantsByArea.forEach(plant => {%>
+            <a href="/plants/<%= plant.id%>">
+                <img src="<%= plant.coverImagePath %>" height="150" width="100" alt="cover">
+            </a>
+        <% }) %>
+    <% } %> 
+</div>

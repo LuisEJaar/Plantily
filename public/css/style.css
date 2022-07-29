@@ -1,7 +1,7 @@
 body::before{
   display: block;
   content: "";
-  height: 90px;
+  height: 70px;
 }
 
 @media (max-width: 768px) {
@@ -21,4 +21,10 @@ body::before{
     height: 100%;
     border-radius: 10px;
   }
+}
+
+.filepond--root, .filepond--image-preview-wrapper, .filepond--file {
+  max-height: 20em;
+  max-width: 20em;
+  overflow: hidden;
 }
