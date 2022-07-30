@@ -14,12 +14,12 @@
   font-family: stardew;
   font-size: 2rem;
   font-weight: bold;
-  max-width: 500px;
+  max-width: 300px;
   border: 5px double darkgoldenrod;
 }
 
-.form-group > div  {
-  max-width: 40%;
+.stardewForm .form-group > div  {
+  max-width: 50%;
 }
 
 .form-group  input {
