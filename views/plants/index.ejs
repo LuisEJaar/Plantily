@@ -1,34 +1,37 @@
-<div class="d-flex flex-column align-items-center justify-content-center">
-    <div>
+<div class="d-flex flex-column align-items-center justify-content-center pt-5">
+    <div class="p-5 mb-4 bg-light rounded-5">
         <h2>Search Plants</h2>
-        <form action="/plants" method="GET">
-            <div>
+        <form class="form-group" action="/plants" method="GET">
+            <div class="pb-3">
                 <label>Title</label>
-                <input type="text" name="plantName" value="<%= searchOptions.plantName%>">
+                <input class="form-control" type="text" name="plantName" value="<%= searchOptions.plantName%>">
             </div>
-            <div>
+            <div class="pb-3">
                 <label>Planted After</label>
-                <input type="date" name="plantedAfter" value="<%= searchOptions.plantedAfter%>">
+                <input type="date" class="form-control" name="plantedAfter" value="<%= searchOptions.plantedAfter%>">
             </div>
-            <div>
+            <div class="pb-3">
                 <label>Planted Before</label>
-                <input type="date" name="plantedBefore" value="<%= searchOptions.plantedBefore%>">
+                <input type="date" class="form-control" name="plantedBefore" value="<%= searchOptions.plantedBefore%>">
             </div>
-            <button type="submit">Search</button>
+            <button class="btn btn-primary" type="submit">Search</button>
         </form>
     </div>
-    <div>
-        <% plants.forEach(plant => {%>
-            <a href="/plants/<%= plant.id %>">
-                <!-- <img src="" height="150" width="100" alt="cover"> -->
-                <div class="card" style="width: 18rem; height: 13rem;">
-                    <img class="card-img-top" src="<%= plant.coverImagePath %>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= plant.plantName %></h5>
+    <div class="container">
+        <div class="row g-4">
+            <% plants.forEach((plant, index) => {%>
+                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
+                    <div class="card" style="width: 18rem; height: 13rem;"> 
+                        <a href="/plants/<%= plant.id %>">
+                            <img height="150px" width="100px" class="card-img-top" src="<%= plant.coverImagePath %>" alt="Card image cap">
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><%= plant.plantName %></h5>
+                        </div>
                     </div>
                 </div>
-            </a>
-        <% }) %>
-    </div>
+            <% }) %> 
+        </div>
+      </div>
 </div>
 
