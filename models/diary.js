@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const plantSchema = new mongoose.Schema({
+const diarySchema = new mongoose.Schema({ 
     plantName: {
         type: String,
         required: true
@@ -53,7 +53,7 @@ const plantSchema = new mongoose.Schema({
         required: true
     },
 
-    // Image stuff
+    // Image stuff 
     createdAt: {
         type: Date,
         required: true,
@@ -67,17 +67,17 @@ const plantSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    area: {
+    plant: {
         type: mongoose.Schema.Types.ObjectId, 
         required: true,
-        ref: 'Area'
+        ref: 'Plant'
     }
 })
 
-plantSchema.virtual('coverImagePath').get(function () {
+diarySchema.virtual('coverImagePath').get(function () {
     if(this.coverImage != null && this.coverImageType != null){
         return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
     }
 })
 
-module.exports = mongoose.model('Plant', plantSchema)
+module.exports = mongoose.model('Diary', diarySchema)
