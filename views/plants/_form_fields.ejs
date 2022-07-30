@@ -1,34 +1,42 @@
-<div>
-    <label for="plantName">Title</label>
-    <input type="text" name="plantName" value='<%= plant.plantName %>'>
-</div> 
-<div>
-    <label for="area">Area</label>
-    <select name="area" id="area">
-        <% areas.forEach(area => { %>
-            <% if(area.id === plant.area) { %> 
-                <option selected label="<%= area.name %>" value="<%= area.id %>"><%= area %></option>
-            <%} else { %>
-            <option label="<%= area.name %>" value="<%= area.id %>"><%= area %></option>
-            <% } %>
-        <% }) %>
-    </select>
+<div class="form-row">
+    <div class="form-item">
+        <label for="plantName">Title</label>
+        <input type="text" name="plantName" value='<%= plant.plantName %>'>
+    </div> 
+    <div class="form-item">
+        <label for="area">Area</label>
+        <select name="area" id="area">
+            <% areas.forEach(area => { %>
+                <% if(area.id === plant.area) { %> 
+                    <option selected label="<%= area.name %>" value="<%= area.id %>"><%= area %></option>
+                <%} else { %>
+                <option label="<%= area.name %>" value="<%= area.id %>"><%= area %></option>
+                <% } %>
+            <% }) %>
+        </select>
+    </div>
 </div>
-<div>
-    <label for="plantedDate">Planted Date:</label>
-    <input type="date" name="plantedDate" value='<%= plant.plantedDate == null ? '' : plant.plantedDate.toISOString().split('T')[0] %>'>
+
+<div class="form-row">
+    <div class="form-item">
+        <label for="plantedDate">Planted Date:</label>
+        <input type="date" name="plantedDate" value='<%= plant.plantedDate == null ? '' : plant.plantedDate.toISOString().split('T')[0] %>'>
+    </div>
+    <div class="form-item">
+        <label for="height">Height:</label>
+        <input type="number" name="height" min='1' value='<%= plant.height %>'>
+    </div>
 </div>
-<div>
-    <label for="height">Height:</label>
-    <input type="number" name="height" min='1' value='<%= plant.height %>'>
-</div>
-<div >
-    <label for="cover">Picture:</label>
-    <input type="file" name="cover" class="filepond">
-</div>
-<div>
-    <label for="description">Description:</label>
-    <textarea  name="description"><%= plant.description%></textarea>
+
+<div class="form-row">
+    <div class="form-item">
+        <label for="cover">Picture:</label>
+        <input type="file" name="cover" class="filepond">
+    </div>
+    <div class="form-item">
+        <label for="description">Description:</label>
+        <textarea  name="description"><%= plant.description%></textarea>
+    </div>
 </div>
 
 

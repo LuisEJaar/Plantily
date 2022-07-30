@@ -10,11 +10,11 @@ router.get('/', async (req,res) => {
     if(req.query.plantName != null && req.query.plantName != ''){
         query = query.regex('plantName', new RegExp(req.query.plantName, 'i'))
     }
-    if(req.query.publishedBefore != null && req.query.publishedBefore != ''){
-        query = query.lte('plantedDate', req.query.publishedBefore)
+    if(req.query.plantedBefore != null && req.query.plantedBefore != ''){
+        query = query.lte('plantedDate', req.query.plantedBefore)
     }
-    if(req.query.publishedAfter != null && req.query.publishedAfter != ''){
-        query = query.gte('plantedDate', req.query.publishedAfter)
+    if(req.query.plantedAfter != null && req.query.plantedAfter != ''){
+        query = query.gte('plantedDate', req.query.plantedAfter)
     }
     try {
         const plants = await query.exec()
@@ -76,18 +76,19 @@ router.get('/:id/edit', async (req,res) => {
  router.put('/:id', async (req,res) => {
     let plant
     try{
-        plant = Plant.findById(req.params.id)
+        plant = await Plant.findById(req.params.id)
         plant.plantName = req.body.plantName
         plant.area = req.body.area
-        plant.plantedDate = req.body.plantedDate
+        plant.plantedDate = new Date(req.body.plantedDate)
         plant.height = req.body.height
         plant.description = req.body.description
         if(req.body.cover != null && req.body.cover !== ""){
             saveCover(plant, req.body.cover)
         }
         await plant.save()
-        res.redirect(`plants/${newPlant.id}`)
-    } catch {
+        res.redirect(`/plants/${plant.id}`)
+    } catch (err){
+        console.log(err)
         if (plant != null) {
             renderEditPage(res, plant, true)
         } else {
@@ -96,7 +97,7 @@ router.get('/:id/edit', async (req,res) => {
     }
 })
 
-//Delete plant route
+//Delete plant page route
 router.delete('/:id', async (req, res) => {
     let plant
     try {

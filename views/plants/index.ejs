@@ -1,25 +1,32 @@
-<div class="container">
-    <h2>Search Plants</h2>
-    <form action="/plants" method="GET">
-        <div>
-            <label>Title</label>
-            <input type="text" name="plantName" value="<%= searchOptions.plantName%>">
-        </div>
-        <div>
-            <label>Published After</label>
-            <input type="date" name="publishedAfter" value="<%= searchOptions.publishedAfter%>">
-        </div>
-        <div>
-            <label>Published Before</label>
-            <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore%>">
-        </div>
-        <button type="submit">Search</button>
-    </form>
-    <br>
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <div>
+        <h2>Search Plants</h2>
+        <form action="/plants" method="GET">
+            <div>
+                <label>Title</label>
+                <input type="text" name="plantName" value="<%= searchOptions.plantName%>">
+            </div>
+            <div>
+                <label>Planted After</label>
+                <input type="date" name="plantedAfter" value="<%= searchOptions.plantedAfter%>">
+            </div>
+            <div>
+                <label>Planted Before</label>
+                <input type="date" name="plantedBefore" value="<%= searchOptions.plantedBefore%>">
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
     <div>
         <% plants.forEach(plant => {%>
             <a href="/plants/<%= plant.id %>">
-                <img src="<%= plant.coverImagePath %>" height="150" width="100" alt="cover">
+                <!-- <img src="" height="150" width="100" alt="cover"> -->
+                <div class="card" style="width: 18rem; height: 13rem;">
+                    <img class="card-img-top" src="<%= plant.coverImagePath %>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= plant.plantName %></h5>
+                    </div>
+                </div>
             </a>
         <% }) %>
     </div>

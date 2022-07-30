@@ -1,8 +1,10 @@
-<div class="container">
+<div class="container indexTop">
     <h2>Edit Plant</h2>
     <form action="/plants/<%= plant.id %>?_method=PUT" method="POST">
         <%- include('_form_fields')%>
-        <a href="/plants">Cancel</a>
-        <button type="submit">Update</button>
+        <div class="form-row form-row-end btn-row">
+            <a class="btn btn-danger" href="/plants">Cancel</a>
+            <button class="btn btn-primary" type="submit">Update</button>
+        </div>
     </form>
 </div>
