@@ -12,8 +12,6 @@ const plantSchema = new mongoose.Schema({
         type: Date,
         required: true
     }, 
-
-    // Descriptive (string / num)
     height: {
         type: Number,
         required: true
@@ -34,25 +32,6 @@ const plantSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-
-    // Events (bool)
-    repotted: {
-        type: Number,
-        required: true
-    },
-    fertilized: {
-        type: Boolean,
-        required: true
-    },
-    pestTreated: {
-        type: String,
-        required: true
-    }, 
-    trauma: {
-        type: String,
-        required: true
-    },
-
     // Image stuff
     createdAt: {
         type: Date,

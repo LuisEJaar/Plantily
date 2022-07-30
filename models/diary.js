@@ -12,12 +12,7 @@ const diarySchema = new mongoose.Schema({
         type: Date,
         required: true
     }, 
-
-    // Descriptive (string / num)
-    height: {
-        type: Number,
-        required: true
-    },
+    // Descriptive (string)
     waterInt: {
         type: Number,
         required: true
@@ -34,7 +29,6 @@ const diarySchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-
     // Events (bool)
     repotted: {
         type: Number,
@@ -52,7 +46,6 @@ const diarySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
     // Image stuff 
     createdAt: {
         type: Date,

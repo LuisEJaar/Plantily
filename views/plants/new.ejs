@@ -1,8 +1,10 @@
-<div class="container indexTop">
-    <h2>New Plant</h2>
+<div class="container mt-5 stardewForm rounded-2 pb-2">
+    <h2 class="pt-1">New Plant</h2>
     <form action="/plants" method="POST">
         <%- include('_form_fields')%>
-        <a href="/plants">Cancel</a>
-        <button type="submit">Create</button>
+        <div class="pt-3">
+            <a class="me-4 btn btn-warning" href="/plants">Cancel</a>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
     </form>
 </div>

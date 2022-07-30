@@ -1,7 +1,29 @@
+@font-face {
+  font-family: stardew;
+  src: url(../assets/Stardew_Valley.ttf);
+}
+
 .indexTop::before{
   display: block;
   content: "";
   height: 50px;
+}
+
+.stardewForm {
+  background-color: rgb(255, 213, 142);
+  font-family: stardew;
+  font-size: 2rem;
+  font-weight: bold;
+  max-width: 500px;
+  border: 5px double darkgoldenrod;
+}
+
+.form-group > div  {
+  max-width: 40%;
+}
+
+.form-group  input {
+  max-height: 3rem;
 }
 
 @media (max-width: 768px) {
