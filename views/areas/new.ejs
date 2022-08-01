@@ -1,8 +1,13 @@
-<div class="container indexTop">
-    <h2>New Area</h2>
-    <form action="/areas" method="POST">
-        <%- include('_form_fields')%>
-        <a href="/areas">Cancel</a>
-        <button type="submit">Create</button>
-    </form>
+<div class="indexTop">
+    <div class="container  stardewBorder">
+        <h2 class="h1">New Area</h2>
+        <form action="/areas" method="POST">
+            <%- include('_form_fields')%>
+            <div class="pt-3 pb-3 d-flex justify-content-center">
+                <a class="me-4 btn btn-warning" href="/areas">Cancel</a>
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
 </div>
+

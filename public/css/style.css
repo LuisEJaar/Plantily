@@ -8,18 +8,24 @@
   content: "";
   height: 50px;
 }
-
-.stardewForm {
+ 
+.stardewForm, .stardewBorder {
   background-color: rgb(255, 213, 142);
   font-family: stardew;
   font-size: 2rem;
   font-weight: bold;
-  max-width: 300px;
+  max-width: 90%;
   border: 5px double darkgoldenrod;
 }
 
-.stardewForm .form-group > div  {
-  max-width: 50%;
+.stardewBorder {
+  font-size: 1.5rem;
+}
+
+.rightInputs  {
+  margin-left: auto;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .form-group  input {
