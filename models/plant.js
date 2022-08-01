@@ -16,22 +16,22 @@ const plantSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    waterInt: {
-        type: Number,
-        required: true
-    },
-    sun: {
-        type: String,
-        required: true
-    },
-    potSize: {
-        type: Number,
-        required: true
-    },
-    pestStatus: {
-        type: Boolean,
-        required: true
-    },
+    // waterInt: {
+    //     type: Number,
+    //     required: true
+    // },
+    // sun: {
+    //     type: String,
+    //     required: true
+    // },
+    // potSize: {
+    //     type: Number,
+    //     required: true
+    // },
+    // pestStatus: {
+    //     type: Boolean,
+    //     required: true
+    // },
     // Image stuff
     createdAt: {
         type: Date,
