@@ -1,51 +1,52 @@
 const mongoose = require('mongoose')
 
 const diarySchema = new mongoose.Schema({ 
-    plantName: {
+    title: {
         type: String,
         required: true
     }, 
     description: {
         type: String,
     }, 
-    plantedDate: {
-        type: Date,
-        required: true
-    }, 
-    // Descriptive (string)
-    waterInt: {
-        type: Number,
-        required: true
-    },
-    sun: {
-        type: String,
-        required: true
-    },
-    potSize: {
-        type: Number,
-        required: true
-    },
-    pestStatus: {
-        type: Boolean,
-        required: true
-    },
-    // Events (bool)
-    repotted: {
-        type: Number,
-        required: true
-    },
-    fertilized: {
-        type: Boolean,
-        required: true
-    },
-    pestTreated: {
-        type: String,
-        required: true
-    }, 
-    trauma: {
-        type: String,
-        required: true
-    },
+    // plantedDate: {
+    //     type: Date,
+    //     required: true
+    // }, 
+    // // Descriptive (string)
+    // waterInt: {
+    //     type: Number,
+    //     required: true
+    // },
+    // sun: {
+    //     type: String,
+    //     required: true
+    // },
+    // potSize: {
+    //     type: Number,
+    //     required: true
+    // },
+    // pestStatus: {
+    //     type: Boolean,
+    //     required: true
+    // },
+    // // Events (bool)
+    // repotted: {
+    //     type: Number,
+    //     required: true
+    // },
+    // fertilized: {
+    //     type: Boolean,
+    //     required: true
+    // },
+    // pestTreated: {
+    //     type: String,
+    //     required: true
+    // }, 
+    // trauma: {
+    //     type: String,
+    //     required: true
+    // },
+    
     // Image stuff 
     createdAt: {
         type: Date,

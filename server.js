@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 const areaRouter = require('./routes/areas')
 const plantRouter = require('./routes/plants')
+const diaryRouter = require('./routes/diaries')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
@@ -31,6 +32,7 @@ db.once('open', () => console.log('Connected to mongoose'))
 app.use('/', indexRouter)
 app.use('/areas', areaRouter)
 app.use('/plants', plantRouter)
+app.use('/diaries', diaryRouter)
 
 app.listen(process.env.PORT || 3000, function() {
     console.log(`listening on http://localhost:${3000}`)

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Plant = require('../models/plant')
 const Area = require('../models/area')
+const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 
 //Show all plants Route

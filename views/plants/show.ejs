@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-center pt-5">
     <div class="d-flex-sm">
         <div class="container d-flex align-items-center pb-3">
-            <div class="card bg-dark text-light" style="width: 18rem;">
+            <div class="card stardewBorder bg-dark text-light" style="width: 18rem;">
                 <img src="<%= plant.coverImagePath %>" alt="plant cover">
             </div>
         </div>
@@ -27,5 +27,63 @@
                 </div>
             </div>
         </section>
+        <!-- Temp for Diary -->
+        <div class="container mt-4 stardewBorder">
+            <h2>Diary Entries:</h2>
+            <div class="stardewBorder d-flex justify-content-center">
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi-plus-circle"></i>
+                </button> -->
+                <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#diary"><i class="bi-plus-circle"></i></button>
+            </div>
+            <% if(diariesByPlant.length > 0) { %>
+                <h2>Plants By Area</h2>
+                <% diariesByPlant.forEach(diary => {%>
+                    <a href="/plants/<%= diary.id%>">
+                        <img src="<%= diary.coverImagePath %>" height="150" width="100" alt="cover">
+                    </a>
+                <% }) %>
+            <% } %> 
+        </div>
+        <!-- Modal -->
+        <div class=" modal fade" id="diary" tabindex="-1" aria-labelledby="diaryLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content stardewBorder">
+                <div class="modal-header">
+                <h5 class="modal-title" id="diaryLabel">Diary Content:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Full Name:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                    <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
 </div>

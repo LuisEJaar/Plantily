@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Plant = require('../models/plant')
 const Area = require('../models/area')
+const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
+
 
 //Show all plants Route
 router.get('/', async (req,res) => {
@@ -56,8 +58,13 @@ router.get('/:id', async (req,res) => {
         const plant = await Plant.findById(req.params.id)
                                     .populate('area')
                                     .exec()
-        res.render('plants/show', {plant: plant})
-    } catch {
+        const diaries = await Diary.find({plant: plant.id}).exec()
+            res.render('plants/show', {
+            plant: plant,
+            diariesByPlant: diaries
+        })
+    } catch (err){
+        console.log(err)
         res.redirect('/')
     }
 })
