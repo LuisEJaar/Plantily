@@ -1,8 +1,8 @@
-<div class="container">
+<div id="editArea" class="mt-5 p-3 container stardewBorder">
     <h2>Edit Area</h2>
     <form action="/areas/<%= area.id%>?_method=PUT" method="POST">
         <%- include('_form_fields')%>
-        <a href="/areas">Cancel</a>
-        <button class="btn" type="submit">Update</button>
+        <a class="ms-3 btn btn-danger" href="/areas">Cancel</a>
+        <button class="btn ms-2 btn-success" type="submit">Update</button>
     </form>
 </div>

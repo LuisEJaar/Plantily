@@ -5,7 +5,7 @@ const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-//Show all plants Route
+//Show all diaries Route
 router.get('/', async (req,res) => {
     let query = Plant.find()
     if(req.query.plantName != null && req.query.plantName != ''){
@@ -28,26 +28,27 @@ router.get('/', async (req,res) => {
     }
 })
 
-//Show new plant form / page Route
-router.get('/new', async (req,res) => {
-   renderNewPage(res, new Plant())
-})
-
-//Create New plant route
+//Create New diary route
 router.post('/', async (req,res) => {
-    const plant = new Plant ({
-        plantName: req.body.plantName,
-        area: req.body.area,
-        plantedDate: new Date(req.body.plantedDate), 
-        height: req.body.height,
-        description: req.body.description
+    const diary = new Diary ({
+        diaryTitle: req.body.diaryTitle,
+        diaryText: req.body.diaryText,
+        diaryDate: new Date(req.body.diaryDate), 
+        waterInt: req.body.waterInt,
+        sun: req.body.sun,
+        potSize: req.body.potSize,
+        pestStatus: req.body.pestStatus,
+        repotted: req.body.repotted,
+        fertilized: req.body.fertilized,
+        pestTreated: req.body.pestTreated,
+        trauma: req.body.trauma
     })
-    saveCover(plant, req.body.cover)
+    saveCover(diary, req.body.cover)
     try{
-        const newPlant  = await plant.save()
-        res.redirect(`plants/${newPlant.id}`)
+        const newDiary  = await diary.save()
+        res.redirect(`plants/${newDiary.id}`)
     } catch {
-        renderNewPage(res, plant, true)
+        renderNewPage(res, diary, true)
     }
 })
 

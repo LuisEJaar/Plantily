@@ -8,7 +8,20 @@
   content: "";
   height: 50px;
 }
+
+#newArea, #searchArea{ 
+  max-width: 500px;
+}
+
+#areaIndex, #editArea, #plantForm{
+  max-width: 600px;
+}
  
+input, select {
+  align-content: center;
+  text-align: center;
+}
+
 .stardewForm, .stardewBorder {
   background-color: rgb(255, 213, 142);
   font-family: stardew;

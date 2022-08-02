@@ -1,69 +1,74 @@
 const mongoose = require('mongoose')
 
 const diarySchema = new mongoose.Schema({ 
-    title: {
+    diaryTitle: {
         type: String,
         required: true
     }, 
-    description: {
+    diaryText: {
         type: String,
+        required: false
     }, 
-    // plantedDate: {
-    //     type: Date,
-    //     required: true
-    // }, 
-    // // Descriptive (string)
-    // waterInt: {
-    //     type: Number,
-    //     required: true
-    // },
-    // sun: {
-    //     type: String,
-    //     required: true
-    // },
-    // potSize: {
-    //     type: Number,
-    //     required: true
-    // },
-    // pestStatus: {
-    //     type: Boolean,
-    //     required: true
-    // },
-    // // Events (bool)
-    // repotted: {
-    //     type: Number,
-    //     required: true
-    // },
-    // fertilized: {
-    //     type: Boolean,
-    //     required: true
-    // },
-    // pestTreated: {
-    //     type: String,
-    //     required: true
-    // }, 
-    // trauma: {
-    //     type: String,
-    //     required: true
-    // },
+    diaryDate: {
+        type: Date,
+        required: true
+    }, 
+    height: {
+        type: Date,
+        required: false
+    }, 
+    // Descriptive (string)
+    waterInt: {
+        type: Number,
+        required: false
+    },
+    waterAmt: {
+        type: Number,
+        required: false
+    },
+    sun: {
+        type: String,
+        required: false
+    },
+    potSize: {
+        type: Number,
+        required: false
+    },
+    pestStatus: {
+        type: Boolean,
+        required: false
+    },
+    // Events (bool)
+    repotted: {
+        type: Number,
+        required: false
+    },
+    fertilized: {
+        type: Boolean,
+        required: false
+    },
+    pestTreated: {
+        type: String,
+        required: false
+    }, 
+    trauma: {
+        type: String,
+        required: false
+    },
     
     // Image stuff 
     createdAt: {
         type: Date,
-        required: true,
         default: Date.now
     }, 
     coverImage: {
         type: Buffer,
-        required: true
     }, 
     coverImageType: {
         type: String,
-        required: true
     },
     plant: {
         type: mongoose.Schema.Types.ObjectId, 
-        required: true,
         ref: 'Plant'
     }
 })
