@@ -1,58 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('./head'); %>
-</head>
-<body>
-   <header>
-        <h1>Plantly</h1>
-   </header>
-   <section class="plantSpace">
-        <!-- Generate dynamically based on plants in db -->
-        <div class="plants"> 
-            <!-- Loop through plants -->
-            <% if(plants.length > 0) {%>
-                <% for(var i = 0; i < plants.length; i++) {%>
-                    <div class="plant">
-                      <div class="plantbox">
-                        <img src="./assets/Plant_Display_Top.png" alt="border-top">
-                        <div>
-                        <!-- Outputs from the iterated quote object -->
-                        <!-- <img src= "<%= plants[i].picture %>"  alt="img" width="600" height="400">
-                        <br> -->
-                        <span>Name: </span><span><%= plants[i].name %></span>
-                        <br>
-                        <span>Birthday: </span><span><%= plants[i].plant_date %></span>
-                        <br>
-                        <span>Type: </span><span><%= plants[i].type %></span>
-                        <br>
-                        <span>Height: </span><span><%= plants[i].height %></span>
-                        <br>
-                        <span>Sun: </span><span><%= plants[i].sun_exposure%></span>
-                        <br>
-                        <span>Watering: </span><span><%= plants[i].watering_schedule%></span>
-                        </div>
-                        <div class="editdelbox">
-                          <span class="hidden"><%= plants[i]._id %></span>
-                          <a href="/editplant/<%= plants[i]._id%>"><img class="editdel editButton"  src="/assets/index/edit.png" alt="edit"></a>
-                          <a href="/plantdiary/<%= plants[i]._id%>"><img class="editdel diaryButton" src="/assets/index/diary.png" alt="read diary"></a>
-                          <img tabindex="0" class="editdel deleteButton" src="/assets/index/delete.png" alt="delete">
-                        </div>
-                        <img src="/assets/Plant_Display_Bottom.png" alt="border-bottom">
-                      </div>
-                    </div>
-                  <% } %>
-            <%} else {%>
-                <div id="plantless">
-                    <br> Lets get planting!</p>
-                </div>
-            <%} %>
+<section class="indexTop bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container ">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <h1>Welcome to
+                    <span class="text-warning">Plantily</span>
+                </h1>
+                <p class="lead my-4">
+                   Plantily was born from a genuine desire to know what my plant babies are up to. Let my passion provide for your needs by using plantily to handle your gardening tracking.
+                </p>
+                <p class="lead my-4">If you'd like to participate in plantly then please click the login button below and get your journey started!</p>
+                <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#recipe">Lets plant!</button>
+                
+            </div>
+            <img class="img-fluid w-50 d-none d-sm-block" src="./assets/Seeding-bro.svg" alt="Person Planting">
         </div>
-   </section>
-   <!-- Generic Footer -->
-   <footer>
-        <%- include('./footer'); %>
-   </footer> 
-   <script src="/js/main.js"></script>
-</body>
-</html>
+    </div>
+</section>
+<!-- Newsletter -->
+<section class="bg-success p-5" style="--bs-bg-opacity: .5;">
+    <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center">
+            <h3 class="mb-3 mb-md-0">Sign Up for our News Letter</h3>
+            <div class="input-group news-input">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Email"
+                    aria-label="Recipient's Email"
+                    aria-describedby="button-addon2"
+                >
+                <button class="btn btn-dark btn-lg" type="button" id="button-addon2">Button</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Boxes -->
+
+<section class="p-5">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-md">
+        <div class="card bg-dark text-light">
+          <i class="bi bi-bicycle h1 pt-3 "></i>
+          <div class="card-body">
+            <h5 class="card-title">Track Plants</h5>
+            <p class="card-text lead">Plantily offers users on demand plant tracking to keep track of all your leafy friends.</p>
+            <a href="#" class="btn btn-success">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="card bg-dark text-light">
+            <i class="bi bi-alarm h1 pt-3 "></i>
+            <div class="card-body">
+                <h5 class="card-title">Plant Smart!</h5>
+                <p class="card-text lead">Turn a new leaf? More like turn another page. Expand your knowledge with our care tips.</p>
+                <a href="#" class="btn btn-success">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+      <div class="col-md">
+        <div class="card bg-dark text-light">
+            <i class="bi bi-award h1 pt-3 "></i>
+            <div class="card-body">
+                <h5 class="card-title">Browse our store</h5>
+                <p class="card-text lead">One good plant deserves another, and if you have two then why not three?</p>
+                <a href="#" class="btn btn-success">Go somewhere</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chefs -->
+<section id="chefs" class="p-5 bg-success">
+    <div class="container">
+        <h2 class="text-center text-white">Our Chefs</h2>
+        <p class="lead text-center text-white mb-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque unde, illum nihil ullam obcaecati a quod ipsam error quisquam? Eaque.</p>
+        <div class="row g-4">
+            <!-- Chef 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <img src="./assets/chef1.jpg" class="card-img-top" alt="...">
+                      <h5 class="card-title mb-3">Chef Name</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae sint saepe, odio culpa est?
+                      </p>
+                      <a aria-label="Plant Chef" href="#"><i class="bi bi-journal-plantmark-fill text-dark mx-1"></i></a>
+                      <a aria-label="Chef Linkedin" href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                      <a aria-label="Chef Twitter" href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                      <a aria-label="Chef Instagram" href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                    </div>
+                  </div>
+            </div>
+            <!-- Chef 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <img src="./assets/chef2.jpg" class="card-img-top" alt="...">
+                      <h5 class="card-title mb-3">Chef Name</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae sint saepe, odio culpa est?
+                      </p>
+                      <a aria-label="Plant Chef" href="#"><i class="bi bi-journal-plantmark-fill text-dark mx-1"></i></a>
+                      <a aria-label="Chef Linkedin" href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                      <a aria-label="Chef Twitter" href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                      <a aria-label="Chef Instagram" href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                    </div>
+                  </div>
+            </div>
+            <!-- Chef 3 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <img src="./assets/youngchefs.jpg" class="card-img-top" alt="...">
+                      <h5 class="card-title mb-3">Chef Name</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae sint saepe, odio culpa est?
+                      </p>
+                      <a aria-label="Plant Chef" href="#"><i class="bi bi-journal-plantmark-fill text-dark mx-1"></i></a>
+                      <a aria-label="Chef Linkedin" href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                      <a aria-label="Chef Twitter" href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                      <a aria-label="Chef Instagram" href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                    </div>
+                  </div>
+            </div>
+             <!-- Chef 3 -->
+             <div class="col-md-6 col-lg-3">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <img src="https://randomuser.me/api/portraits/women/11.jpg" class="card-img-top" alt="...">
+                      <h5 class="card-title mb-3">Chef Name</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae sint saepe, odio culpa est?
+                      </p>
+                      <a aria-label="Plant Chef" href="#"><i class="bi bi-journal-plantmark-fill text-dark mx-1"></i></a>
+                      <a aria-label="Chef Linkedin" href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                      <a aria-label="Chef Twitter" href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                      <a aria-label="Chef Instagram" href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+
+<footer class="p-5 bg-dark text-white text-center position-relative">
+    <div class="container">
+        <p class="lead">Copyright &copy; 2022 Luis Jaar</p>
+        <a href="#" aria-label="to top of page" class="position-absolute bottom-0 end-0 p-5">
+            <i class="bi bi-arrow-up-circle display-3"></i>
+        </a>
+    </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="recipeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="recipeLabel">Please fill application</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Full Name:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

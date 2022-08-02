@@ -1,0 +1,72 @@
+@font-face {
+  font-family: stardew;
+  src: url(../assets/Stardew_Valley.ttf);
+}
+
+.indexTop::before{
+  display: block;
+  content: "";
+  height: 50px;
+}
+
+#newArea, #searchArea{ 
+  max-width: 500px;
+}
+
+#areaIndex, #editArea, #plantForm{
+  max-width: 600px;
+}
+ 
+input, select {
+  align-content: center;
+  text-align: center;
+}
+
+.stardewForm, .stardewBorder {
+  background-color: rgb(255, 213, 142);
+  font-family: stardew;
+  font-size: 2rem;
+  font-weight: bold;
+  max-width: 90%;
+  border: 5px double darkgoldenrod;
+}
+
+.stardewBorder {
+  font-size: 1.5rem;
+  max-width: 100%;
+}
+
+.rightInputs  {
+  margin-left: auto;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.form-group  input {
+  max-height: 3rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-center {
+      text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .map {
+    height: 100%;
+    border-radius: 10px;
+  }
+}
+
+.filepond--root, .filepond--image-preview-wrapper, .filepond--file {
+  max-height: 20em;
+  max-width: 20em;
+  overflow: hidden;
+}

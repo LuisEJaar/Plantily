@@ -1,0 +1,23 @@
+<div class="container indexTop">
+    <div id="searchArea" class="stardewBorder p-3" >
+        <h2>Search Areas</h2>
+        <form action="/areas" method="GET">
+            <label>Name</label>
+            <input type="text" name="name" value="<%= searchOptions.name%>">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </div>
+    <br>
+    <% areas.forEach(area => {%>
+        <div id="areaIndex" class="p-3 mt-4 container stardewBorder d-flex justify-content-between">
+            <div><%= area.name %></div>
+            <a class="btn btn-success" href="/areas/<%= area.id %>">View</a>
+            <a class="btn btn-warning" href="/areas/<%= area.id %>/edit">Edit</a>
+            <%- include('../partials/deleteForm', 
+                {url: `/areas/${area.id}`})
+            %> 
+        </div>
+    <% }) %>
+</div>
+
+

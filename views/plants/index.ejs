@@ -1,0 +1,37 @@
+<div class="d-flex flex-column align-items-center justify-content-center pt-5">
+    <div class="p-5 stardewBorder mb-4 rounded-5">
+        <h2 class="h1">Search Plants</h2>
+        <form class="form-group" action="/plants" method="GET">
+            <div class="pb-3">
+                <label>Name:</label>
+                <input class="form-control" type="text" name="plantName" value="<%= searchOptions.plantName%>">
+            </div>
+            <div class="pb-3">
+                <label>Planted After</label>
+                <input type="date" class="form-control" name="plantedAfter" value="<%= searchOptions.plantedAfter%>">
+            </div>
+            <div class="pb-3">
+                <label>Planted Before</label>
+                <input type="date" class="form-control" name="plantedBefore" value="<%= searchOptions.plantedBefore%>">
+            </div>
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row g-4">
+            <% plants.forEach((plant, index) => {%>
+                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
+                    <div class="card stardewBorder" style="width: 18rem; height: 13rem;"> 
+                        <a href="/plants/<%= plant.id %>">
+                            <img height="150px" width="100px" class="card-img-top" src="<%= plant.coverImagePath %>" alt="Card image cap">
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><%= plant.plantName %></h5>
+                        </div>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
+      </div>
+</div>
+

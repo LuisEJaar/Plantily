@@ -1,0 +1,175 @@
+<div class="d-flex align-items-center justify-content-center pt-5">
+    <div class="d-flex-sm">
+        <div class="container d-flex align-items-center pb-3">
+            <div class="card stardewBorder bg-dark text-light" style="width: 18rem;">
+                <img src="<%= plant.coverImagePath %>" alt="plant cover">
+            </div>
+        </div>
+        <section class="container">
+            <div class="card bg-dark text-light" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Name:</h5>
+                    <span class="card-text"><%= plant.plantName %></span>
+                    <h5 class="card-title">Description:</h5>
+                    <p class="card-text"><%= plant.description %></p>
+                </div>
+                <ul class="list-group list-group-flush card bg-dark text-light">
+                    <li class="list-group-item card bg-dark text-light">Planted on: <%= plant.plantedDate.toDateString() %></li>
+                    <li class="list-group-item card bg-dark text-light">Height: <%= plant.height %> cm</li>
+                    <li class="list-group-item card bg-dark text-light">Area: <%= plant.area.name %></li>
+                </ul>
+                <div class="card-body">
+                    <a class="btn btn-success btn-lg" href="/plants/<%= plant.id %>/edit">Edit</a>
+                    <a class="btn btn-success btn-lg" href="/areas/<%= plant.area.id %>">View Area</a>
+                </div>
+                <div class="card-body">
+                    <%- include('../partials/deleteForm', { url: `/plants/${plant.id}` })%>
+                </div>
+            </div>
+        </section>
+        <!-- Temp for Diary -->
+        <div class="mt-3 p-3 stardewBorder d-flex justify-content-between">
+            <h2>Diary Entries:</h2>
+            <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#diary"><i class="bi-plus-circle"></i></button>
+        </div>
+        <div class="container mt-4 stardewBorder">  
+            <% if(diariesByPlant.length > 0) { %>
+                <h2>Plants By Area</h2>
+                <% diariesByPlant.forEach(diary => {%>
+                    <a href="/plants/<%= diary.id%>">
+                        <img src="<%= diary.coverImagePath %>" height="150" width="100" alt="cover">
+                    </a>
+                <% }) %>
+            <% } %> 
+        </div>
+        <!-- Modal -->
+        <div class=" modal fade" id="diary" tabindex="-1" aria-labelledby="diaryLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content stardewBorder">
+                <div class="modal-header">
+                <h5 class="modal-title" id="diaryLabel">Diary Content:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="/diaries" method="POST">
+                    <div class="mb-3">
+                    <label for="diaryTitle" class="col-form-label">Title:</label>
+                    <input type="text" class="form-control" id="diaryTitle">
+                    </div>
+                        <label class="col-md-2 col-form-label" for="diaryDate">Date:</label>
+                        <!-- Do date later -->
+                    <div class="mb-3">
+                        <label for="diaryText" class="col-form-label">Entry:</label>
+                        <textarea class="form-control" id="diaryText"></textarea>
+                    </div>
+                    <fieldset>
+                        <legend class="h1">Has anything Changed?</legend>
+                        <div class="mb-3 ">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="height-Change">
+                                <label for="height-Change" class="form-check-label">Height?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="height" class="col-form-label">Height (cm):</label>
+                            <input disabled type="number" class="form-control" id="height" value="<%= plant.height %>">
+                        </div>
+                        <div class="mb-3 ">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="waterInt-Change">
+                                <label for="waterInt-Change" class="form-check-label">Watering Interval?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="waterInt" class="col-form-label">Interval (days):</label>
+                            <input disabled type="number" class="form-control" id="waterInt" value="<%= plant.waterInt %>">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="waterAmt-Change">
+                                <label for="waterAmt-Change" class="form-check-label">Watering Amt?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="waterAmt" class="col-form-label">Water (cups):</label>
+                            <input disabled type="number" class="form-control" id="waterAmt" value="<%= plant.waterAmt %>">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="sun-Change">
+                                <label for="sun-Change" class="form-check-label">Sun?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sun" class="col-form-label">Sun:</label>
+                            <select disabled class="form-control" id="sun" value="<%= plant.sun %>">
+                                <option value="N/A">N/A</option>
+                                <option value="full-sun">Full-sun</option>
+                                <option value="light-shade">Light-shade</option>
+                                <option value="partial-shade">Partial-shade</option>
+                                <option value="full-shade">Full-shade</option>
+                                <option value="dense-shade">Dense-shade</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="potSize-Change">
+                                <label for="potSize-Change" class="form-check-label">Pot Size?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="potSize" class="col-form-label">Pot size:</label>
+                            <input disabled type="number" class="form-control" id="potSize" value="<%= plant.potSize %>">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="pestStatus-Change">
+                                <label for="pestStatus-Change" class="form-check-label">Pests?</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pestStatus" class="col-form-label">Pests:</label>
+                            <input disabled type="checkbox" class="form-check-input" id="pestStatus" value="<%= plant.pestStatus %>">
+                        </div>
+                        
+                    </fieldset>
+                    <fieldset>
+                        <legend>Did any of the following happen:</legend>
+                        <div class="form-check form-switch">
+                            <input type="checkbox" class="form-check-input" id="repotted">
+                            <label for="repotted" class="form-check-label">Repotted</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input type="checkbox" class="form-check-input" id="fertilized">
+                            <label for="fertilized" class="form-check-label">Fertilized</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input type="checkbox" class="form-check-input" id="pestsTreated">
+                            <label for="pestsTreated" class="form-check-label">Pests Treated</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="trauma">
+                            <label for="trauma" class="form-check-label">Trauma</label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="cover">Picture:</label>
+                            <div class="ps-5">
+                                <input type="file" name="cover" class="ms-3 filepond">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Add to Diary</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+

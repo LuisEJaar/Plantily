@@ -1,0 +1,12 @@
+<div id="plantForm" class="container p-5 d-flex align-content-center">
+    <div class="p-3 container stardewBorder">
+        <h2>Edit Plant</h2>
+        <form action="/plants/<%= plant.id %>?_method=PUT" method="POST">
+            <%- include('_form_fields')%>
+            <div class="p-5 form-row form-row-end btn-row">
+                <a class="btn btn-danger me-5" href="/plants">Cancel</a>
+                <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
