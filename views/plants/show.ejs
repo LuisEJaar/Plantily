@@ -29,16 +29,28 @@
         </section>
         <!-- Temp for Diary -->
         <div class="mt-3 p-3 stardewBorder d-flex justify-content-between">
-            <h2>Diary Entries:</h2>
+            <h2>New Diary Entry:</h2>
             <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#diary"><i class="bi-plus-circle"></i></button>
         </div>
         <div class="container mt-4 stardewBorder">  
             <% if(diariesByPlant.length > 0) { %>
-                <h2>Plants By Area</h2>
+                <h2>Diary Entries:</h2>
                 <% diariesByPlant.forEach(diary => {%>
-                    <a href="/plants/<%= diary.id%>">
-                        <img src="<%= diary.coverImagePath %>" height="150" width="100" alt="cover">
-                    </a>
+                    <div class="stardewBorder mb-2">
+                        <span><%= diary.diaryTitle %></span>
+                        <span><%= diary.diaryText %></span>
+                        <span><%= diary.diaryDate == null ? '' : diary.diaryDate.toISOString().split('T')[0] %></span>
+                        <span><%= diary.height %></span>
+                        <span><%= diary.sun %></span>
+                        <span><%= diary.potSize %></span>
+                        <span><%= diary.repotted %></span>
+                        <span><%= diary.fertilized %></span>
+                        <span><%= diary.pestTreated %></span>
+                        <span><%= diary.trauma %></span>
+                        <a href="/plants/<%= diary.id%>">
+                            <img src="<%= diary.coverImagePath %>" height="150" width="100" alt="cover">
+                        </a>
+                    </div>
                 <% }) %>
             <% } %> 
         </div>
@@ -52,12 +64,13 @@
                 </div>
                 <div class="modal-body">
                 <form action="/diaries" method="POST">
+                    <input type="hidden" value="<%= plant.id%>" name="plant">
                     <div class="mb-3">
                     <label for="diaryTitle" class="col-form-label">Title:</label>
-                    <input type="text" class="form-control" id="diaryTitle">
+                    <input type="text" class="form-control" id="diaryTitle" name="diaryTitle">
                     </div>
                         <label class="col-md-2 col-form-label" for="diaryDate">Date:</label>
-                        <!-- Do date later -->
+                        <input type="date" class="form-control" name="diaryDate">
                     <div class="mb-3">
                         <label for="diaryText" class="col-form-label">Entry:</label>
                         <textarea class="form-control" id="diaryText"></textarea>
@@ -160,11 +173,11 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add to Diary</button>
+                    </div>
                 </form>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add to Diary</button>
                 </div>
             </div>
             </div>

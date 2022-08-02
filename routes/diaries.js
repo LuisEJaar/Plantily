@@ -5,35 +5,13 @@ const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-//Show all diaries Route
-router.get('/', async (req,res) => {
-    let query = Plant.find()
-    if(req.query.plantName != null && req.query.plantName != ''){
-        query = query.regex('plantName', new RegExp(req.query.plantName, 'i'))
-    }
-    if(req.query.plantedBefore != null && req.query.plantedBefore != ''){
-        query = query.lte('plantedDate', req.query.plantedBefore)
-    }
-    if(req.query.plantedAfter != null && req.query.plantedAfter != ''){
-        query = query.gte('plantedDate', req.query.plantedAfter)
-    }
-    try {
-        const plants = await query.exec()
-        res.render('plants/index', {
-            plants: plants,
-            searchOptions: req.query
-        })
-    } catch {
-        res.redirect('/')
-    }
-})
-
 //Create New diary route
 router.post('/', async (req,res) => {
     const diary = new Diary ({
         diaryTitle: req.body.diaryTitle,
         diaryText: req.body.diaryText,
-        diaryDate: new Date(req.body.diaryDate), 
+        diaryDate: req.body.diaryDate,
+        height: req.body.height, 
         waterInt: req.body.waterInt,
         sun: req.body.sun,
         potSize: req.body.potSize,
@@ -41,14 +19,16 @@ router.post('/', async (req,res) => {
         repotted: req.body.repotted,
         fertilized: req.body.fertilized,
         pestTreated: req.body.pestTreated,
-        trauma: req.body.trauma
+        trauma: req.body.trauma,
+        plant: req.body.plant
     })
-    saveCover(diary, req.body.cover)
+    if(req.body.cover) saveCover(diary, req.body.cover)
     try{
-        const newDiary  = await diary.save()
-        res.redirect(`plants/${newDiary.id}`)
-    } catch {
-        renderNewPage(res, diary, true)
+        await diary.save()
+        res.redirect('back')
+    } catch (err) {
+        console.log(err)
+        res.redirect('back')
     }
 })
 
@@ -74,14 +54,14 @@ router.get('/:id/edit', async (req,res) => {
     }
  })
 
- //Update plant route
+ //Update diary route
  router.put('/:id', async (req,res) => {
     let plant
     try{
         plant = await Plant.findById(req.params.id)
         plant.plantName = req.body.plantName
         plant.area = req.body.area
-        plant.plantedDate = new Date(req.body.plantedDate)
+        plant.plantedDate = new Date(req.body.plantedDate.split("T")[0])
         plant.height = req.body.height
         plant.description = req.body.description
         if(req.body.cover != null && req.body.cover !== ""){
@@ -146,12 +126,12 @@ async function renderFormPage (res, plant, form, hasError = false) {
     }
 }
 
-function saveCover(plant, coverEncoded){
+function saveCover(diary, coverEncoded){
     if(coverEncoded == null) return 
     const cover = JSON.parse(coverEncoded)
     if(cover != null && imageMimeTypes.includes(cover.type)){
-        plant.coverImage = new Buffer.from(cover.data, 'base64')
-        plant.coverImageType = cover.type
+        diary.coverImage = new Buffer.from(cover.data, 'base64')
+        diary.coverImageType = cover.type
     }
 }
 

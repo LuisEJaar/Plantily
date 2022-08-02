@@ -38,7 +38,7 @@ const plantSchema = new mongoose.Schema({
         required: false
     },
     pestStatus: {
-        type: Boolean,
+        type: String,
         required: false
     },
     // Image stuff
@@ -55,6 +55,7 @@ const plantSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    //Tying the plant entry to the area
     area: {
         type: mongoose.Schema.Types.ObjectId, 
         required: true,

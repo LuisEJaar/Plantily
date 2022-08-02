@@ -67,8 +67,10 @@ const diarySchema = new mongoose.Schema({
     coverImageType: {
         type: String,
     },
+    //Tying the diary entry to the plant
     plant: {
         type: mongoose.Schema.Types.ObjectId, 
+        required: true,
         ref: 'Plant'
     }
 })

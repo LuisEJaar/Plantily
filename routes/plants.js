@@ -5,7 +5,6 @@ const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-
 //Show all plants Route
 router.get('/', async (req,res) => {
     let query = Plant.find()
@@ -40,14 +39,23 @@ router.post('/', async (req,res) => {
         plantName: req.body.plantName,
         area: req.body.area,
         plantedDate: new Date(req.body.plantedDate), 
+        type: req.body.type,
         height: req.body.height,
+        sun: req.body.sun,
+        potSize: req.body.potSize,
+        waterInt: req.body.waterInt,
+        waterAmt: req.body.waterAmt,
+        pestStatus: req.body.pestStatus,
         description: req.body.description
     })
-    saveCover(plant, req.body.cover)
+    if(req.body.cover != null && req.body.cover !== ""){
+        saveCover(plant, req.body.cover)
+    }
     try{
         const newPlant  = await plant.save()
         res.redirect(`plants/${newPlant.id}`)
-    } catch {
+    } catch (err){
+        console.log(err)
         renderNewPage(res, plant, true)
     }
 })
