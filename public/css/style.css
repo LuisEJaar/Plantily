@@ -82,9 +82,27 @@ input, select {
   width: 300px;
 }
 
-#plantPicture > img {
+.spanM {
+  margin-left: 2rem;
+}
+
+#plantPicture > img, #diaryPicture > img {
   margin-top: auto;
   margin-bottom: auto;
+  min-width: 75%;
+  min-height: 75%;
   max-width:100%;
   max-height:100%;  
+
+}
+
+#diaryPicture {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.diaryIcons > img{
+  max-width: 40px;
 }

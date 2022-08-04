@@ -40,14 +40,14 @@ const diarySchema = new mongoose.Schema({
     },
     // Events (bool)
     repotted: {
-        type: Number,
+        type: String,
         required: false
     },
     fertilized: {
-        type: Boolean,
+        type: String,
         required: false
     },
-    pestTreated: {
+    pestsTreated: {
         type: String,
         required: false
     }, 

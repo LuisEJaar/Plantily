@@ -18,7 +18,7 @@ router.post('/', async (req,res) => {
         pestStatus: req.body.pestStatus,
         repotted: req.body.repotted,
         fertilized: req.body.fertilized,
-        pestTreated: req.body.pestTreated,
+        pestsTreated: req.body.pestsTreated,
         trauma: req.body.trauma,
         plant: req.body.plant
     })

@@ -1,9 +1,9 @@
 <div class="pt-5 d-flex flex-column align-items-center">
     <div id="plantProfile" class="p-3 stardewBorder d-flex flex-column">
-        <div class="d-flex flex-row">
-            <div>
+        <div class="d-md-flex">
+            <div class="">
                 <div id="plantPicture" class="mb-3 card bg-dark stardewBorder">
-                    <img src="<%= plant.coverImagePath %>" alt="plant cover">
+                    <img class="" src="<%= plant.coverImagePath %>" alt="plant cover">
                 </div>
                 <div class="d-flex flex-column justify-content-center">
                     <span class="card-text text-center"><%= plant.plantName %></span>
@@ -15,14 +15,14 @@
                 <div>
                     <div class="card stardewBorder">
                         <ul class="list-group list-group-flush card bg-dark text-light">
-                            <li class="list-group-item card bg-dark text-light">Planted on: <%= plant.plantedDate.toDateString() %></li>
-                            <li class="list-group-item card bg-dark text-light">Height: <%= plant.height %> cm</li>
-                            <li class="list-group-item card bg-dark text-light">Type: <%= plant.type %></li>
-                            <li class="list-group-item card bg-dark text-light">Water Interval: <%= plant.waterInt %> days</li>
-                            <li class="list-group-item card bg-dark text-light">Water Ammount: <%= plant.waterAmt %> cups</li>
-                            <li class="list-group-item card bg-dark text-light">Sun: <%= plant.sun %></li>
-                            <li class="list-group-item card bg-dark text-light">Pot Size: <%= plant.potSize %> cm</li>
-                            <li class="list-group-item card bg-dark text-light">Area: <%= plant.area.name %></li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-sm-column flex-md-row"><span class="pe-5">Planted on:</span><span class="text-md-right text-center"><%= plant.plantedDate.toDateString() %></span> </li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Height(cm): </span><span class="text-center"><%= plant.height %></span></li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Type: </span><span class="text-center"><%= plant.type %></span></li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Water Int(days):</span><span class="text-center"><%= plant.waterInt %></span></li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Water Amt(cups):</span><span class="text-center"><%= plant.waterAmt %></span></li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Sun: </span><span class="text-center"><%= plant.sun %></span></li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Pot Size(cm): </span><span class="text-center"><%= plant.potSize %></span> </li>
+                            <li class="list-group-item card bg-dark text-light d-flex justify-content-between flex-column flex-md-row"><span>Area: </span><span class="text-center"><%= plant.area.name %></span></li>
                         </ul>
                     </div>
                 </div>
@@ -44,24 +44,53 @@
             <% if(diariesByPlant.length > 0) { %>
                 <h2>Diary Entries:</h2>
                 <% diariesByPlant.forEach(diary => {%>
-                    <div class="stardewBorder mb-2">
-                        <span><%= diary.diaryTitle %></span>
-                        <span><%= diary.diaryText %></span>
-                        <span><%= diary.diaryDate == null ? '' : diary.diaryDate.toISOString().split('T')[0] %></span>
-                        <span><%= diary.height %></span>
-                        <span><%= diary.sun %></span>
-                        <span><%= diary.potSize %></span>
-                        <span><%= diary.repotted %></span>
-                        <span><%= diary.fertilized %></span>
-                        <span><%= diary.pestTreated %></span>
-                        <span><%= diary.trauma %></span>
-                        <a href="/plants/<%= diary.id%>">
+                    <div class="stardewBorder mb-2 d-flex">
+                        <div id="diaryPicture" class="me-4 bg-dark d-flex justify-content-center stardewBorder">
                             <% if(diary.coverImagePath) {%>
-                                    <img src="<%= diary.coverImagePath %>" height="150" width="100" alt="cover">
-                                <%} else {%>
-                                    <i class="bi-tree"></i>
-                                <%} %>
-                        </a>
+                                <img src="<%= diary.coverImagePath %>">
+                            <%} else {%>
+                                <i class="bi-tree"></i>
+                            <%} %>
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-5">
+                            <div>
+                                <span><%= diary.diaryTitle %></span>
+                                <span><%= diary.diaryDate == null ? '' : diary.diaryDate.toISOString().split('T')[0] %></span>
+                                
+                                <% if(diary.diaryText) {%>
+                                    <span><%= diary.diaryText %></span>
+                                <%}%>
+                                <% if(diary.height) {%>
+                                    <span><%= diary.height %></span>
+                                <%}%>
+                                <% if(diary.height) {%>
+                                    <span><%= diary.sun %></span>
+                                <%}%>
+                                <% if(diary.height) {%>
+                                    <span><%= diary.potSize %></span>
+                                <%}%>
+                            </div>
+                            <div class="diaryIcons pb-2">
+                                <% if(diary.height) {%>
+                                    <img src="/assets/diary/height.png" alt="Height Change">
+                                <%}%>
+                                <% if(diary.sun) {%>
+                                    <img src="/assets/diary/sun.png" alt="Sun Change">
+                                <%}%>
+                                <% if(diary.repotted) {%>
+                                    <img src="/assets/diary/plant-pot.png" alt="Repotted">
+                                <%}%>
+                                <% if(diary.fertilized) {%>
+                                    <img src="/assets/diary/fertilizer.png" alt="Fertilized">
+                                <%}%>
+                                <% if(diary.pestsTreated) {%>
+                                    <img src="/assets/diary/spray.png" alt="Pests Treated">
+                                <%}%>
+                                <% if(diary.trauma) {%>
+                                    <img src="/assets/diary/band-aid.png" alt="Trauma">
+                                <%}%>
+                            </div>
+                        </div>
                     </div>
                 <% }) %>
             <% } %> 
@@ -100,7 +129,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="height" class="col-form-label">Height (cm):</label>
-                    <input disabled type="number" class="form-control" id="height" value="<%= plant.height %>">
+                    <input disabled type="number" class="form-control" id="height" placeholder="<%= plant.height %>">
                 </div>
                 <div class="mb-3 ">
                     <div class="form-check form-switch">
@@ -110,7 +139,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="waterInt" class="col-form-label">Interval (days):</label>
-                    <input disabled type="number" class="form-control" id="waterInt" value="<%= plant.waterInt %>">
+                    <input disabled type="number" class="form-control" id="waterInt" placeholder="<%= plant.waterInt %>">
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
@@ -120,7 +149,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="waterAmt" class="col-form-label">Water (cups):</label>
-                    <input disabled type="number" class="form-control" id="waterAmt" value="<%= plant.waterAmt %>">
+                    <input disabled type="number" class="form-control" id="waterAmt" placeholder="<%= plant.waterAmt %>">
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
@@ -164,19 +193,19 @@
             <fieldset>
                 <legend>Did any of the following happen:</legend>
                 <div class="form-check form-switch">
-                    <input type="checkbox" class="form-check-input" id="repotted">
+                    <input type="checkbox" class="form-check-input" name="repotted" value="yes" id="repotted">
                     <label for="repotted" class="form-check-label">Repotted</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input type="checkbox" class="form-check-input" id="fertilized">
+                    <input type="checkbox" class="form-check-input" name="fertilized" value="yes" id="fertilized">
                     <label for="fertilized" class="form-check-label">Fertilized</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input type="checkbox" class="form-check-input" id="pestsTreated">
+                    <input type="checkbox" class="form-check-input" value="yes" name="pestsTreated" id="pestsTreated">
                     <label for="pestsTreated" class="form-check-label">Pests Treated</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="trauma">
+                    <input class="form-check-input" type="checkbox" role="switch" value="yes" name="trauma" id="trauma">
                     <label for="trauma" class="form-check-label">Trauma</label>
                 </div>
             </fieldset>
