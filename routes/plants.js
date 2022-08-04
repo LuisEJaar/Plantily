@@ -92,11 +92,17 @@ router.get('/:id/edit', async (req,res) => {
     let plant
     try{
         plant = await Plant.findById(req.params.id)
-        plant.plantName = req.body.plantName
-        plant.area = req.body.area
-        plant.plantedDate = new Date(req.body.plantedDate)
-        plant.height = req.body.height
-        plant.description = req.body.description
+        plant.plantName = req.body.plantName,
+        plant.area= req.body.area,
+        plant.plantedDate= new Date(req.body.plantedDate), 
+        plant.type= req.body.type,
+        plant.height= req.body.height,
+        plant.sun= req.body.sun,
+        plant.potSize= req.body.potSize,
+        plant.waterInt= req.body.waterInt,
+        plant.waterAmt= req.body.waterAmt,
+        plant.pestStatus= req.body.pestStatus,
+        plant.description= req.body.description
         if(req.body.cover != null && req.body.cover !== ""){
             saveCover(plant, req.body.cover)
         }

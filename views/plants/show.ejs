@@ -82,13 +82,13 @@
             <input type="hidden" value="<%= plant.id%>" name="plant">
             <div class="mb-3">
             <label for="diaryTitle" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" id="diaryTitle" name="diaryTitle">
+            <input required type="text" class="form-control" id="diaryTitle" name="diaryTitle">
             </div>
                 <label class="col-md-2 col-form-label" for="diaryDate">Date:</label>
-                <input type="date" class="form-control" name="diaryDate">
+                <input required type="date" class="form-control" name="diaryDate">
             <div class="mb-3">
                 <label for="diaryText" class="col-form-label">Entry:</label>
-                <textarea class="form-control" id="diaryText"></textarea>
+                <textarea class="form-control" name="diaryText" id="diaryText"></textarea>
             </div>
             <fieldset>
                 <legend class="h1">Has anything Changed?</legend>
