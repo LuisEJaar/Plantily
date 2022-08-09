@@ -1,15 +1,26 @@
-<div class="container">
-    <h2><%= area.name %></h2>
-    <a href="/areas/<%= area.id%>/edit">edit</a>
-    <%- include('../partials/deleteform', 
-        {url: `areas/${area.id}`}
-    )%>
-    <% if(plantsByArea.length > 0) { %>
-        <h2>Plants By Area</h2>
-        <% plantsByArea.forEach(plant => {%>
-            <a href="/plants/<%= plant.id%>">
-                <img src="<%= plant.coverImagePath %>" height="150" width="100" alt="cover">
-            </a>
-        <% }) %>
-    <% } %> 
-</div>
+<div class="container d-flex flex-column pt-5">
+    <div class="p-3 align-self-center stardewBorder d-flex flex-column align-items-center ">
+        <h2><%= area.name %></h2>
+        <a class="btn btn-primary mb-3" href="/areas/<%= area.id%>/edit">edit</a>
+        <%- include('../partials/deleteform', 
+            {url: `areas/${area.id}`}
+        )%>
+    </div>
+    <div class="row g-4 mt-2">
+        <% if(plantsByArea.length > 0) { %>
+            <h2 class="stardewBorder"><%= area.name %> Plants</h2>
+            <% plantsByArea.forEach(plant => {%>
+                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
+                    <div class="card stardewBorder" style="width: 18rem; height: 13rem;"> 
+                        <a href="/plants/<%= plant.id %>">
+                            <img height="150px" width="auto" class="card-img-top" src="<%= plant.coverImagePath %>" alt="Card image cap">
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><%= plant.plantName %></h5>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %> 
+    </div>
+  </div>

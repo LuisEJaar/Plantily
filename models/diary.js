@@ -34,24 +34,44 @@ const diarySchema = new mongoose.Schema({
         type: Number,
         required: false
     },
-    pestStatus: {
-        type: Boolean,
+    pestsSighted: {
+        type: String,
         required: false
     },
     // Events (bool)
     repotted: {
-        type: Number,
+        type: String,
         required: false
     },
     fertilized: {
-        type: Boolean,
+        type: String,
         required: false
     },
-    pestTreated: {
+    pestsTreated: {
         type: String,
         required: false
     }, 
     trauma: {
+        type: String,
+        required: false
+    },
+    heightChange: {
+        type: String,
+        required: false
+    },
+    sunChange: {
+        type: String,
+        required: false
+    },
+    waterAmtChange: {
+        type: String,
+        required: false
+    },
+    waterIntChange: {
+        type: String,
+        required: false
+    },
+    potSizeChange: {
         type: String,
         required: false
     },
@@ -67,8 +87,10 @@ const diarySchema = new mongoose.Schema({
     coverImageType: {
         type: String,
     },
+    //Tying the diary entry to the plant
     plant: {
         type: mongoose.Schema.Types.ObjectId, 
+        required: true,
         ref: 'Plant'
     }
 })

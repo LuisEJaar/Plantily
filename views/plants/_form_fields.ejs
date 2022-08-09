@@ -4,7 +4,6 @@
             <label class="" for="plantName">Name:</label>
             <div>
                 <input type="text" class="form-control" name="plantName" value='<%= plant.plantName %>'>
-                <!-- <small id="emailHelp" class="form-text text-muted">Hello </small> -->
             </div>
         </div>
         <div class="form-group row justify-content-between">
@@ -37,7 +36,7 @@
         <div class="form-group row justify-content-between">
             <label for="sun" class="col-form-label">Sun:</label>
             <div class=" d-flex justify-content-center">
-                <select class="form-control" id="sun">
+                <select name="sun" class="form-control" id="sun">
                     <option value="full-sun">Full-sun</option>
                     <option value="light-shade">Light-shade</option>
                     <option value="partial-shade">Partial-shade</option>
@@ -72,8 +71,8 @@
         </div>
         <div class="form-group row justify-content-between">
             <div class="form-check form-switch d-flex justify-content-center">
-                <input type="checkbox" class="form-check-input" id="repotted">
-                <label for="repotted" class="form-check-label" value='<%= plant.pestStatus %>'>Pests:</label>
+                <input type="checkbox" class="form-check-input" name="pestStatus" id="pestStatus" value='yes'>
+                <label for="pestStatus" class="form-check-label" >Pests:</label>
             </div>
         </div>
     </div>

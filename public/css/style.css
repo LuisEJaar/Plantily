@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: stardew;
   src: url(../assets/Stardew_Valley.ttf);
@@ -24,16 +28,21 @@ input, select {
 
 .stardewForm, .stardewBorder {
   background-color: rgb(255, 213, 142);
-  font-family: stardew;
-  font-size: 2rem;
   font-weight: bold;
-  max-width: 90%;
   border: 5px double darkgoldenrod;
+}
+
+#plantProfile {
+  max-width: fit-content;
+}
+
+.stardewForm {
+  font-size: 2rem;
+  max-width: 90%;
 }
 
 .stardewBorder {
   font-size: 1.5rem;
-  max-width: 100%;
 }
 
 .rightInputs  {
@@ -69,4 +78,46 @@ input, select {
   max-height: 20em;
   max-width: 20em;
   overflow: hidden;
+}
+
+/* Plant Display Page */
+#plantPicture {
+  height: 300px;
+  width: 300px;
+}
+
+.spanM {
+  margin-left: 2rem;
+}
+
+#plantPicture > img, #diaryPicture > img {
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 75%;
+  min-height: 75%;
+  max-width:100%;
+  max-height:100%;  
+
+}
+
+#diaryPicture {
+  min-height: 150px;
+  max-height: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.diaryIcons img {
+  max-width: 25px;
+}
+
+.diaryIcons .col {
+  min-width: 35px;
+  padding: 0;
+}
+
+.diaryUpper {
+  border-bottom: 5px double darkgoldenrod;
 }
