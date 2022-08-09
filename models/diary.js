@@ -34,8 +34,8 @@ const diarySchema = new mongoose.Schema({
         type: Number,
         required: false
     },
-    pestStatus: {
-        type: Boolean,
+    pestsSighted: {
+        type: String,
         required: false
     },
     // Events (bool)
@@ -52,6 +52,26 @@ const diarySchema = new mongoose.Schema({
         required: false
     }, 
     trauma: {
+        type: String,
+        required: false
+    },
+    heightChange: {
+        type: String,
+        required: false
+    },
+    sunChange: {
+        type: String,
+        required: false
+    },
+    waterAmtChange: {
+        type: String,
+        required: false
+    },
+    waterIntChange: {
+        type: String,
+        required: false
+    },
+    potSizeChange: {
         type: String,
         required: false
     },

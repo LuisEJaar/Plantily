@@ -20,7 +20,13 @@ router.post('/', async (req,res) => {
         fertilized: req.body.fertilized,
         pestsTreated: req.body.pestsTreated,
         trauma: req.body.trauma,
-        plant: req.body.plant
+        plant: req.body.plant, 
+        heightChange: req.body.heightChange,
+        sunChange: req.body.sunChange,
+        waterAmtChange: req.body.waterAmtChange,
+        waterIntChange: req.body.waterIntChange, 
+        potSizeChange: req.body.potSizeChange,
+        pestsSighted: req.body.pestsSighted
     })
     if(req.body.cover) saveCover(diary, req.body.cover)
     try{

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: stardew;
   src: url(../assets/Stardew_Valley.ttf);
@@ -97,12 +101,18 @@ input, select {
 }
 
 #diaryPicture {
-  height: 150px;
-  width: 150px;
+  min-height: 150px;
+  max-height: 150px;
+  min-width: 150px;
+  max-width: 150px;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.diaryIcons > img{
-  max-width: 40px;
+.diaryIcons img {
+  max-width: 30px;
+}
+
+.diaryIcons .col {
+  min-width: 50px;
 }
