@@ -1,10 +1,10 @@
-# Plantly
-Planty is a project for the plant enthusiast in all of us. This project creates a Plant Tracker fullstack web project, it'll grow on ya. The idea being to have a one stop app where users can keep track of their plant babies with pictures and descriptions to see what practicing are making them really bloom or wilt. 
+# Plantily
+Plantily is a project for the plant enthusiast in all of us. This project creates a Plant Tracker fullstack web project, it'll grow on ya. The idea being to have a one stop app where users can keep track of their plant babies with pictures and descriptions to see what practicing are making them really bloom or wilt. 
 
-**Link to project:** tbd
+**Link to project:** https://plantily.herokuapp.com/
 
 <p align="center">
-<img align="center" src="/Media/plantlyintro.gif" alt="Plantly Demo" width="250" height="500" />
+<img align="center" src="/Media/plantilyintro.gif" alt="Plantily Demo" width="250" height="500" />
 </p>
 ## How It's Made:
 
