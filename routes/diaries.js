@@ -85,22 +85,15 @@ router.get('/:id/edit', async (req,res) => {
     }
 })
 
-//Delete plant page route
+//Delete diary route
 router.delete('/:id', async (req, res) => {
-    let plant
+    let diary
     try {
-        plant = await Plant.findById(req.params.id)
-        await plant.remove()
-        res.redirect('/plants')
+        diary = await Diary.findById(req.params.id)
+        await diary.remove()
+        res.redirect('back')
     } catch {
-        if (plant != null){
-            res.render('plants/show', {
-                plant: plant,
-                errorMessage: 'Could not remove plant'
-            })
-        } else {
-            res.redirect('/')
-        }
+        res.redirect('back')
     }
 })
 

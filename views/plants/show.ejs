@@ -39,40 +39,84 @@
         <h2 class="me-3">New Diary Entry:</h2>
         <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#diary"><i class="bi-plus-circle"></i></button>
     </div>
+    <div class="m-3 p-3 container diaryIcons row stardewBorder">
+        <div class="col-md-4">
+            <img src="/assets/diary/potSize.png" alt="Pot Size Change">
+            <span class="ms-1">Pot Size</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/pests.png" alt="Pests seen">
+            <span class="ms-1">Pests</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/water-drop.png" alt="Water Ammount Change">
+            <span class="ms-1">Water Amt</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/clock.png" alt="Water Interval Change">
+            <span class="ms-1">Water Int</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/height.png" alt="Height Change">
+            <span class="ms-1">Height</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/sun.png" alt="Sun Change">
+            <span class="ms-1">Sun</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/plant-pot.png" alt="Repotted">
+            <span class="ms-1">Repotted</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/fertilizer.png" alt="Fertilized">
+            <span class="ms-1">Fertilized</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/spray.png" alt="Pests Treated">
+            <span class="ms-1">Pests Treated</span>
+        </div>
+        <div class="col-md-4">
+            <img src="/assets/diary/band-aid.png" alt="Trauma">
+            <span class="ms-1">Trauma</span>
+        </div>
+    </div>
     <div class="container mt-4">  
         <% if(diariesByPlant.length > 0) { %>
             <h2>Diary Entries:</h2>
             <% diariesByPlant.forEach(diary => {%>
                 <div class="stardewBorder mb-5">
-                    <div class="mb-2 border d-flex">
-                        <div id="diaryPicture" class="me-4 bg-dark d-flex justify-content-center stardewBorder">
+                    <div class="mb-2 d-sm-flex justify-content-centerdiaryUpper pb-2">
+                        <div id="diaryPicture" class="ms-auto ms-sm-0 me-auto me-sm-0 bg-dark d-flex justify-content-center stardewBorder">
                             <% if(diary.coverImagePath) {%>
                                 <img src="<%= diary.coverImagePath %>">
                             <%} %>
                         </div>
-                        <div class="d-flex border flex-column justify-content-between ml-5">
+                        <div class="ms-4 d-flex flex-column justify-content-between ml-5">
                             <div class="diaryTextEntries">
-                                <div>
-                                    <span><%= diary.diaryTitle %></span>
-                                    <span><%= diary.diaryDate == null ? '' : diary.diaryDate.toISOString().split('T')[0] %></span>
+                                <div class="card-body">
+                                    <h5 class="h4">Title: <%= diary.diaryTitle %></h5>
+                                    <span class="h5">Date: <%= diary.diaryDate == null ? '' : diary.diaryDate.toISOString().split('T')[0] %></p>
                                 </div>
-                                <div class="d-flex flex-column">
-                                    <% if(diary.height) {%>
-                                        <span>Height: <%= diary.height %></span>
-                                    <%}%>
-                                    <% if(diary.sun) {%>
-                                        <span><%= diary.sun %></span>
-                                    <%}%>
-                                    <% if(diary.potSize) {%>
-                                        <span><%= diary.potSize %></span>
-                                    <%}%>
-                                    <% if(diary.diaryText) {%>
-                                        <span>Notes: <%= diary.diaryText %></span>
-                                    <%}%>
+                                <div class="d-flex flex-column mb-3">
+                                    <ul class="list-group list-group-flush h5">
+                                        <% if(diary.height) {%>
+                                            <span>Height: <%= diary.height %></span>
+                                        <%}%>
+                                        <% if(diary.sun) {%>
+                                            <span>Sun: <%= diary.sun %></span>
+                                        <%}%>
+                                        <% if(diary.potSize) {%>
+                                            <span>Pot Size: <%= diary.potSize %></span>
+                                        <%}%>
+                                        <% if(diary.diaryText) {%>
+                                            <span>Notes: <%= diary.diaryText %></span>
+                                        <%}%>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="ms-auto d-flex flex-column justify-content-around pe-1">
+                        <div class="ms-auto d-flex flex-sm-column justify-content-around pe-1">
                             <a class="btn btn-success btn-lg" href="/diaries/<%= diary.id %>/edit">Edit</a>
                             <%- include('../partials/deleteForm', { url: `/diaries/${diary.id}` })%>
                         </div>    
