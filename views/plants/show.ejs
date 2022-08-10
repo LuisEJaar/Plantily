@@ -2,13 +2,15 @@
     <div id="plantProfile" class="p-3 stardewBorder d-flex flex-column">
         <div class="d-md-flex">
             <div class="">
-                <div id="plantPicture" class="ms-4 ms-md-0 mb-3 card bg-dark stardewBorder">
-                    <img class="" src="<%= plant.coverImagePath %>" alt="plant cover">
+                <div id="plantPicAndName">
+                    <figure id="plantPicture" class="d-flex text-light flex-column ms-auto me-auto bg-dark stardewBorder">
+                        <img class="rounded-3 align-self-center" src="<%= plant.coverImagePath %>" alt="plant cover">
+                        <figcaption class="text-center"><%= plant.plantName %></figcaption>
+                    </figure>
                 </div>
                 <div class="d-flex flex-column justify-content-center">
-                    <span class="card-text text-center"><%= plant.plantName %></span>
                     <h5 class="card-title">Description:</h5>
-                    <p class="card-text"><%= plant.description %></p>
+                    <p class=""><%= plant.description %></p>
                 </div>
             </div>
             <section class="justify-content-center flex-row ms-3">
