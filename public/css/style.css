@@ -32,6 +32,11 @@ input, select {
   border: 5px double darkgoldenrod;
 }
 
+.borderOnly {
+  background-color: rgb(255, 213, 142);
+  border: 5px double darkgoldenrod;
+}
+
 #plantProfile {
   max-width: fit-content;
 }
@@ -120,4 +125,8 @@ input, select {
 
 .diaryUpper {
   border-bottom: 5px double darkgoldenrod;
+}
+
+.diaryLegend {
+  max-width: 700px;
 }
