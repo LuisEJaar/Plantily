@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Area = require('../models/area')
 const Plant = require('../models/plant')
-const {ensureAuth, ensureGuest} = require('../middleware/auth')
+const {ensureAuth} = require('../middleware/auth')
 
 //All areas Route
 router.get('/', ensureAuth, async (req,res) => {
-    let searchOptions = {}
+    let searchOptions = Area.find({user: req.user.id})
     if(req.query.name != null && req.query.name !== '') {
         searchOptions.name = new RegExp(req.query.name, 'i')
     } 
@@ -29,7 +29,8 @@ router.get('/new', ensureAuth, (req,res) => {
 //Create New Area route
 router.post('/', ensureAuth, async (req,res) => {
     const area = new Area({
-        name: req.body.name
+        name: req.body.name,
+        user: req.user.id
     })
     try {
         const newArea = await area.save()

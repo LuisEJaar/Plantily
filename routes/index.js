@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Plant = require('../models/plant')
-const {ensureAuth, ensureGuest} = require('../middleware/auth')
+const {ensureGuest} = require('../middleware/auth')
 
 router.get('/', async (req,res) => {
     let plants = {}

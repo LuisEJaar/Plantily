@@ -4,11 +4,11 @@ const Plant = require('../models/plant')
 const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
-const {ensureAuth, ensureGuest} = require('../middleware/auth')
+const {ensureAuth} = require('../middleware/auth')
 
 //Show all plants Route
 router.get('/', ensureAuth, async (req,res) => {
-    let query = Plant.find()
+    let query = Plant.find({user: req.user.id})
     if(req.query.plantName != null && req.query.plantName != ''){
         query = query.regex('plantName', new RegExp(req.query.plantName, 'i'))
     }
@@ -47,7 +47,8 @@ router.post('/', async (req,res) => {
         waterInt: req.body.waterInt,
         waterAmt: req.body.waterAmt,
         pestStatus: req.body.pestStatus,
-        description: req.body.description
+        description: req.body.description, 
+        user: req.user.id
     })
     if(req.body.cover != null && req.body.cover !== ""){
         saveCover(plant, req.body.cover)

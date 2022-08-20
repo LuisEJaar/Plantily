@@ -92,6 +92,12 @@ const diarySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         required: true,
         ref: 'Plant'
+    },
+    // Tying to a user: 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     }
 })
 

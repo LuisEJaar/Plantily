@@ -212,7 +212,7 @@
                 <legend class="h1">Has anything Changed?</legend>
                 <div class="mb-3 ">
                     <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="height-Change" name="heightChange" value="yes">
+                        <input type="checkbox" class="enabler form-check-input" id="height-Change" name="heightChange" value="yes">
                         <label for="height-Change" class="form-check-label">Height?</label>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="mb-3 ">
                     <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="waterInt-Change" name="waterIntChange" value="yes">
+                        <input type="checkbox" class="enabler form-check-input" id="waterInt-Change" name="waterIntChange" value="yes">
                         <label for="waterInt-Change" class="form-check-label">Watering Interval?</label>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="waterAmt-Change" name="waterAmtChange" value="yes">
+                        <input type="checkbox" class="enabler form-check-input" id="waterAmt-Change" name="waterAmtChange" value="yes">
                         <label for="waterAmt-Change" class="form-check-label">Watering Amt?</label>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="sun-Change" name="sunChange" value="yes">
+                        <input type="checkbox" class="enabler form-check-input" id="sun-Change" name="sunChange" value="yes">
                         <label for="sun-Change" class="form-check-label">Sun?</label>
                     </div>
                 </div>
@@ -259,24 +259,21 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="potSize-Change" name="potSizeChange" value="yes">
+                        <input type="checkbox" class="enabler form-check-input" id="potSize-Change" name="potSizeChange" value="yes">
                         <label for="potSize-Change" class="form-check-label">Pot Size?</label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="potSize" class="col-form-label">Pot size:</label>
                     <input disabled type="number" class="form-control" id="potSize" value="<%= plant.potSize %>">
-                </div>
-                <div class="mb-3">
-                    <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="pestStatus-Change" name="pestsSighted" value="yes">
-                        <label for="pestStatus-Change" class="form-check-label">Pests Sighted?</label>
-                    </div>
-                </div>
-                
+                </div> 
             </fieldset>
             <fieldset>
                 <legend>Did any of the following happen:</legend>
+                <div class="form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="pestStatus-Change" name="pestsSighted" value="yes">
+                    <label for="pestStatus-Change" class="form-check-label">Pests Sighted</label>
+                </div>
                 <div class="form-check form-switch">
                     <input type="checkbox" class="form-check-input" name="repotted" value="yes" id="repotted">
                     <label for="repotted" class="form-check-label">Repotted</label>
