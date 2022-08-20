@@ -4,7 +4,7 @@ const Plant = require('../models/plant')
 const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
-const {ensureAuth, ensureGuest} = require('../middleware/auth')
+const {ensureAuth} = require('../middleware/auth')
 
 //Create New diary route
 router.post('/', ensureAuth,  async (req,res) => {
