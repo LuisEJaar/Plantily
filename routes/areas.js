@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const Area = require('../models/area')
 const Plant = require('../models/plant')
+const {ensureAuth, ensureGuest} = require('../middleware/auth')
 
 //All areas Route
-router.get('/', async (req,res) => {
+router.get('/', ensureAuth, async (req,res) => {
     let searchOptions = {}
     if(req.query.name != null && req.query.name !== '') {
         searchOptions.name = new RegExp(req.query.name, 'i')
@@ -18,16 +19,15 @@ router.get('/', async (req,res) => {
     } catch {
         res.redirect('/')
     }
-    
 })
 
 //Show new area form Route
-router.get('/new', (req,res) => {
+router.get('/new', ensureAuth, (req,res) => {
     res.render('areas/new', {area: new Area()})
 })
 
 //Create New Area route
-router.post('/', async (req,res) => {
+router.post('/', ensureAuth, async (req,res) => {
     const area = new Area({
         name: req.body.name
     })
@@ -43,7 +43,7 @@ router.post('/', async (req,res) => {
 })
 
 //Individual Area Page
-router.get('/:id', async (req,res)=> {
+router.get('/:id', ensureAuth, async (req,res)=> {
     try {
         const area = await Area.findById(req.params.id)
         const plants = await Plant.find({area: area.id}).limit(6).exec()
@@ -58,7 +58,7 @@ router.get('/:id', async (req,res)=> {
 })
 
 //Edit Area Page
-router.get('/:id/edit', async (req, res)=> {
+router.get('/:id/edit', ensureAuth, async (req, res)=> {
     try {
         const area = await Area.findById(req.params.id)
         res.render('areas/edit', {area: area})
@@ -68,7 +68,7 @@ router.get('/:id/edit', async (req, res)=> {
 })
 
 //Update Area Page
-router.put('/:id', async (req,res)=> {
+router.put('/:id', ensureAuth, async (req,res)=> {
     let area
     try {
         area = await Area.findById(req.params.id)
@@ -87,7 +87,7 @@ router.put('/:id', async (req,res)=> {
     }
 })
 
-router.delete('/:id', async (req, res)=>{
+router.delete('/:id', ensureAuth, async (req, res)=>{
     let area
     try {
         area = await Area.findById(req.params.id)
