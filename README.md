@@ -28,14 +28,23 @@ Currently only run on local machine.
     - [x] Diary Page Load
     - [ ] Diary Page Functionality
         - [ ] Edit Diary Entries
-        - [ ] Delete Diary Entries
+        - [x] Delete Diary Entries
+- [ ] Increase robustness of areas
+    - [ ] Improve Aesthetics of individual area show page
+    - [ ] Add description to areas
 - [ ] Build EDU Page
+    - [ ] Decide to import or create blog page for edu
 - [ ] Build Contact Functions
 - [ ] Build Calendar Function
-- [ ] Host api on heroku
+- [x] Host on heroku
+
 
 ## Optimizations
-- [ ] Learn how to host / associate images properly with plant profile and diary objects
+- [x] Learn how to host / associate images properly with plant profile and diary objects
+- [x] Incorporate Oauth
+    - [x] Require users to login past landing page
+    - [x] Tie plants to users
+    - [x] Tie areas to users
 
 ## Lessons Learned
 - Practice with Node.js / Express
