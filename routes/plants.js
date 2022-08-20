@@ -4,9 +4,10 @@ const Plant = require('../models/plant')
 const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
+const {ensureAuth, ensureGuest} = require('../middleware/auth')
 
 //Show all plants Route
-router.get('/', async (req,res) => {
+router.get('/', ensureAuth, async (req,res) => {
     let query = Plant.find()
     if(req.query.plantName != null && req.query.plantName != ''){
         query = query.regex('plantName', new RegExp(req.query.plantName, 'i'))
@@ -29,7 +30,7 @@ router.get('/', async (req,res) => {
 })
 
 //Show new plant form / page Route
-router.get('/new', async (req,res) => {
+router.get('/new', ensureAuth, async (req,res) => {
    renderNewPage(res, new Plant())
 })
 
@@ -61,7 +62,7 @@ router.post('/', async (req,res) => {
 })
 
 //Show Individual plant page route
-router.get('/:id', async (req,res) => {
+router.get('/:id', ensureAuth, async (req,res) => {
     try {
         const plant = await Plant.findById(req.params.id)
                                     .populate('area')
@@ -78,7 +79,7 @@ router.get('/:id', async (req,res) => {
 })
 
 // Edit plant page route
-router.get('/:id/edit', async (req,res) => {
+router.get('/:id/edit', ensureAuth, async (req,res) => {
     try {
         const plant = await Plant.findById(req.params.id)
         renderEditPage(res, plant)
@@ -88,7 +89,7 @@ router.get('/:id/edit', async (req,res) => {
  })
 
  //Update plant route
- router.put('/:id', async (req,res) => {
+ router.put('/:id', ensureAuth, async (req,res) => {
     let plant
     try{
         plant = await Plant.findById(req.params.id)
@@ -119,7 +120,7 @@ router.get('/:id/edit', async (req,res) => {
 })
 
 //Delete plant page route
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', ensureAuth, async (req, res) => {
     let plant
     try {
         plant = await Plant.findById(req.params.id)

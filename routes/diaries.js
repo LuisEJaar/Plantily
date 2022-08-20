@@ -4,9 +4,10 @@ const Plant = require('../models/plant')
 const Area = require('../models/area')
 const Diary = require('../models/diary')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
+const {ensureAuth, ensureGuest} = require('../middleware/auth')
 
 //Create New diary route
-router.post('/', async (req,res) => {
+router.post('/', ensureAuth,  async (req,res) => {
     const diary = new Diary ({
         diaryTitle: req.body.diaryTitle,
         diaryText: req.body.diaryText,
@@ -39,7 +40,7 @@ router.post('/', async (req,res) => {
 })
 
 //Show Individual plant page route
-router.get('/:id', async (req,res) => {
+router.get('/:id', ensureAuth,  async (req,res) => {
     try {
         const plant = await Plant.findById(req.params.id)
                                     .populate('area')
@@ -51,7 +52,7 @@ router.get('/:id', async (req,res) => {
 })
 
 // Edit plant page route
-router.get('/:id/edit', async (req,res) => {
+router.get('/:id/edit', ensureAuth,  async (req,res) => {
     try {
         const plant = await Plant.findById(req.params.id)
         renderEditPage(res, plant)
@@ -61,7 +62,7 @@ router.get('/:id/edit', async (req,res) => {
  })
 
  //Update diary route
- router.put('/:id', async (req,res) => {
+ router.put('/:id', ensureAuth,  async (req,res) => {
     let plant
     try{
         plant = await Plant.findById(req.params.id)
@@ -86,7 +87,7 @@ router.get('/:id/edit', async (req,res) => {
 })
 
 //Delete diary route
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', ensureAuth,  async (req, res) => {
     let diary
     try {
         diary = await Diary.findById(req.params.id)
