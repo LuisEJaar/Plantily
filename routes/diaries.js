@@ -27,7 +27,8 @@ router.post('/', ensureAuth,  async (req,res) => {
         waterAmtChange: req.body.waterAmtChange,
         waterIntChange: req.body.waterIntChange, 
         potSizeChange: req.body.potSizeChange,
-        pestsSighted: req.body.pestsSighted
+        pestsSighted: req.body.pestsSighted, 
+        user: req.user.id
     })
     if(req.body.cover) saveCover(diary, req.body.cover)
     try{
@@ -39,52 +40,41 @@ router.post('/', ensureAuth,  async (req,res) => {
     }
 })
 
-//Show Individual plant page route
-router.get('/:id', ensureAuth,  async (req,res) => {
-    try {
-        const plant = await Plant.findById(req.params.id)
-                                    .populate('area')
-                                    .exec()
-        res.render('plants/show', {plant: plant})
-    } catch {
-        res.redirect('/')
-    }
-})
 
-// Edit plant page route
-router.get('/:id/edit', ensureAuth,  async (req,res) => {
-    try {
-        const plant = await Plant.findById(req.params.id)
-        renderEditPage(res, plant)
-    } catch {
-        res.redirect('/')
-    }
- })
+// Edit plant diary page route tbd
+// router.get('/:id/edit', ensureAuth,  async (req,res) => {
+//     try {
+//         const plant = await Plant.findById(req.params.id)
+//         renderEditPage(res, plant)
+//     } catch {
+//         res.redirect('/')
+//     }
+//  })
 
- //Update diary route
- router.put('/:id', ensureAuth,  async (req,res) => {
-    let plant
-    try{
-        plant = await Plant.findById(req.params.id)
-        plant.plantName = req.body.plantName
-        plant.area = req.body.area
-        plant.plantedDate = new Date(req.body.plantedDate.split("T")[0])
-        plant.height = req.body.height
-        plant.description = req.body.description
-        if(req.body.cover != null && req.body.cover !== ""){
-            saveCover(plant, req.body.cover)
-        }
-        await plant.save()
-        res.redirect(`/plants/${plant.id}`)
-    } catch (err){
-        console.log(err)
-        if (plant != null) {
-            renderEditPage(res, plant, true)
-        } else {
-            res.redirect('/')
-        }
-    }
-})
+ //Update diary route 
+//  router.put('/:id', ensureAuth,  async (req,res) => {
+//     let plant
+//     try{
+//         plant = await Plant.findById(req.params.id)
+//         plant.plantName = req.body.plantName
+//         plant.area = req.body.area
+//         plant.plantedDate = new Date(req.body.plantedDate.split("T")[0])
+//         plant.height = req.body.height
+//         plant.description = req.body.description
+//         if(req.body.cover != null && req.body.cover !== ""){
+//             saveCover(plant, req.body.cover)
+//         }
+//         await plant.save()
+//         res.redirect(`/plants/${plant.id}`)
+//     } catch (err){
+//         console.log(err)
+//         if (plant != null) {
+//             renderEditPage(res, plant, true)
+//         } else {
+//             res.redirect('/')
+//         }
+//     }
+// })
 
 //Delete diary route
 router.delete('/:id', ensureAuth,  async (req, res) => {
@@ -98,13 +88,13 @@ router.delete('/:id', ensureAuth,  async (req, res) => {
     }
 })
 
-async function renderNewPage (res, plant, hasError = false) {
-    renderFormPage(res, plant, 'new', hasError)
-}
+// async function renderNewPage (res, plant, hasError = false) {
+//     renderFormPage(res, plant, 'new', hasError)
+// }
 
-async function renderEditPage (res, plant, hasError = false) {
-   renderFormPage(res, plant, 'edit', hasError)
-}
+// async function renderEditPage (res, plant, hasError = false) {
+//    renderFormPage(res, plant, 'edit', hasError)
+// }
 
 async function renderFormPage (res, plant, form, hasError = false) {
     try {

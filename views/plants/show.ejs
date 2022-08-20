@@ -266,17 +266,14 @@
                 <div class="mb-3">
                     <label for="potSize" class="col-form-label">Pot size:</label>
                     <input disabled type="number" class="form-control" id="potSize" value="<%= plant.potSize %>">
-                </div>
-                <div class="mb-3">
-                    <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input" id="pestStatus-Change" name="pestsSighted" value="yes">
-                        <label for="pestStatus-Change" class="form-check-label">Pests Sighted?</label>
-                    </div>
-                </div>
-                
+                </div> 
             </fieldset>
             <fieldset>
                 <legend>Did any of the following happen:</legend>
+                <div class="form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="pestStatus-Change" name="pestsSighted" value="yes">
+                    <label for="pestStatus-Change" class="form-check-label">Pests Sighted</label>
+                </div>
                 <div class="form-check form-switch">
                     <input type="checkbox" class="form-check-input" name="repotted" value="yes" id="repotted">
                     <label for="repotted" class="form-check-label">Repotted</label>

@@ -60,6 +60,12 @@ const plantSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         required: true,
         ref: 'Area'
+    }, 
+    // Tying to a user: 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     }
 })
 
