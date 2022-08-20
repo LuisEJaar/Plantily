@@ -133,3 +133,7 @@ input, select {
 .diaryLegend {
   max-width: 700px;
 }
+
+.plantDisplay {
+  object-fit: cover;
+}
