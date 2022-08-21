@@ -1,5 +1,5 @@
 <div class="container indexTop">
-    <div id="searchArea" class="stardewBorder p-3" >
+    <div id="searchArea" class="stardewBorder p-3 rounded-4" >
         <h2>Search Areas</h2>
         <form action="/areas" method="GET">
             <label>Name</label>
@@ -9,13 +9,15 @@
     </div>
     <br>
     <% areas.forEach(area => {%>
-        <div id="areaIndex" class="p-3 mt-4 container stardewBorder d-flex justify-content-between">
-            <div><%= area.name %></div>
-            <a class="btn btn-success" href="/areas/<%= area.id %>">View</a>
-            <a class="btn btn-warning" href="/areas/<%= area.id %>/edit">Edit</a>
-            <%- include('../partials/deleteForm', 
-                {url: `/areas/${area.id}`})
-            %> 
+        <div id="areaIndex" class="p-3 rounded-3 mt-4 container stardewBorder d-flex flex-column flex-md-row justify-content-between">
+            <div class="text-center mb-3 mb-md-0"><%= area.name %></div>
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-success btn-lg me-md-3" href="/areas/<%= area.id %>">View</a>
+                <a class="btn btn-warning btn-lg me-md-3" href="/areas/<%= area.id %>/edit">Edit</a>
+                <%- include('../partials/deleteForm', 
+                    {url: `/areas/${area.id}`})
+                %> 
+            </div>
         </div>
     <% }) %>
 </div>

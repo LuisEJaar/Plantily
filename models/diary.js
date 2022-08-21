@@ -14,7 +14,7 @@ const diarySchema = new mongoose.Schema({
         required: true
     }, 
     height: {
-        type: Date,
+        type: Number,
         required: false
     }, 
     // Descriptive (string)
@@ -34,11 +34,11 @@ const diarySchema = new mongoose.Schema({
         type: Number,
         required: false
     },
+    // Events (bool as string)
     pestsSighted: {
         type: String,
         required: false
     },
-    // Events (bool)
     repotted: {
         type: String,
         required: false
