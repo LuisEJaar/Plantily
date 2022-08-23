@@ -3,14 +3,19 @@ if(process.env.NODE_ENV !== 'production'){
     dotenv.config({path:__dirname+'/.env'});
 }
 
+
 const express = require("express")
 const app = express()
+const favicon = require('serve-favicon');
 const expressLayouts = require('express-ejs-layouts')
+
+// Import Routers
 const indexRouter = require('./routes/index')
 const areaRouter = require('./routes/areas')
 const plantRouter = require('./routes/plants')
 const diaryRouter = require('./routes/diaries')
 const authRouter = require('./routes/auth')
+
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
@@ -23,6 +28,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 app.use(methodOverride('_method'))
 app.use(express.static(__dirname + '/public'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')))
 
 //What we're using for passwords
 const passport = require('passport')
@@ -89,6 +95,7 @@ app.use(function (req, res, next) {
   next()
 })
 
+// UsingRouters
 app.use('/', indexRouter)
 app.use('/areas', areaRouter)
 app.use('/plants', plantRouter)
