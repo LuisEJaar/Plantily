@@ -29,4 +29,5 @@ areaSchema.pre('remove', function(next) {
         }
     })
 })
+
 module.exports = mongoose.model('Area', areaSchema)
