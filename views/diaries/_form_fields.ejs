@@ -1,13 +1,13 @@
 <input type="hidden" value="<%= plant.id%>" name="plant">
 <div class="mb-3">
 <label for="diaryTitle" class="col-form-label">Title:</label>
-<input required type="text" class="form-control" id="diaryTitle" name="diaryTitle">
+<input required type="text" class="form-control" id="diaryTitle" name="diaryTitle" value="<%= (diary) ? diary.diaryTitle : ""%>">
 </div>
     <label class="col-md-2 col-form-label" for="diaryDate">Date:</label>
-    <input required type="date" class="form-control" name="diaryDate">
+    <input required type="date" class="form-control" name="diaryDate" value="<%= (diary) ? diary.diaryDate.toISOString().split('T')[0] : "" %>">
 <div class="mb-3">
     <label for="diaryText" class="col-form-label">Entry:</label>
-    <textarea class="form-control" name="diaryText" id="diaryText"></textarea>
+    <textarea class="form-control" name="diaryText" id="diaryText"><%= (diary) ? diary.diaryText : ""%></textarea>
 </div>
 <fieldset>
     <legend class="h1">Has anything Changed?</legend>
@@ -19,7 +19,7 @@
     </div>
     <div class="mb-3">
         <label for="height" class="col-form-label">Height (cm):</label>
-        <input disabled type="number" class="form-control" id="height" name="height" value="<%= plant.height %>">
+        <input disabled type="number" class="form-control" id="height" name="height" value="<%= (diary) ? diary.height : plant.height%>">
     </div>
     <div class="mb-3 ">
         <div class="form-check form-switch">
@@ -29,7 +29,7 @@
     </div>
     <div class="mb-3">
         <label for="waterInt" class="col-form-label">Interval (days):</label>
-        <input disabled type="number" class="form-control" id="waterInt" name="waterInt" value="<%= plant.waterInt %>">
+        <input disabled type="number" class="form-control" id="waterInt" name="waterInt" value="<%= (diary) ? diary.waterInt : plant.waterInt%>">
     </div>
     <div class="mb-3">
         <div class="form-check form-switch">
@@ -39,7 +39,7 @@
     </div>
     <div class="mb-3">
         <label for="waterAmt" class="col-form-label">Water (cups):</label>
-        <input disabled type="number" class="form-control" id="waterAmt" name="waterAmt" value="<%= plant.waterAmt %>">
+        <input disabled type="number" class="form-control" id="waterAmt" name="waterAmt" value="<%= (diary) ? diary.waterAmt : plant.waterAmt%>">
     </div>
     <div class="mb-3">
         <div class="form-check form-switch">
@@ -49,7 +49,7 @@
     </div>
     <div class="mb-3">
         <label for="sun" class="col-form-label">Sun:</label>
-        <select disabled class="form-control" id="sun" name="sun" value="<%= plant.sun %>">
+        <select disabled class="form-control" id="sun" name="sun" value="<%= (diary) ? diary.sun : plant.sun%>">
             <option value="N/A">N/A</option>
             <option value="full-sun">Full-sun</option>
             <option value="light-shade">Light-shade</option>
@@ -66,7 +66,7 @@
     </div>
     <div class="mb-3">
         <label for="potSize" class="col-form-label">Pot size:</label>
-        <input disabled type="number" class="form-control" id="potSize" name="potSize" value="<%= plant.potSize %>">
+        <input disabled type="number" class="form-control" id="potSize" name="potSize" value="<%= (diary) ? diary.potSize : plant.potSize%>">
     </div> 
 </fieldset>
 <fieldset>

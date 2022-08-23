@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="ms-auto d-flex flex-sm-column justify-content-around pe-3">
-                            <!-- <a class="btn btn-success btn-lg" href="/diaries/<%= diary.id %>/edit">Edit</a> -->
+                            <a class="btn btn-success btn-lg" href="/diaries/<%= plant.id %>/<%= diary.id %>/edit">Edit</a>
                             <%- include('../partials/deleteForm', { url: `/diaries/${diary.id}` })%>
                         </div>    
                     </div>

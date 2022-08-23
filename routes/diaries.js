@@ -41,15 +41,23 @@ router.post('/', ensureAuth,  async (req,res) => {
 })
 
 
-// Edit plant diary page route tbd
-// router.get('/:id/edit', ensureAuth,  async (req,res) => {
-//     try {
-//         const plant = await Plant.findById(req.params.id)
-//         renderEditPage(res, plant)
-//     } catch {
-//         res.redirect('/')
-//     }
-//  })
+// Edit plant diary page route
+router.get('/:plantid/:diaryid/edit', ensureAuth,  async (req,res) => {
+    try {
+        const plant = await Plant.findById(req.params.plantid)
+        const diary = await Diary.findById(req.params.diaryid)
+        const areas = await Area.find({})
+        const params = {
+            areas: areas,
+            plant: plant, 
+            diary: diary
+        }
+        res.render(`diaries/edit`, params)
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+ })
 
  //Update diary route 
 //  router.put('/:id', ensureAuth,  async (req,res) => {
@@ -87,34 +95,6 @@ router.delete('/:id', ensureAuth,  async (req, res) => {
         res.redirect('back')
     }
 })
-
-// async function renderNewPage (res, plant, hasError = false) {
-//     renderFormPage(res, plant, 'new', hasError)
-// }
-
-// async function renderEditPage (res, plant, hasError = false) {
-//    renderFormPage(res, plant, 'edit', hasError)
-// }
-
-async function renderFormPage (res, plant, form, hasError = false) {
-    try {
-        const areas = await Area.find({})
-        const params = {
-            areas: areas,
-            plant: plant
-        }
-        if(hasError) {
-            if (form === 'edit') {
-                params.errorMessage = `Error Updating Plant`
-            } else {
-                params.errorMessage = `Error Creating Plant`
-            }
-        }
-        res.render(`plants/${form}`, params)
-    } catch {
-        res.redirect('/plants')
-    }
-}
 
 function saveCover(diary, coverEncoded){
     if(coverEncoded == null) return 

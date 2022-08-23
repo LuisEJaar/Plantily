@@ -64,6 +64,7 @@ router.post('/', async (req,res) => {
 
 //Show Individual plant page route
 router.get('/:id', ensureAuth, async (req,res) => {
+    let diary
     try {
         const plant = await Plant.findById(req.params.id)
                                     .populate('area')
@@ -71,8 +72,10 @@ router.get('/:id', ensureAuth, async (req,res) => {
         const diaries = await Diary.find({plant: plant.id}).exec()
             res.render('plants/show', {
             plant: plant,
-            diariesByPlant: diaries
-        })
+            diariesByPlant: diaries, 
+            diary
+        } 
+        )
     } catch (err){
         console.log(err)
         res.redirect('/')
