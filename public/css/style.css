@@ -143,3 +143,7 @@ input, select {
 .plantDisplay {
   object-fit: cover;
 }
+
+title {
+  border-radius: 2px;
+}

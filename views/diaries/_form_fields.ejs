@@ -13,43 +13,67 @@
     <legend class="h1">Has anything Changed?</legend>
     <div class="mb-3 ">
         <div class="form-check form-switch">
-            <input type="checkbox" class="enabler form-check-input" id="height-Change" name="heightChange" value="yes">
+            <input 
+                <%if (diary) { %>
+                    <%if (diary.heightChange === "yes") { %>
+                        checked
+                    <% } %>
+                <% } %>
+                type="checkbox" class="enabler form-check-input" id="height-Change" name="heightChange" value="yes">
             <label for="height-Change" class="form-check-label">Height?</label>
         </div>
     </div>
     <div class="mb-3">
         <label for="height" class="col-form-label">Height (cm):</label>
-        <input disabled type="number" class="form-control" id="height" name="height" value="<%= (diary) ? diary.height : plant.height%>">
+        <input disabled type="number" class="form-control" id="height" name="height" value="<%= (diary) ? ((diary.height) ? diary.height : plant.height) : plant.height%>">
     </div>
     <div class="mb-3 ">
         <div class="form-check form-switch">
-            <input type="checkbox" class="enabler form-check-input" id="waterInt-Change" name="waterIntChange" value="yes">
+            <input 
+                <%if (diary) { %>
+                    <%if (diary.waterIntChange === "yes") { %>
+                        checked
+                    <% } %>
+                <% } %>
+                type="checkbox" class="enabler form-check-input" id="waterInt-Change" name="waterIntChange" value="yes">
             <label for="waterInt-Change" class="form-check-label">Watering Interval?</label>
         </div>
     </div>
     <div class="mb-3">
         <label for="waterInt" class="col-form-label">Interval (days):</label>
-        <input disabled type="number" class="form-control" id="waterInt" name="waterInt" value="<%= (diary) ? diary.waterInt : plant.waterInt%>">
+        <input disabled type="number" class="form-control" id="waterInt" name="waterInt" value="<%= (diary) ? ((diary.waterInt) ? diary.waterInt : plant.waterInt) : plant.waterInt%>">
     </div>
     <div class="mb-3">
         <div class="form-check form-switch">
-            <input type="checkbox" class="enabler form-check-input" id="waterAmt-Change" name="waterAmtChange" value="yes">
+            <input 
+                <%if (diary) { %>
+                    <%if (diary.waterAmtChange === "yes") { %>
+                        checked
+                    <% } %>
+                <% } %>
+                type="checkbox" class="enabler form-check-input" id="waterAmt-Change" name="waterAmtChange" value="yes">
             <label for="waterAmt-Change" class="form-check-label">Watering Amt?</label>
         </div>
     </div>
     <div class="mb-3">
         <label for="waterAmt" class="col-form-label">Water (cups):</label>
-        <input disabled type="number" class="form-control" id="waterAmt" name="waterAmt" value="<%= (diary) ? diary.waterAmt : plant.waterAmt%>">
+        <input disabled type="number" class="form-control" id="waterAmt" name="waterAmt" value="<%= (diary) ? ((diary.waterAmt) ? diary.waterAmt : plant.waterAmt) : plant.waterAmt%>">
     </div>
     <div class="mb-3">
         <div class="form-check form-switch">
-            <input type="checkbox" class="enabler form-check-input" id="sun-Change" name="sunChange" value="yes">
+            <input 
+                <%if (diary) { %>
+                    <%if (diary.sunChange === "yes") { %>
+                        checked
+                    <% } %>
+                <% } %>
+                type="checkbox" class="enabler form-check-input" id="sun-Change" name="sunChange" value="yes">
             <label for="sun-Change" class="form-check-label">Sun?</label>
         </div>
     </div>
     <div class="mb-3">
         <label for="sun" class="col-form-label">Sun:</label>
-        <select disabled class="form-control" id="sun" name="sun" value="<%= (diary) ? diary.sun : plant.sun%>">
+        <select disabled class="form-control" id="sun" name="sun" value="<%= (diary) ? ((diary.sun) ? diary.sun : plant.sun) : plant.sun%>">
             <option value="N/A">N/A</option>
             <option value="full-sun">Full-sun</option>
             <option value="light-shade">Light-shade</option>
@@ -60,35 +84,71 @@
     </div>
     <div class="mb-3">
         <div class="form-check form-switch">
-            <input type="checkbox" class="enabler form-check-input" id="potSize-Change" name="potSizeChange" value="yes">
+            <input 
+                <%if (diary) { %>
+                    <%if (diary.potSizeChange === "yes") { %>
+                        checked
+                    <% } %>
+                <% } %>
+                type="checkbox" class="enabler form-check-input" id="potSize-Change" name="potSizeChange" value="yes">
             <label for="potSize-Change" class="form-check-label">Pot Size?</label>
         </div>
     </div>
     <div class="mb-3">
         <label for="potSize" class="col-form-label">Pot size:</label>
-        <input disabled type="number" class="form-control" id="potSize" name="potSize" value="<%= (diary) ? diary.potSize : plant.potSize%>">
+        <input disabled type="number" class="form-control" id="potSize" name="potSize" value="<%= (diary) ? ((diary.potSize) ? diary.potSize : plant.potSize) : plant.potSize%>">
     </div> 
 </fieldset>
 <fieldset>
     <legend>Did any of the following happen:</legend>
     <div class="form-check form-switch">
-        <input type="checkbox" class="form-check-input" id="pestStatus-Change" name="pestsSighted" value="yes">
+        <input 
+            <%if (diary) { %>
+                <%if (diary.pestsSighted === "yes") { %>
+                    checked
+                <% } %>
+            <% } %>
+            type="checkbox" class="form-check-input" id="pestStatus-Change" name="pestsSighted" value="yes">
         <label for="pestStatus-Change" class="form-check-label">Pests Sighted</label>
     </div>
     <div class="form-check form-switch">
-        <input type="checkbox" class="form-check-input" name="repotted" value="yes" id="repotted">
+        <input 
+            <%if (diary) { %>
+                <%if (diary.repotted === "yes") { %>
+                    checked
+                <% } %>
+            <% } %>
+            type="checkbox" class="form-check-input" name="repotted" value="yes" id="repotted">
         <label for="repotted" class="form-check-label">Repotted</label>
     </div>
     <div class="form-check form-switch">
-        <input type="checkbox" class="form-check-input" name="fertilized" value="yes" id="fertilized">
+        <input
+            <%if (diary) { %>
+                <%if (diary.fertilized === "yes") { %>
+                    checked
+                <% } %>
+            <% } %>
+            type="checkbox" class="form-check-input" name="fertilized" value="yes" id="fertilized">
         <label for="fertilized" class="form-check-label">Fertilized</label>
     </div>
     <div class="form-check form-switch">
-        <input type="checkbox" class="form-check-input" value="yes" name="pestsTreated" id="pestsTreated">
+        <input 
+            <%if (diary) { %>
+                <%if (diary.pestsTreated === "yes") { %>
+                    checked
+                <% } %>
+            <% } %>
+            type="checkbox" class="form-check-input" value="yes" name="pestsTreated" id="pestsTreated">
         <label for="pestsTreated" class="form-check-label">Pests Treated</label>
     </div>
     <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" value="yes" name="trauma" id="trauma">
+        <input 
+            <%if (diary) { %>
+                <%if (diary.trauma === "yes") { %>
+                    checked
+                <% } %>
+            <% } %>
+            class="form-check-input" type="checkbox" role="switch" value="yes" name="trauma" id="trauma">
         <label for="trauma" class="form-check-label">Trauma</label>
     </div>
 </fieldset>
