@@ -28,10 +28,10 @@ Currently only run on local machine.
     - [x] Diary buttons for each plant
     - [x] Diary Page Load
         - [x] Added titles to diary event indicators
-    - [ ] Diary Page Functionality
-        - [ ] Edit Diary Entries
+    - [x] Diary Page Functionality
+        - [x] Edit Diary Entries
             - [x] Edit diary page route
-            - [ ] Edit diary data route
+            - [x] Edit diary data route
         - [x] Delete Diary Entries
 - [ ] Increase robustness of areas
     - [ ] Improve Aesthetics of individual area show page
@@ -45,10 +45,12 @@ Currently only run on local machine.
 
 ## Optimizations
 - [x] Learn how to host / associate images properly with plant profile and diary objects
+    - [x] Accomplished via filepond 
 - [x] Incorporate Oauth
     - [x] Require users to login past landing page
     - [x] Tie plants to users
     - [x] Tie areas to users
+- [ ] Diary entries to modify plants as well when applicable
 
 ## Lessons Learned
 - Practice with Node.js / Express
