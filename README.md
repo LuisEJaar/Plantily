@@ -16,6 +16,7 @@ Currently only run on local machine.
 ## Roadmap
 
 - [x] Build out Initial Page
+    - [x] Added favicon
 - [x] Build out multiple pages and progress page
 - [x] Incorporate ejs partials
 - [x] Build initial server functionality
@@ -26,8 +27,11 @@ Currently only run on local machine.
 - [x] Build Diary Workflow
     - [x] Diary buttons for each plant
     - [x] Diary Page Load
+        - [x] Added titles to diary event indicators
     - [ ] Diary Page Functionality
         - [ ] Edit Diary Entries
+            - [x] Edit diary page route
+            - [ ] Edit diary data route
         - [x] Delete Diary Entries
 - [ ] Increase robustness of areas
     - [ ] Improve Aesthetics of individual area show page

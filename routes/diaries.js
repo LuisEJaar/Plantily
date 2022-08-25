@@ -60,29 +60,39 @@ router.get('/:plantid/:diaryid/edit', ensureAuth,  async (req,res) => {
  })
 
  //Update diary route 
-//  router.put('/:id', ensureAuth,  async (req,res) => {
-//     let plant
-//     try{
-//         plant = await Plant.findById(req.params.id)
-//         plant.plantName = req.body.plantName
-//         plant.area = req.body.area
-//         plant.plantedDate = new Date(req.body.plantedDate.split("T")[0])
-//         plant.height = req.body.height
-//         plant.description = req.body.description
-//         if(req.body.cover != null && req.body.cover !== ""){
-//             saveCover(plant, req.body.cover)
-//         }
-//         await plant.save()
-//         res.redirect(`/plants/${plant.id}`)
-//     } catch (err){
-//         console.log(err)
-//         if (plant != null) {
-//             renderEditPage(res, plant, true)
-//         } else {
-//             res.redirect('/')
-//         }
-//     }
-// })
+ router.put('/:id', ensureAuth,  async (req,res) => {
+    let diary
+    try{
+        diary = await Diary.findById(req.params.id)
+        diary.diaryTitle = req.body.diaryTitle,
+        diary.diaryText = req.body.diaryText,
+        diary.diaryDate = req.body.diaryDate,
+        diary.height = req.body.height, 
+        diary.waterInt = req.body.waterInt,
+        diary.sun = req.body.sun,
+        diary.potSize = req.body.potSize,
+        diary.pestStatus = req.body.pestStatus,
+        diary.repotted = req.body.repotted,
+        diary.fertilized = req.body.fertilized,
+        diary.pestsTreated = req.body.pestsTreated,
+        diary.trauma = req.body.trauma,
+        diary.plant = req.body.plant, 
+        diary.heightChange = req.body.heightChange,
+        diary.sunChange = req.body.sunChange,
+        diary.waterAmtChange = req.body.waterAmtChange,
+        diary.waterIntChange = req.body.waterIntChange, 
+        diary.potSizeChange = req.body.potSizeChange,
+        diary.pestsSighted = req.body.pestsSighted, 
+        diary.user = req.user.id
+        if(req.body.cover != null && req.body.cover !== ""){
+            saveCover(diary, req.body.cover)
+        }
+        await diary.save()
+        res.redirect(`/plants/${diary.plant}`)
+    } catch (err){
+        res.redirect('back')
+    }
+})
 
 //Delete diary route
 router.delete('/:id', ensureAuth,  async (req, res) => {
