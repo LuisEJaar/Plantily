@@ -3,9 +3,8 @@ Plantily is a project for the plant enthusiast in all of us. This project create
 
 **Link to project:** https://plantily.herokuapp.com/
 
-<p align="center">
-<img align="center" src="/Media/plantilyintro.gif" alt="Plantily Demo" width="250" height="500" />
-</p>
+https://user-images.githubusercontent.com/75051583/186553989-c948a501-e524-460f-b365-5b44bcf68378.mp4
+
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, Node.js, Express, EJS
