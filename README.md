@@ -56,4 +56,8 @@ Currently only run on local machine.
 - Practice CSS/HTML/JS
 - Repetition of Heroku Hosting Process
 - Creating CRUD reqeusts using Vanilla JS
+- First time using google Oauth in a project
+- First time using passport
+- Incorporated MVC practices
+- First time using a favicon
 
