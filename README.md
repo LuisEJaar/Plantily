@@ -9,8 +9,6 @@ https://user-images.githubusercontent.com/75051583/186553989-c948a501-e524-460f-
 
 **Tech used:** MongoDB, Node.js, Passport, Method-Override, EJS, Bootstrap, MVC, Express, Mongoose, Morgan
 
-Currently only run on local machine.
-
 <!-- ROADMAP -->
 ## Roadmap
 
