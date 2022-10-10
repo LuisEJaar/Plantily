@@ -1,15 +1,15 @@
-<div class="row">
+<div class="row"> 
     <div class="container form-group col">
         <div class="form-group row justify-content-between">
             <label class="" for="plantName">Name:</label>
             <div>
-                <input type="text" class="form-control" name="plantName" value='<%= plant.plantName %>'>
+                <input required type="text" class="form-control" name="plantName" value='<%= plant.plantName %>'>
             </div>
         </div>
         <div class="form-group row justify-content-between">
             <label class="col-form-label" for="area">Area:</label>
             <div class="">
-                <select class="mt-2 form-control" name="area" id="area">
+                <select required class="mt-2 form-control" name="area" id="area">
                     <% areas.forEach(area => { %>
                         <% if(area.id === plant.area) { %> 
                             <option selected label="<%= area.name %>" value="<%= area.id %>"><%= area %></option>
@@ -24,7 +24,7 @@
         <div class="form-group row justify-content-between">
             <label class="col-md-2 col-form-label" for="plantedDate">Planted:</label>
             <div class=" d-flex justify-content-center">
-                <input type="date" class="form-control" name="plantedDate" value='<%= plant.plantedDate == null ? '' : plant.plantedDate.toISOString().split('T')[0] %>'>
+                <input required type="date" class="form-control" name="plantedDate" value='<%= plant.plantedDate == null ? '' : plant.plantedDate.toISOString().split('T')[0] %>'>
             </div>
         </div>
         <div class="form-group row justify-content-between">
@@ -69,17 +69,17 @@
                 <input type="number" class="form-control" name="waterAmt" min='0' value='<%= plant.waterAmt %>'>
             </div>
         </div>
-        <div class="form-group row justify-content-between">
+        <div class="form-group row justify-content-between mt-3">
             <div class="form-check form-switch d-flex justify-content-center">
                 <input type="checkbox" class="form-check-input" name="pestStatus" id="pestStatus" value='yes'>
-                <label for="pestStatus" class="form-check-label" >Pests:</label>
+                <label for="pestStatus" class="form-check-label ms-2" >Pests:</label>
             </div>
         </div>
     </div>
     <div class="form-group col">
         <div class="form-group ">
             <label for="cover">Picture:</label>
-            <input type="file" name="cover" class="filepond">
+            <input required type="file" name="cover" class="filepond">
         </div>
         <div class="form-group row p-2">
             <label class="col-form-label" for="description">Description:</label>

@@ -21,11 +21,6 @@ router.get('/', ensureAuth, async (req,res) => {
     }
 })
 
-//Show new area form Route
-router.get('/new', ensureAuth, (req,res) => {
-    res.render('areas/new', {area: new Area()})
-})
-
 //Create New Area route
 router.post('/', ensureAuth, async (req,res) => {
     const area = new Area({
@@ -47,7 +42,8 @@ router.post('/', ensureAuth, async (req,res) => {
 router.get('/:id', ensureAuth, async (req,res)=> {
     try {
         const area = await Area.findById(req.params.id)
-        const plants = await Plant.find({area: area.id}).limit(6).exec()
+        const plants = await Plant.find({area: area.id, user: req.user.id}).limit().exec()
+
         res.render('areas/show', {
             area: area,
             plantsByArea: plants

@@ -22,7 +22,7 @@ router.get('/', ensureAuth, async (req,res) => {
         const plants = await query.exec()
         res.render('plants/index', {
             plants: plants,
-            searchOptions: req.query
+            searchOptions: req.query,
         })
     } catch {
         res.redirect('/')
@@ -31,7 +31,7 @@ router.get('/', ensureAuth, async (req,res) => {
 
 //Show new plant form / page Route
 router.get('/new', ensureAuth, async (req,res) => {
-   renderNewPage(res, new Plant())
+   renderNewPage(req.user.id, res, new Plant())
 })
 
 //Create New plant route
@@ -86,7 +86,7 @@ router.get('/:id', ensureAuth, async (req,res) => {
 router.get('/:id/edit', ensureAuth, async (req,res) => {
     try {
         const plant = await Plant.findById(req.params.id)
-        renderEditPage(res, plant)
+        renderEditPage(req.user.id, res, plant)
     } catch {
         res.redirect('/')
     }
@@ -142,17 +142,17 @@ router.delete('/:id', ensureAuth, async (req, res) => {
     }
 })
 
-async function renderNewPage (res, plant, hasError = false) {
-    renderFormPage(res, plant, 'new', hasError)
+async function renderNewPage (user, res, plant, hasError = false) {
+    renderFormPage(user, res, plant, 'new', hasError)
 }
 
-async function renderEditPage (res, plant, hasError = false) {
-   renderFormPage(res, plant, 'edit', hasError)
+async function renderEditPage (user, res, plant, hasError = false) {
+   renderFormPage(user, res, plant, 'edit', hasError)
 }
 
-async function renderFormPage (res, plant, form, hasError = false) {
+async function renderFormPage (user, res, plant, form, hasError = false) {
     try {
-        const areas = await Area.find({})
+        const areas = await Area.find({user: user})
         const params = {
             areas: areas,
             plant: plant

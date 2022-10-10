@@ -21,6 +21,13 @@
                     </div>
                 </div>
             <% }) %>
-        <% } %> 
+        <% } else {%>
+            <div class="stardewBorder d-flex flex-column align-items-center">
+                <h2 class="p-3 r text-center">Great! You've added an area! Now lets add some plants: </h2>
+                <div>
+                    <a class="btn btn-info mt-2 mb-4" href="/plants/new">Add a Plant</a>
+                </div>
+            </div>
+        <%} %> 
     </div>
   </div>

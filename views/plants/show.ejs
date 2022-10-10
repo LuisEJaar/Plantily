@@ -31,7 +31,7 @@
             </section>
         </div>
         <div class="container mt-4 p-3 d-flex justify-content-center">
-            <a class="btn me-3 btn-success btn-lg" href="/plants/<%= plant.id %>/edit">Edit</a>
+            <a class="btn me-3 btn-warning btn-lg" href="/plants/<%= plant.id %>/edit">Edit</a>
             <a class="btn me-3 btn-success btn-lg" href="/areas/<%= plant.area.id %>">View Area</a>
             <%- include('../partials/deleteForm', { url: `/plants/${plant.id}` })%>
         </div>
@@ -210,4 +210,3 @@
     </div>
     </div>
 </div>
-<!-- Modal -->

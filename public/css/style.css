@@ -13,12 +13,6 @@
   src: url(../assets/Stardew_Valley.ttf);
 }
 
-.indexTop::before{
-  display: block;
-  content: "";
-  height: 50px;
-}
-
 #newArea, #searchArea{ 
   max-width: 500px;
 }
@@ -38,7 +32,7 @@ input, select {
 
 .stardewForm, .stardewBorder {
   background-color: rgb(255, 213, 142);
-  font-weight: bold;
+  font-weight: lighter;
   border: 5px double darkgoldenrod;
 }
 
@@ -52,7 +46,7 @@ input, select {
 }
 
 .stardewForm {
-  font-size: 2rem;
+  font-size: 1.5rem;
   max-width: 90%;
 }
 
@@ -146,4 +140,8 @@ input, select {
 
 title {
   border-radius: 2px;
+}
+
+body {
+  min-height: 100vh;
 }
