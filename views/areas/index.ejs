@@ -14,6 +14,14 @@
             </div>
         </div>
         <br>
+
+        <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger text-center"><%= el.msg %></div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %> <% } %>
+
         <% if(areas.length == 0){%>
             <p>Create some areas so that you can begin putting plants there</p>    
         <%} %>

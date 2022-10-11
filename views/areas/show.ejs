@@ -3,10 +3,11 @@
         <h2><%= area.name %></h2>
         <a class="btn btn-primary mb-3" href="/areas/<%= area.id%>/edit">edit</a>
         <%- include('../partials/deleteForm', 
-            {url: `areas/${area.id}`}
+            {url: `/areas/${area.id}`}
         )%>
     </div>
     <div class="row g-4 mt-2">
+        <%- include('../partials/errorMessage')%>
         <% if(plantsByArea.length > 0) { %>
             <h2 class="stardewBorder"><%= area.name %> Plants</h2>
             <% plantsByArea.forEach(plant => {%>

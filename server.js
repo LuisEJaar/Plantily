@@ -27,8 +27,14 @@ app.use(expressLayouts)
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 app.use(methodOverride('_method'))
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '../public'));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')))
+
+//Manage Errors:
+const flash = require("express-flash");
+
+//Use flash messages for errors, info, ect...
+app.use(flash());
 
 //What we're using for passwords
 const passport = require('passport')
@@ -39,6 +45,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const connectDB = require('./config/db')
 
+//Connecting to Database
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
 const dotenv = require('dotenv')

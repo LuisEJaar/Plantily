@@ -84,17 +84,19 @@ router.put('/:id', ensureAuth, async (req,res)=> {
     }
 })
 
-router.delete('/:id', ensureAuth, async (req, res)=>{
+router.delete('/:id', ensureAuth, async (req, res) => {
     let area
     try {
         area = await Area.findById(req.params.id)
+        plants = await Plants.find({ area: req.params.id })
         await area.remove()
         res.redirect(`/areas`)
     } catch { 
         if(area == null){
             res.redirect('/')
         } else {
-            res.redirect(`/areas/${area.id}`)
+            req.flash("errors", { msg: "Oops, you'll need to move your plants before deleting the area!" });
+            res.redirect("/areas");
         }
     }
 })
