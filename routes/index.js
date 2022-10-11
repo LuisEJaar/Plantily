@@ -10,7 +10,11 @@ router.get('/', async (req,res) => {
     } catch {
         plants = []
     }
-    res.render('index', {plants: plants})
+    console.log(req.user)
+    res.render('index', {
+        plants: plants,
+        user: req.user
+    })
 })
 
 router.get('/login', ensureGuest, (req,res) => {

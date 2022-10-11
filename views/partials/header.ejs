@@ -7,12 +7,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav d-flex ms-auto navbar-center">
+              <% if(typeof user == 'undefined') { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/areas">Login</a>
+                </li>
+              <% } else {%>
                 <li class="nav-item">
                   <a class="nav-link" href="/areas">Areas</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/plants">Plants</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+              <%} %>
             </ul>
         </div>
     </div>
